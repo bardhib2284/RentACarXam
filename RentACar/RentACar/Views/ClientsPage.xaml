@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.ClientsPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Klientet" SubTitle="Lista e te gjithe klienteve" SearchVisible="False" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Add-icon.png" Command="{Binding GoToCreateClientCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                ItemsSource="{Binding Clients}"
+                RowHeight="100"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="20,10">
+                                <ff:CachedImage WidthRequest="90" HeightRequest="90" Aspect="AspectFit" VerticalOptions="Fill" HorizontalOptions="Fill" Source="{Binding ClientFrontImage}"/>
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding ID_PersonalNumber}" FontSize="15" TextColor="LightGray"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout IsVisible="{Binding HasClients,Converter={converters:InverseBoolConverter}}" VerticalOptions="FillAndExpand">
+                <Label Text="NUK KA KLIENT TE REGJISTRUAR NE RENT, JU LUTEM SHTONI KLIENTET ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                <Button Text="Shto Veturen" Command="{Binding GoToCreateClientCommand}"/>
+            </StackLayout >
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

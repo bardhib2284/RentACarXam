@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.LoginPage"
+             xmlns:components="clr-namespace:RentACar.Components"
+             >
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Kyçu" SubTitle="Rent Name" SearchVisible="False" />
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderColor" Value="Gray"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="19"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="WidthRequest" Value="200"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="rentlogo" WidthRequest="200" HeightRequest="200" Aspect="AspectFit"
+                VerticalOptions="Fill" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout Padding="25,0" VerticalOptions="CenterAndExpand" >
+                <Entry Placeholder="Email" VerticalOptions="CenterAndExpand" Text="{Binding EmailAddress}"
+                HorizontalOptions="Center" WidthRequest="210" />
+                <Entry Placeholder="Password" IsPassword="True" VerticalOptions="CenterAndExpand" Text="{Binding Password}"
+                HorizontalOptions="Center" WidthRequest="210"/>
+                <Button Text="Kyçu" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                 Command="{Binding LoginCommand}"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

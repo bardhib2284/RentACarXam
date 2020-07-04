@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.DashboardPage"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
+             xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters"
+             BackgroundColor="{StaticResource ModeColorPrimary}"
+             x:Name="ThaPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="{Binding CurrentRent.Location}" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderColor" Value="Gray"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="19"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout Spacing="0">
+            <StackLayout IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Label Text="NUK KA VETURA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" FontAttributes="Bold"
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}" HorizontalOptions="Center" WidthRequest="160"/>
+            </StackLayout >
+            <StackLayout IsVisible="{Binding HasCars}">
+                <Label Margin="15,20,0,0" Text="Vetuarat E Lira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                <StackLayout x:Name="carview">
+                    <controls:CarouselViewControl Position="0" 
+                                              ItemsSource="{Binding AvailableCars}" 
+                                              IsVisible="{Binding HasAvailableCars}"
+                                              VerticalOptions="Fill" 
+                                              Orientation="Horizontal" 
+                                              WidthRequest="300"
+                                              HeightRequest="300"
+                                              ItemTemplate="{StaticResource CarImageSlider}"
+                                              HorizontalOptions="FillAndExpand">
+                    </controls:CarouselViewControl>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding HasAvailableCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE LIRA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                    <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}"/>
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding HasCars}">
+                <Label Margin="15,20,0,0" Text="Vetuarat E Leshuara Me Qira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                <StackLayout x:Name="carview2">
+                    <controls:CarouselViewControl Position="0" 
+                                              ItemsSource="{Binding TakenCars}" 
+                                              IsVisible="{Binding HasTakenCars}"
+                                              VerticalOptions="Fill" 
+                                              Orientation="Horizontal" 
+                                              WidthRequest="300"
+                                              HeightRequest="300"
+                                              ItemTemplate="{StaticResource CarImageSlider}"
+                                              HorizontalOptions="FillAndExpand">
+                    </controls:CarouselViewControl>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding HasTakenCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE ZENA, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding HasCars}">
+                <Label Margin="15,20,0,0" Text="Vetuarat E Pa Regjistruara" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                <StackLayout x:Name="carview3">
+                    <controls:CarouselViewControl Position="0" 
+                                              ItemsSource="{Binding UnregisteredCars}" 
+                                              IsVisible="{Binding HasUnregisteredCars}"
+                                              VerticalOptions="Fill" 
+                                              Orientation="Horizontal" 
+                                              BackgroundColor="Black"
+                                              WidthRequest="300"
+                                              HeightRequest="300"
+                                              ItemTemplate="{StaticResource CarImageSlider}"
+                                              HorizontalOptions="FillAndExpand">
+                    </controls:CarouselViewControl>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding HasUnregisteredCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE PA REGJISTRUARA, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding HasCars}">
+                <Label Margin="15,20,0,0" Text="Vetuarat Ne Servisim" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                <StackLayout x:Name="carview4">
+                    <controls:CarouselViewControl Position="0" 
+                                              ItemsSource="{Binding OnServiseCars}" 
+                                              IsVisible="{Binding HasOnServiceCars}"
+                                              VerticalOptions="Fill"
+                                              Orientation="Horizontal" 
+                                              WidthRequest="300"
+                                              HeightRequest="300"
+                                              ItemTemplate="{StaticResource CarImageSlider}"
+                                              HorizontalOptions="FillAndExpand">
+                    </controls:CarouselViewControl>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding HasOnServiceCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA NE SERVIS, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout >
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

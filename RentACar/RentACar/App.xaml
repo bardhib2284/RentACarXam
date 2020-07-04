@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:converters="clr-namespace:RentACar.Converters"
+             x:Class="RentACar.App"
+             xmlns:viewmodels="clr-namespace:RentACar.ViewModels"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:FromBoolToAvailableOpacity x:Key="FromBoolToAvailableOpacity"/>
+            <converters:FromBoolToAvailableText x:Key="FromBoolToAvailableText"/>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <!-- Black Edition 
+            <Color x:Key="ModeColorPrimary">#000000</Color> 
+            <Color x:Key="ModeColorText">#ffffff</Color>
+            -->
+            <!-- White Edition -->
+            <Color x:Key="ModeColorPrimary">#ffffff</Color>
+            <Color x:Key="ModeColorText">#000000</Color>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource ModeColorPrimary}" />
+                <Setter Property="BarTextColor" Value="{StaticResource ModeColorText}" />
+            </Style>
+            <Style TargetType="Label" x:Key="LabelStyleDefault">
+                <Setter Property="TextColor" Value="{StaticResource ModeColorText}"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            
+            <!-- car view images data template for carousel-->
+            <DataTemplate x:Key="CarImageSlider">
+                <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="{StaticResource ModeColorPrimary}">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardViewModel}}, Path=CarDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                    <Frame
+                            VerticalOptions="Center"
+                            HorizontalOptions="Fill"
+                            Padding="0"
+                            HasShadow="false"
+                            IsClippedToBounds="true"
+                            HeightRequest="290"
+                            MinimumHeightRequest="200"
+                            CornerRadius="10"
+                            BackgroundColor="Transparent">
+                        <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
+                            <ff:CachedImage Opacity="0.85" Source="https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                            <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
+                                <ff:CachedImage Source="{Binding .Brand}" Aspect="AspectFill"/>
+                            </StackLayout>
+                            <StackLayout MinimumWidthRequest="220" WidthRequest="280" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15,00,15,0">
+                                <ff:CachedImage BackgroundColor="Transparent" HeightRequest="190" Source="{Binding .CarImageSource}" Aspect="AspectFit"/>
+                            </StackLayout>
+                            <Label Margin="0,0,0,-200" Text="{Binding .Name}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Margin="0,20" Text="{Binding .ProductionYear, StringFormat='{0:MMMM dd, yyyy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
+                            <Label Margin="0,20,25,0" Text="{Binding .Km}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                            <Label Margin="0,40,25,0" Text="01-123-PR" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                            <Label Margin="0,0,0,10" Text="{Binding .Statusi}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                            <Label Margin="25,0,0,10" Text="{Binding .Fuel}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
+                            <Label Margin="0,0,25,10" Text="{Binding .Transmission}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>

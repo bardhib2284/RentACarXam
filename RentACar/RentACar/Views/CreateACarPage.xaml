@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.CreateACarPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Shto Veture" SubTitle="" SearchVisible="False" />
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BorderColor" Value="Gray"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="19"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="20">
+                    <Label Grid.Row="0" Grid.Column="0" Text="Emri" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="0" Grid.Column="1" Placeholder="Emri" Text="{Binding SelectedCar.Name}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Brand" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="1" Grid.Column="1" Placeholder="Brand" Text="{Binding SelectedCar.Brand}"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Model" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="2" Grid.Column="1" Placeholder="Model" Text="{Binding SelectedCar.Model}"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="VitiIProdhimit" Style="{StaticResource LabelStyleDefault}"/>
+                    <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding SelectedCar.ProductionYear}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Numri I Uleseve" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="4" Grid.Column="1" Placeholder="Nr.Ulseve" Text="{Binding SelectedCar.NumberOfSeats}" Keyboard="Numeric"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Fuel" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="5" Grid.Column="1" Placeholder="Fuel" Text="{Binding SelectedCar.Fuel}"/>
+                    <Label Grid.Row="6" Grid.Column="0" Text="Ngjyra" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="6" Grid.Column="1" Placeholder="Ngjyra" Text="{Binding SelectedCar.Color}" />
+                    <Label Grid.Row="7" Grid.Column="0" Text="Transmission" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="7" Grid.Column="1" Placeholder="Transmission" Text="{Binding SelectedCar.Transmission}" />
+                    <Label Grid.Row="8" Grid.Column="0" Text="Km te kaluara" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="8" Grid.Column="1" Placeholder="Km te kaluara" Text="{Binding SelectedCar.Km}" Keyboard="Numeric" />
+                    <Label Grid.Row="9" Grid.Column="0" Text="Data e regjistrimit" Style="{StaticResource LabelStyleDefault}"/>
+                    <DatePicker Grid.Row="9" Grid.Column="1" Date="{Binding SelectedCar.DateOfRegister}" />
+                    <Label Grid.Row="10" Grid.Column="0" Text="Data e kontrolles se fundit" Style="{StaticResource LabelStyleDefault}"/>
+                    <DatePicker Grid.Row="10" Grid.Column="1" Date="{Binding SelectedCar.DateOfStartCheck}"/>
+                    <Label Grid.Row="11" Grid.Column="0" Text="Data e kontrolles se rradhes" Style="{StaticResource LabelStyleDefault}"/>
+                    <DatePicker Grid.Row="11" Grid.Column="1" Date="{Binding SelectedCar.NextDateOfCheck}"/>
+                    <Label Grid.Row="12" Grid.Column="0" Text="Renti" Style="{StaticResource LabelStyleDefault}"/>
+                    <Entry Grid.Row="12" Grid.Column="1" Placeholder="Renti" Text="{Binding SelectedCar.RentId}"/>
+                    <StackLayout Grid.Row="14">
+                        <Label Grid.Row="14" Grid.Column="0" Text="Renti" Style="{StaticResource LabelStyleDefault}"/>
+                        <Button Grid.Row="14" Grid.Column="1" Text="Imazhi 1" Clicked="Button_ClickedAsync"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="15" >
+                        <Label Grid.Row="15" Grid.Column="0" Text="URL i imazhit" Style="{StaticResource LabelStyleDefault}"/>
+                        <Entry Grid.Row="15" Grid.Column="1" Placeholder="https://image.png" Text="{Binding SelectedCar.CarImageUrl}"/>
+                    </StackLayout>
+                </Grid>
+                <Button Text="Ruaj Veturen" Command="{Binding CreateACarCommand}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

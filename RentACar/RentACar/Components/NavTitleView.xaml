@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACar.Components.NavTitleView">
+  <ContentView.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,0,20,0">
+            <StackLayout Margin="0,0,30,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="1">
+                <Label x:Name="title" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource ModeColorText}"/>
+                <Label x:Name="subtitle" HorizontalTextAlignment="Center" FontSize="12"  TextColor="{StaticResource ModeColorText}"/>
+            </StackLayout>
+            <SearchBar x:Name="searchBar" Placeholder="Search" Margin="0,0,30,0" BackgroundColor="{StaticResource ModeColorText}" HorizontalOptions="End" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand"></SearchBar>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
+             xmlns:components="clr-namespace:RentACar.Components" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.RentACarPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="Leshimi me qira" SearchVisible="False" Margin="0,0,20,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView x:Name="MainScroll">
+            <Grid x:Name="gridrented" RowSpacing="0">
+                <StackLayout Grid.Row="0">
+                    <Label Margin="15,10,0,0"  Text="Klienti" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                    <SearchBar  Focused="search_Focused" x:Name="search" Placeholder="Kerko Klientin Me Emer Ose ID" HorizontalOptions="FillAndExpand"/>
+                    <ListView
+                ItemsSource="{Binding Clients}"
+                RowHeight="100"
+                ItemTapped="ListView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Padding="20,10">
+                                        <ff:CachedImage WidthRequest="90" HeightRequest="90" Aspect="AspectFit" VerticalOptions="Fill" HorizontalOptions="Fill" Source="{Binding ClientFrontImage}"/>
+                                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                                            <Label Text="{Binding ID_PersonalNumber}" FontSize="15" TextColor="LightGray"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                
+                <StackLayout x:Name="carview" Grid.Row="1">
+                    <Label Margin="15,20,0,0" Text="Vetura" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                    <controls:CarouselViewControl Position="0" 
+                                              ItemsSource="{Binding Cars}" 
+                                              VerticalOptions="Fill" 
+                                              Orientation="Horizontal" 
+                                              WidthRequest="300"
+                                              HeightRequest="300"
+                                              ItemTemplate="{StaticResource CarImageSlider}"
+                                              HorizontalOptions="FillAndExpand">
+                    </controls:CarouselViewControl>
+                </StackLayout>
+
+                <Frame IsVisible="{Binding Ready}" BorderColor="Black"  VerticalOptions="EndAndExpand" HeightRequest="60" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToRentedCarDetailsCommand}" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                        <Label Text="Vazhdo" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Image BackgroundColor="Transparent" WidthRequest="50" HeightRequest="50" Margin="0,0,50,0" HorizontalOptions="End" Source="https://www.pngrepo.com/download/166600/right-arrow-button.png" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

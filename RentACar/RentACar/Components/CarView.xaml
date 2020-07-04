@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="RentACar.Components.CarView"
+             x:Name="ThaPage">
+    <StackLayout Padding="15" Spacing="0" BackgroundColor="Black">
+        <Image x:Name="CarBrand" HorizontalOptions="Start" WidthRequest="50" HeightRequest="50" Aspect="AspectFit"/>
+        <Label x:Name="CarName" Text="AUDI A4 2016" Style="{StaticResource LabelStyleDefault}" Margin="0,5"/>
+        <Label Text="$40-Day" Style="{StaticResource LabelStyleDefault}" HorizontalOptions="End" Margin="0,-15"/>
+        <Button x:Name="Available"
+                        IsEnabled="False" TextColor="White"
+                        FontAttributes="Bold" Margin="20" FontSize="14" Padding="10" BorderWidth="1" HorizontalOptions="Start" BorderColor="{StaticResource ModeColorText}"/>
+        <!--<controls:CarouselViewControl x:Name="carouselForCarImages" 
+                                        AnimateTransition="False"
+                                        IndicatorsShape="Square"
+                                        IndicatorsTintColor="{StaticResource ModeColorText}"
+                                        Orientation="Horizontal" 
+                                        InterPageSpacing="10" 
+                                        HeightRequest="300" 
+                                        ItemTemplate="{StaticResource CarImageSlider}" 
+                                        ShowIndicators="True" 
+                                        VerticalOptions="FillAndExpand" 
+                                        HorizontalOptions="FillAndExpand">
+        </controls:CarouselViewControl>-->
+        <forms:CachedImage x:Name="CarImage" HorizontalOptions="Start" CacheType="Memory" CacheDuration="2" WidthRequest="300" HeightRequest="300" Aspect="AspectFit" />
+        <Button x:Name="button" HorizontalOptions="FillAndExpand" Padding="20,0" Text="Lesho Me Qira" Clicked="button_Clicked"/>
+    </StackLayout>
+</ContentView>
