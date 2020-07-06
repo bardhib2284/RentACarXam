@@ -168,13 +168,13 @@ namespace RentACar.ViewModels
 
         private async Task<object> GetPdfAsync()
         {
-            var statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
-            var statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
-            if(statusread != Xamarin.Essentials.PermissionStatus.Granted || statuswrite != Xamarin.Essentials.PermissionStatus.Granted)
-            {
-                var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
-                var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
-            }
+            //var statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
+            //var statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            //if(statusread != Xamarin.Essentials.PermissionStatus.Granted || statuswrite != Xamarin.Essentials.PermissionStatus.Granted)
+            //{
+                //var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                //var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            //}
             var response = await App.client.GetAsync(App.API_URL_BASE + "rents/pdf");
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
