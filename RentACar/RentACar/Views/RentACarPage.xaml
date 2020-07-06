@@ -8,12 +8,15 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.RentACarPage">
     <NavigationPage.TitleView>
-        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="Leshimi me qira" SearchVisible="False" Margin="0,0,20,0"/>
+        <components:NavTitleView Title="Leshimi me qira" SubTitle="Hapi 1/2" SearchVisible="False" Margin="0,0,20,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView x:Name="MainScroll">
-            <Grid x:Name="gridrented" RowSpacing="0">
-                <StackLayout Grid.Row="0">
+            <Grid x:Name="gridrented" RowSpacing="0" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" >
                     <Label Margin="15,10,0,0"  Text="Klienti" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
                     <BoxView Margin="15,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
                     <SearchBar  Focused="search_Focused" x:Name="search" Placeholder="Kerko Klientin Me Emer Ose ID" HorizontalOptions="FillAndExpand"/>
@@ -51,7 +54,7 @@
                     </controls:CarouselViewControl>
                 </StackLayout>
 
-                <Frame IsVisible="{Binding Ready}" BorderColor="Black"  VerticalOptions="EndAndExpand" HeightRequest="60" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                <Frame IsVisible="{Binding Ready}" BorderColor="Black" HeightRequest="50" Margin="0,-360" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="White">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToRentedCarDetailsCommand}" />
                     </Frame.GestureRecognizers>

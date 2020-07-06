@@ -4,6 +4,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using RentACar.Dependencies;
 using RentACar.Models;
 using RentACar.Views;
 using System;
@@ -137,6 +138,7 @@ namespace RentACar.ViewModels
         public ICommand CarSettingsCommand { get; set; }
         public ICommand LeshoMeQiraCommand { get; set; }
         public ICommand GoToClientsCommand { get; set; }
+        public ICommand GetPdfCommand { get; set; }
         public DashboardViewModel()
         {
             CarDetailsCommand = new Command<Car>(async (c) => await CarDetailsAsync(c));
@@ -151,31 +153,68 @@ namespace RentACar.ViewModels
             CarSettingsCommand = new Command(async () => await GoToCreateACarAsync());
             LeshoMeQiraCommand = new Command(async () => await LeshoMeQiraAsync());
             GoToClientsCommand = new Command(async () => await GoToClientsPageAsync());
+            GetPdfCommand = new Command(async () => await GetPdfAsync());
             //Task.Run(LoadRents);
+        }
+
+        private async Task<object> GetPdfAsync()
+        {
+            var statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
+            var statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            if(statusread != Xamarin.Essentials.PermissionStatus.Granted || statuswrite != Xamarin.Essentials.PermissionStatus.Granted)
+            {
+                var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            }
+            var response = await App.client.GetAsync(App.API_URL_BASE + "rents/pdf");
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+                return null;
+            }
+            else
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                var pdfcontent = JsonConvert.DeserializeObject<byte[]>(responseString);
+                using(MemoryStream ms = new MemoryStream(pdfcontent))
+                {
+                    //await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", ms);
+
+                }
+                DependencyService.Get<IFileLauncher>().Open(pdfcontent, $"Rent---.pdf");
+                return null;
+            }
+
         }
 
         private async Task GoToClientsPageAsync()
         {
-            ClientsPage ClientsPage = new ClientsPage();
-            App.instance.ClientsViewModel = new ClientsViewModel();
-            ClientsPage.BindingContext = App.instance.ClientsViewModel;
-            Clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
-            (App.instance.MainPage as MainPage).IsPresented = false;
-            await App.instance.PushAsyncNewPage(ClientsPage);
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                ClientsPage ClientsPage = new ClientsPage();
+                App.instance.ClientsViewModel = new ClientsViewModel();
+                ClientsPage.BindingContext = App.instance.ClientsViewModel;
+                Clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(ClientsPage);
+            }
         }
 
         private async Task LeshoMeQiraAsync()
         {
-            App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
-            Clients = App.instance.ClientsViewModel.Clients;
-            if(Clients == null || !Clients.Any())
-                Clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
-            RentACarViewModel rc = new RentACarViewModel(Clients);
-            rc.SelectedCar = SelectedCar;
-            RentACarPage RentACarPage = new RentACarPage();
-            RentACarPage.BindingContext = rc;
-            
-            await App.instance.PushAsyncNewPage(RentACarPage);
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
+                Clients = App.instance.ClientsViewModel.Clients;
+                if (Clients == null || !Clients.Any())
+                    Clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
+                RentACarViewModel rc = new RentACarViewModel(Clients);
+                rc.SelectedCar = SelectedCar;
+                RentACarPage RentACarPage = new RentACarPage();
+                RentACarPage.BindingContext = rc;
+
+                await App.instance.PushAsyncNewPage(RentACarPage);
+            }
         }
 
         private async Task GoToCarSettingsAsync()
@@ -379,8 +418,6 @@ namespace RentACar.ViewModels
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
                     var Rent = JsonConvert.DeserializeObject<Rent>(responseString);
-                    Debug.WriteLine("Debuging : " + responseString);
-                    UserDialogs.Instance.Alert(responseString, "Error", "Ok");
                     return Rent;
                 }
             }

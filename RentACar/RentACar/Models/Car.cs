@@ -29,7 +29,7 @@ namespace RentACar.Models
         public byte[] CarImage_2 { get; set; }
         public string CarImageUrl { get; set; }
         public enum TransmissionTypes { Automatic = 0, Manual = 1 }
-        public enum StatusTypes { Aktiv = 0, Zene = 1, Pa_Regjistruar = 2, NeServis = 3 }
+        public enum StatusTypes { Aktiv = 0, Zene = 1, Pa_Regjistruar = 2, NeServis = 3, IRezervuar = 4 }
 
         //EXTRAS
         private MemoryStream ms => new MemoryStream(CarImage_1);

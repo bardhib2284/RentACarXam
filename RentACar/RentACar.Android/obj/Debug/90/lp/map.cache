@@ -10,6 +10,13 @@ Plugin.Connectivity
 Plugin.CurrentActivity
 Plugin.Media
 Plugin.Permissions
+Syncfusion.Core.XForms.Android
+Syncfusion.SfBusyIndicator.Android
+Syncfusion.SfBusyIndicator.XForms.Android
+Syncfusion.SfPdfViewer.XForms.Android
+Syncfusion.SfProgressBar.XForms.Android
+Syncfusion.SfRangeSlider.Android
+Syncfusion.SfRangeSlider.XForms.Android
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
 Xamarin.Android.Arch.Lifecycle.Common

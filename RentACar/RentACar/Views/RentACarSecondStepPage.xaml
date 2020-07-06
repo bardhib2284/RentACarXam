@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.RentACarSecondStepPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Leshimi me qira" SubTitle="Hapi 2/2" SearchVisible="False" Margin="0,0,20,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout Padding="10">
+                <Label Text="Termin?" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <Switch  Margin="10,0" IsToggled="{Binding IsTermin}"/>
+                <Label Text="Koha E Leshimit" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <DatePicker MinimumDate="{Binding RentedCar.KohaELeshimit}"  Margin="10,0" Date="{Binding RentedCar.KohaELeshimit}" IsEnabled="{Binding IsTermin}"/>
+                <Label Text="Koha E Kthimit" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <DatePicker MinimumDate="{Binding RentedCar.KohaELeshimit}" Date="{Binding RentedCar.KohaEKthimit}"  Margin="10,0" />
+                <Label Text="Cmimi ditor" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <Entry Text="{Binding RentedCar.CmimiDitor}" Placeholder="Cmimi Ditor" Keyboard="Numeric"/>
+                <Label Text="Perqindja e voneses" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <Entry Text="{Binding RentedCar.PerqindjaEVoneses}" Placeholder="Cmimi Ditor" Keyboard="Numeric"/>
+                <Label Text="Vetura" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <Label Text="{Binding SelectedCar.Name}" TextColor="Black"  FontSize="20" />
+                <Label Text="Klienti" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <Label Text="{Binding SelectedClient.Name}" TextColor="Black"  FontSize="20" />
+            </StackLayout>
+            
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="70" >
+                <Button Text="Kthehu" HorizontalOptions="FillAndExpand" BackgroundColor="red" TextColor="White" VerticalOptions="FillAndExpand"/>
+                <Button Command="{Binding RentThisCarCommand}" Text="Lesho Me Qira" HorizontalOptions="FillAndExpand" BackgroundColor="GreenYellow" TextColor="White" VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

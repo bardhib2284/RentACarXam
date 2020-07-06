@@ -66,6 +66,18 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "Syncfusion.Xamarin.Compression": {
+              "target": "Package",
+              "version": "[18.1.0.59, )"
+            },
+            "Syncfusion.Xamarin.Pdf": {
+              "target": "Package",
+              "version": "[18.1.0.59, )"
+            },
+            "Syncfusion.Xamarin.SfPdfViewer": {
+              "target": "Package",
+              "version": "[18.1.0.59, )"
+            },
             "Xam.Plugin.Connectivity": {
               "target": "Package",
               "version": "[3.2.0, )"
@@ -88,7 +100,7 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.7.0.968, )"
+              "version": "[4.7.0.1080, )"
             }
           },
           "imports": [

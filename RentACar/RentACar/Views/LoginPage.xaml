@@ -37,6 +37,8 @@
                 HorizontalOptions="Center" WidthRequest="210"/>
                 <Button Text="Kyçu" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
                  Command="{Binding LoginCommand}"/>
+                <Button Text="Get PDF" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                 Command="{Binding GetPdfCommand}"/>
             </StackLayout>
             
         </StackLayout>

@@ -16,6 +16,8 @@ namespace RentACar.Droid
     [Activity(Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public static MainActivity MainActivityInstance;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -27,6 +29,7 @@ namespace RentACar.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             CachedImageRenderer.Init(true);
+            MainActivityInstance = this;
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             CarouselViewRenderer.Init();
             LoadApplication(new App());

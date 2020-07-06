@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6BLCtA3wJyeY7thTN5iCgYHji4Vy3dtl0KB4iiicBZR3uKxzy4ShJ8zYbfsXdGLVqzYRx35T9jvrVcwvfag2jw==",
+  "dgSpecHash": "z5jPr8ELWkMxyeQeMWP2z9q1fY+9/3xrDi9gwHpwbJFQ5pL44JBhw+tLdTSKZxu41jy9uR5g477gjcTuV58zxg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.iOS\\RentACar.iOS.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,14 @@
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\carouselview.formsplugin\\5.2.0\\carouselview.formsplugin.5.2.0.nupkg.sha512",
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\plugin.permissions\\6.0.1\\plugin.permissions.6.0.1.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.licensing\\18.1.0.59\\syncfusion.licensing.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.compression\\18.1.0.59\\syncfusion.xamarin.compression.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.core\\18.1.0.59\\syncfusion.xamarin.core.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.pdf\\18.1.0.59\\syncfusion.xamarin.pdf.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.sfbusyindicator\\18.1.0.59\\syncfusion.xamarin.sfbusyindicator.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.sfpdfviewer\\18.1.0.59\\syncfusion.xamarin.sfpdfviewer.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.sfprogressbar\\18.1.0.59\\syncfusion.xamarin.sfprogressbar.18.1.0.59.nupkg.sha512",
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\syncfusion.xamarin.sfrangeslider\\18.1.0.59\\syncfusion.xamarin.sfrangeslider.18.1.0.59.nupkg.sha512",
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\webp.touch\\1.0.8\\webp.touch.1.0.8.nupkg.sha512",
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\xam.plugin.connectivity\\3.2.0\\xam.plugin.connectivity.3.2.0.nupkg.sha512",
@@ -25,6 +33,19 @@
       "warningLevel": 1,
       "message": "Detected package downgrade: Xamarin.Essentials from 1.5.3.2 to 1.3.1. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Essentials (>= 1.5.3.2) \r\n RentACar.iOS -> Xamarin.Essentials (>= 1.3.1)",
       "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 4.7.0.1080 to 4.7.0.968. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Forms (>= 4.7.0.1080) \r\n RentACar.iOS -> Xamarin.Forms (>= 4.7.0.968)",
+      "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "Xamarin.iOS,Version=v1.0",
         "Xamarin.iOS,Version=v1.0/win",

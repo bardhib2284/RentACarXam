@@ -36,70 +36,18 @@
                     <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                         <Label Text="Cmimi Ditor" TextColor="Gray" />
                         <Label Text="40" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                         <Label Text="Numri i karrikave" TextColor="Gray" />
                         <Label Text="{Binding SelectedCar.NumberOfSeats}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                         <Label Text="Karburanti" TextColor="Gray" />
                         <Label Text="{Binding SelectedCar.Fuel}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                         <Label Text="Marshi" TextColor="Gray" />
                         <Label Text="{Binding SelectedCar.Transmission}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                         <Label Text="Km e kaluara deri me tani" TextColor="Gray" />
                         <Label Text="{Binding SelectedCar.Km}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
                         <Label Text="Viti i prodhimit" TextColor="Gray" />
                         <Label Text="{Binding SelectedCar.ProductionYear, StringFormat='{0:yyyy}'}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
                     </StackLayout>
                     <Button Text="Lesho Me Qira" Command="{Binding LeshoMeQiraCommand}"/>
-                </StackLayout>
-                <!-- KTHE VETUREN -->
-                <StackLayout Spacing="0">
-                    <ff:CachedImage Source="{Binding SelectedCar.CarImageSource}" WidthRequest="200" HeightRequest="200"/>
-                    <!--<controls:CarouselViewControl x:Name="carouselForCarImages" 
-                                            AnimateTransition="False"
-                                            IndicatorsShape="Square"
-                                            IndicatorsTintColor="{StaticResource ModeColorText}"
-                                            Orientation="Horizontal" 
-                                            InterPageSpacing="10" 
-                                            HeightRequest="200" 
-                                            ItemTemplate="{StaticResource CarImageSlider}" 
-                                            ShowIndicators="True" 
-                                            ItemsSource="{Binding SelectedCar.Images}"
-                                            VerticalOptions="FillAndExpand" 
-                                            HorizontalOptions="FillAndExpand">
-                    </controls:CarouselViewControl>-->
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Cmimi Ditor" TextColor="Gray" />
-                        <Label Text="40" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Numri i karrikave" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.NumberOfSeats}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Karburanti" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.Fuel}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Marshi" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.Transmission}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Km e kaluara deri me tani" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.Km}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Viti i prodhimit" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.ProductionYear, StringFormat='{0:yyyy}'}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                    </StackLayout>
-                    <Button Text="Lesho Me Qira" />
                 </StackLayout>
 
             </StackLayout>

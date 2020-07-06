@@ -64,6 +64,120 @@
           "lib/xamarinios10/Plugin.Permissions.dll": {}
         }
       },
+      "Syncfusion.Licensing/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Compression/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Core/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Pdf/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59"
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfBusyIndicator/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfPdfViewer/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfBusyIndicator": "18.1.0.59",
+          "Syncfusion.Xamarin.SfProgressBar": "18.1.0.59",
+          "Syncfusion.Xamarin.SfRangeSlider": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfProgressBar/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfRangeSlider/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -281,12 +395,15 @@
           "CarouselView.FormsPlugin": "5.2.0",
           "Newtonsoft.Json": "12.0.3",
           "Plugin.Permissions": "6.0.1",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfPdfViewer": "18.1.0.59",
           "Xam.Plugin.Connectivity": "3.2.0",
           "Xam.Plugin.Media": "5.0.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.FFImageLoading": "2.4.11.982",
           "Xamarin.FFImageLoading.Forms": "2.4.11.982",
-          "Xamarin.Forms": "4.7.0.968"
+          "Xamarin.Forms": "4.7.0.1080"
         },
         "compile": {
           "bin/placeholder/RentACar.dll": {}
@@ -359,6 +476,120 @@
           "lib/xamarinios10/Plugin.Permissions.dll": {}
         }
       },
+      "Syncfusion.Licensing/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Compression/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Core/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Pdf/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59"
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfBusyIndicator/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfPdfViewer/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfBusyIndicator": "18.1.0.59",
+          "Syncfusion.Xamarin.SfProgressBar": "18.1.0.59",
+          "Syncfusion.Xamarin.SfRangeSlider": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfProgressBar/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfRangeSlider/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -576,12 +807,15 @@
           "CarouselView.FormsPlugin": "5.2.0",
           "Newtonsoft.Json": "12.0.3",
           "Plugin.Permissions": "6.0.1",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfPdfViewer": "18.1.0.59",
           "Xam.Plugin.Connectivity": "3.2.0",
           "Xam.Plugin.Media": "5.0.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.FFImageLoading": "2.4.11.982",
           "Xamarin.FFImageLoading.Forms": "2.4.11.982",
-          "Xamarin.Forms": "4.7.0.968"
+          "Xamarin.Forms": "4.7.0.1080"
         },
         "compile": {
           "bin/placeholder/RentACar.dll": {}
@@ -654,6 +888,120 @@
           "lib/xamarinios10/Plugin.Permissions.dll": {}
         }
       },
+      "Syncfusion.Licensing/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Compression/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Core/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Pdf/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59"
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfBusyIndicator/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfPdfViewer/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfBusyIndicator": "18.1.0.59",
+          "Syncfusion.Xamarin.SfProgressBar": "18.1.0.59",
+          "Syncfusion.Xamarin.SfRangeSlider": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfProgressBar/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfRangeSlider/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -871,12 +1219,15 @@
           "CarouselView.FormsPlugin": "5.2.0",
           "Newtonsoft.Json": "12.0.3",
           "Plugin.Permissions": "6.0.1",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfPdfViewer": "18.1.0.59",
           "Xam.Plugin.Connectivity": "3.2.0",
           "Xam.Plugin.Media": "5.0.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.FFImageLoading": "2.4.11.982",
           "Xamarin.FFImageLoading.Forms": "2.4.11.982",
-          "Xamarin.Forms": "4.7.0.968"
+          "Xamarin.Forms": "4.7.0.1080"
         },
         "compile": {
           "bin/placeholder/RentACar.dll": {}
@@ -949,6 +1300,120 @@
           "lib/xamarinios10/Plugin.Permissions.dll": {}
         }
       },
+      "Syncfusion.Licensing/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Compression/18.1.0.59": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Core/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.Pdf/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "18.1.0.59",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59"
+        },
+        "compile": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfBusyIndicator/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfPdfViewer/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfBusyIndicator": "18.1.0.59",
+          "Syncfusion.Xamarin.SfProgressBar": "18.1.0.59",
+          "Syncfusion.Xamarin.SfRangeSlider": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfProgressBar/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfRangeSlider/18.1.0.59": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "18.1.0.59",
+          "Xamarin.Forms": "3.6.0.344457"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll": {},
+          "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -1166,12 +1631,15 @@
           "CarouselView.FormsPlugin": "5.2.0",
           "Newtonsoft.Json": "12.0.3",
           "Plugin.Permissions": "6.0.1",
+          "Syncfusion.Xamarin.Compression": "18.1.0.59",
+          "Syncfusion.Xamarin.Pdf": "18.1.0.59",
+          "Syncfusion.Xamarin.SfPdfViewer": "18.1.0.59",
           "Xam.Plugin.Connectivity": "3.2.0",
           "Xam.Plugin.Media": "5.0.1",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.FFImageLoading": "2.4.11.982",
           "Xamarin.FFImageLoading.Forms": "2.4.11.982",
-          "Xamarin.Forms": "4.7.0.968"
+          "Xamarin.Forms": "4.7.0.1080"
         },
         "compile": {
           "bin/placeholder/RentACar.dll": {}
@@ -1321,6 +1789,222 @@
         "plugin.permissions.6.0.1.nupkg.sha512",
         "plugin.permissions.nuspec",
         "readme.txt"
+      ]
+    },
+    "Syncfusion.Licensing/18.1.0.59": {
+      "sha512": "2mil7zRAoq+Lkd7hdbooUeA9gNJxwUGajfVUVWO38FjirCtIy04LLCeepbM+DAC083JVFgG0eHyB9WLd2MwiqA==",
+      "type": "package",
+      "path": "syncfusion.licensing/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Syncfusion.Licensing.dll",
+        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
+        "lib/net20/Syncfusion.Licensing.dll",
+        "lib/net35/Syncfusion.Licensing.dll",
+        "lib/net40/Syncfusion.Licensing.dll",
+        "lib/net45/Syncfusion.Licensing.dll",
+        "lib/net451/Syncfusion.Licensing.dll",
+        "lib/net46/Syncfusion.Licensing.dll",
+        "lib/netcoreapp3.0/Syncfusion.Licensing.dll",
+        "lib/netstandard1.0/Syncfusion.Licensing.dll",
+        "lib/netstandard1.2/Syncfusion.Licensing.dll",
+        "lib/netstandard1.4/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.18.1.0.59.nupkg.sha512",
+        "syncfusion.licensing.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.Compression/18.1.0.59": {
+      "sha512": "9aCBYYwdJoRDVT2b9E9F2uZMs2qjhmdpRhlIF8fDUHkCRUjM+EoVcCmjQgFN0ibRfop2ZyEis6TPl8K9+Ww9FQ==",
+      "type": "package",
+      "path": "syncfusion.xamarin.compression/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.4/Syncfusion.Compression.Portable.dll",
+        "lib/netstandard1.4/Syncfusion.Compression.Portable.xml",
+        "lib/netstandard2.0/Syncfusion.Compression.Portable.dll",
+        "lib/netstandard2.0/Syncfusion.Compression.Portable.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Compression.Portable.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Compression.Portable.xml",
+        "syncfusion.xamarin.compression.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.compression.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.Core/18.1.0.59": {
+      "sha512": "ayCVhi0Wx6NQfgFL4kQTAW3ESkYKtl2dZQUhVN7I6A2xmR5/J+aKp9yJBB7GdG0XD3LdvET/1wain7uq3e4y2g==",
+      "type": "package",
+      "path": "syncfusion.xamarin.core/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Syncfusion.Core.XForms.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.Core.XForms.dll",
+        "lib/MonoAndroid10/Syncfusion.Core.XForms.xml",
+        "lib/Xamarin.Mac/Syncfusion.Core.XForms.dll",
+        "lib/Xamarin.Mac/Syncfusion.Core.XForms.macOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Core.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Core.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Core.XForms.xml",
+        "lib/netstandard2.0/Syncfusion.Core.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.Core.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Core.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Core.XForms.xml",
+        "lib/uap10.0/Syncfusion.Core.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.Core.XForms.UWP.pri",
+        "lib/uap10.0/Syncfusion.Core.XForms.UWP/Syncfusion.Core.XForms.UWP.xr.xml",
+        "lib/uap10.0/Syncfusion.Core.XForms.UWP/TILRenderer/ToggleIcons/DropDownIcon.xaml",
+        "lib/uap10.0/Syncfusion.Core.XForms.UWP/TILRenderer/ToggleIcons/ToggleCollapsedIcon.xaml",
+        "lib/uap10.0/Syncfusion.Core.XForms.UWP/TILRenderer/ToggleIcons/ToggleVisibleIcon.xaml",
+        "lib/uap10.0/Syncfusion.Core.XForms.dll",
+        "lib/uap10.0/Syncfusion.Core.XForms.xml",
+        "syncfusion.xamarin.core.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.core.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.Pdf/18.1.0.59": {
+      "sha512": "fp8+EhhOsUhC+76miD0L2YV/fgLSFovyNmItq7rahHFb5lS/0iTemV6idTP83snTnFWK8P0L/K7FEPylA0+S/w==",
+      "type": "package",
+      "path": "syncfusion.xamarin.pdf/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.4/Syncfusion.Pdf.Portable.XML",
+        "lib/netstandard1.4/Syncfusion.Pdf.Portable.dll",
+        "lib/netstandard2.0/Syncfusion.Pdf.Portable.XML",
+        "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Pdf.Portable.XML",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Pdf.Portable.dll",
+        "syncfusion.xamarin.pdf.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.pdf.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.SfBusyIndicator/18.1.0.59": {
+      "sha512": "8w7w70NPx4YZCuf39AdCEN91DhYHPEIUfWApIasSjNF2U4wFFsoApbijsoY9BarLJn0dheHXZyXy537SAgikGg==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfbusyindicator/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.Android.xml",
+        "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.XForms.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.XForms.dll",
+        "lib/MonoAndroid10/Syncfusion.SfBusyIndicator.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfBusyIndicator.iOS.xml",
+        "lib/netstandard2.0/Syncfusion.SfBusyIndicator.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.SfBusyIndicator.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfBusyIndicator.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfBusyIndicator.XForms.xml",
+        "lib/uap10.0/Syncfusion.SfBusyIndicator.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfBusyIndicator.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfBusyIndicator.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfBusyIndicator.XForms.xml",
+        "syncfusion.xamarin.sfbusyindicator.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.sfbusyindicator.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.SfPdfViewer/18.1.0.59": {
+      "sha512": "alPdHXev4/poRU0WE0j+Jx0d2l2AhLPRm8DJ+AaqjxwyeBGByglxUWNDKZzzUtaCu/0u9CtEsvYLmWpDPQ3gow==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfpdfviewer/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Syncfusion.SfPdfViewer.XForms.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.SfPdfViewer.XForms.dll",
+        "lib/MonoAndroid10/Syncfusion.SfPdfViewer.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfPdfViewer.XForms.xml",
+        "lib/netstandard2.0/Syncfusion.SfPdfViewer.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.SfPdfViewer.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfPdfViewer.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfPdfViewer.XForms.xml",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP.pri",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Final_PDFViewer_UWP_FontUpdate.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Font Page icons.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Font Print.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Font size Font.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Implementation/UI/EditTextAnnotation/ContentDialogEx.xbf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Implementation/UI/PasswordAlert/PasswordDialog.xbf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/PdfFlipView.xbf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/PdfViewer_FONT.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/PdfViewer_Text_font.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Properties/Syncfusion.SfPdfViewer.XForms.UWP.rd.xml",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Signature_PDFViewer_FONT.ttf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Syncfusion.SfPdfViewer.XForms.UWP.xr.xml",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.UWP/Themes/Generic.xbf",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfPdfViewer.XForms.xml",
+        "syncfusion.xamarin.sfpdfviewer.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.sfpdfviewer.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.SfProgressBar/18.1.0.59": {
+      "sha512": "78efuUhtQDbxPsTlAX9e3iKKRGyaYAmpYKX3+y6Y8nF7NZsG20s2sZzwZtMLk8EOKac/iIY/OjatOBKF4fcIcA==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfprogressbar/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Syncfusion.SfProgressBar.XForms.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.SfProgressBar.XForms.dll",
+        "lib/MonoAndroid10/Syncfusion.SfProgressBar.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfProgressBar.XForms.xml",
+        "lib/netstandard2.0/Syncfusion.SfProgressBar.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.SfProgressBar.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfProgressBar.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfProgressBar.XForms.xml",
+        "lib/uap10.0/Syncfusion.SfProgressBar.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfProgressBar.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfProgressBar.XForms.UWP.pri",
+        "lib/uap10.0/Syncfusion.SfProgressBar.XForms.UWP/Font Stepprogress icon.ttf",
+        "lib/uap10.0/Syncfusion.SfProgressBar.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfProgressBar.XForms.xml",
+        "syncfusion.xamarin.sfprogressbar.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.sfprogressbar.nuspec"
+      ]
+    },
+    "Syncfusion.Xamarin.SfRangeSlider/18.1.0.59": {
+      "sha512": "wCAq8swveuoAQAA9q/iWKQc1vfTyfIRMXl/5YuhAZNlAAtLybLpNV3T+8OKIFCjQyR+NAoOG30/zhEEYZACepw==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfrangeslider/18.1.0.59",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Syncfusion.SfRangeSlider.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.SfRangeSlider.Android.xml",
+        "lib/MonoAndroid10/Syncfusion.SfRangeSlider.XForms.Android.dll",
+        "lib/MonoAndroid10/Syncfusion.SfRangeSlider.XForms.dll",
+        "lib/MonoAndroid10/Syncfusion.SfRangeSlider.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfRangeSlider.iOS.xml",
+        "lib/netstandard2.0/Syncfusion.SfRangeSlider.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.SfRangeSlider.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfRangeSlider.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfRangeSlider.XForms.xml",
+        "lib/uap10.0/Syncfusion.SfRangeSlider.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfRangeSlider.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfRangeSlider.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfRangeSlider.XForms.xml",
+        "syncfusion.xamarin.sfrangeslider.18.1.0.59.nupkg.sha512",
+        "syncfusion.xamarin.sfrangeslider.nuspec"
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
@@ -2071,6 +2755,19 @@
       "warningLevel": 1,
       "message": "Detected package downgrade: Xamarin.Essentials from 1.5.3.2 to 1.3.1. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Essentials (>= 1.5.3.2) \r\n RentACar.iOS -> Xamarin.Essentials (>= 1.3.1)",
       "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 4.7.0.1080 to 4.7.0.968. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Forms (>= 4.7.0.1080) \r\n RentACar.iOS -> Xamarin.Forms (>= 4.7.0.968)",
+      "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "Xamarin.iOS,Version=v1.0",
         "Xamarin.iOS,Version=v1.0/win",

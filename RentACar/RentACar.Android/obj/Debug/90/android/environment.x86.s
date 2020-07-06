@@ -2,7 +2,7 @@
 	.section	.rodata.env.str.1,"aMS",@progbits,1
 	.type	.L.env.str.1, @object
 .L.env.str.1:
-	.asciz	"com.rent.rentapp"
+	.asciz	"xk.rentacar.rent"
 	.size	.L.env.str.1, 17
 	.section	.data.application_config,"aw",@progbits
 	.type	application_config, @object
@@ -71,7 +71,7 @@ mono_aot_mode_name:
 	.section	.rodata.env.str.8,"aMS",@progbits,1
 	.type	.L.env.str.8, @object
 .L.env.str.8:
-	.asciz	"893507b9-4b1b-4b5c-b8ab-9152c2f9a565"
+	.asciz	"81b3ecdc-f235-446c-9511-a615f5ab9297"
 	.size	.L.env.str.8, 37
 	.section	.rodata.env.str.9,"aMS",@progbits,1
 	.type	.L.env.str.9, @object

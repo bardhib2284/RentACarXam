@@ -14,5 +14,6 @@ namespace RentACar.Models
         public decimal CmimiDitor { get; set; }
         public int DitetELeshimit { get; set; }
         public decimal PerqindjaEVoneses { get; set; }
+        public bool IsTermin { get; set; }
     }
 }
