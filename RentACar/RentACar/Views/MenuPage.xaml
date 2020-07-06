@@ -26,7 +26,7 @@
         <Image Source="rentlogo" WidthRequest="200" HeightRequest="200" Aspect="AspectFit"
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        <Button Text="Renti" VerticalOptions="Fill" HeightRequest="60"/>
+        <Button Text="Renti" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToDashboardCommand}"/>
         <Button Text="Veturat" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToCreateACarCommand}"/>
         <Button Text="Klientet" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
     </StackLayout>

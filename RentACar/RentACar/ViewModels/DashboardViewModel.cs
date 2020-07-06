@@ -139,6 +139,7 @@ namespace RentACar.ViewModels
         public ICommand LeshoMeQiraCommand { get; set; }
         public ICommand GoToClientsCommand { get; set; }
         public ICommand GetPdfCommand { get; set; }
+        public ICommand GoToDashboardCommand { get; set; }
         public DashboardViewModel()
         {
             CarDetailsCommand = new Command<Car>(async (c) => await CarDetailsAsync(c));
@@ -154,7 +155,15 @@ namespace RentACar.ViewModels
             LeshoMeQiraCommand = new Command(async () => await LeshoMeQiraAsync());
             GoToClientsCommand = new Command(async () => await GoToClientsPageAsync());
             GetPdfCommand = new Command(async () => await GetPdfAsync());
+            GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
             //Task.Run(LoadRents);
+        }
+
+        private async Task GoToDashboardAsync()
+        {
+            DashboardPage dashboardPage = new DashboardPage();
+            dashboardPage.BindingContext = this;
+            App.instance.ChangeDetailPage(dashboardPage);
         }
 
         private async Task<object> GetPdfAsync()

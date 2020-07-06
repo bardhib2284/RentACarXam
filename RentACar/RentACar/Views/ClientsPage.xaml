@@ -37,7 +37,7 @@
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                <Button Text="Shto Veturen" Command="{Binding GoToCreateClientCommand}"/>
+                <Button Text="Shto Klient" Command="{Binding GoToCreateClientCommand}"/>
             </StackLayout >
         </StackLayout>
     </ContentPage.Content>
