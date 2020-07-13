@@ -19,6 +19,12 @@ namespace RentACar.Views
         public CreateACarPage()
         {
             InitializeComponent();
+            numberOfSeats.ItemsSource = new List<int> { 1, 2, 4, 5, 6 };
+            fuelPicker.ItemsSource = new List<string> { "Diezel", "Benzin", "Rryme Elektrike" };
+            transmissionPicker.ItemsSource = new List<string> { "Automatic", "Manual" };
+            transmissionPicker.SelectedItem = "Automatic";
+            fuelPicker.SelectedItem = "Diezel";
+            numberOfSeats.SelectedItem = 4;
         }
 
         private async void Button_ClickedAsync(object sender, EventArgs e)

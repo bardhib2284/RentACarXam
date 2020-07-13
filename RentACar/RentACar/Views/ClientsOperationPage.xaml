@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.ClientsOperationPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0">
+            <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Klientet" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Klientet" TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsPageCommand}"/>
+            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Klientet e pa deshiruar " TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsUnwantedPageCommand}"/>
+            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Kompanite " TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Shto Klientin/Kompanine" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Shto nje klient te ri" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Shto nje kompani te re" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

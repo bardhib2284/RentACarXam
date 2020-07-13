@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using MenuItem = RentACar.Models.MenuItem;
 
 namespace RentACar.ViewModels
 {
@@ -59,7 +60,18 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _OnServiseCars, value); }
         }
 
-        public ObservableCollection<Client> Clients;
+        public ObservableCollection<Client> Clients { get; set; }
+
+        public ObservableCollection<RentedCar> RentedCarsByRentId { get; set; }
+        public ObservableCollection<RentedCar> LatestTransactions { get; set; }
+        public ObservableCollection<RentedCar> LatestTransactionsOnGoing { get; set; }
+        public ObservableCollection<RentedCar> LatestTransactionsLate { get; set; }
+        public ObservableCollection<RentedCar> LatestTransactionsFinished { get; set; }
+
+        public bool HasLatestTransactions { get; set; }
+        public bool HasLatestTransactionsOnGoing { get; set; }
+        public bool HasLatestTransactionsLate { get; set; }
+        public bool HasLatestTransactionsFinished { get; set; }
 
         private int _carsCount;
         public int CarsCount
@@ -74,6 +86,14 @@ namespace RentACar.ViewModels
             get { return _selectedCar; }
             set { SetProperty(ref _selectedCar, value); }
         }
+
+        private decimal _teHyrat;
+        public decimal TeHyrat
+        {
+            get { return _teHyrat; }
+            set { SetProperty(ref _teHyrat, value); }
+        }
+
         private string _email;
         public string EmailAddress
         {
@@ -93,7 +113,13 @@ namespace RentACar.ViewModels
             get { return _hasCars; }
             set { SetProperty(ref _hasCars, value); }
         }
-
+        private bool _IsSuccessfullRent;
+        public bool IsSuccessfullRent
+        {
+            get { return _IsSuccessfullRent; }
+            set { SetProperty(ref _IsSuccessfullRent, value); }
+        }
+        
         private bool _hasAvailableCars;
         public bool HasAvailableCars
         {
@@ -115,6 +141,7 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _hasUnregisteredCards, value); }
         }
 
+
         private bool _hasOnServiceCars;
         public bool HasOnServiceCars
         {
@@ -127,7 +154,22 @@ namespace RentACar.ViewModels
         {
             get { return _currentRent; }
             set { SetProperty(ref _currentRent, value); }
+
         }
+        private RentedCar _currentRentedCar;
+        public RentedCar CurrentRentedCar
+        {
+            get { return _currentRentedCar; }
+            set { SetProperty(ref _currentRentedCar, value); }
+        }
+        protected int tabPosition = 0;
+        public int TabPosition
+        {
+            get { return tabPosition; }
+            set { SetProperty(ref tabPosition, value); }
+        }
+        public virtual List<MenuItem> ProjectionItems { get ; protected set; }
+
         public byte[] ImgByte;
         public List<string> CarImageOptions => new List<string> { "Imazh", "URL" };
         public ICommand CarDetailsCommand { get; set; }
@@ -140,6 +182,7 @@ namespace RentACar.ViewModels
         public ICommand GoToClientsCommand { get; set; }
         public ICommand GetPdfCommand { get; set; }
         public ICommand GoToDashboardCommand { get; set; }
+        public ICommand KtheVeturenCommand { get; set; }
         public DashboardViewModel()
         {
             CarDetailsCommand = new Command<Car>(async (c) => await CarDetailsAsync(c));
@@ -156,9 +199,99 @@ namespace RentACar.ViewModels
             GoToClientsCommand = new Command(async () => await GoToClientsPageAsync());
             GetPdfCommand = new Command(async () => await GetPdfAsync());
             GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
+            KtheVeturenCommand = new Command(async () => await KtheVeturenAsync());
+            var projectionItems = new List<MenuItem>() {
+                    new MenuItem(){Name="transactions",TitleKey="Te gjitha", Parametar="all"},
+                    new MenuItem(){Name="transactions",TitleKey="Perfunduara", Parametar="finished"},
+                    new MenuItem(){Name="transactions",TitleKey="Ne Vazhdim", Parametar="ongoing"},
+                    new MenuItem(){Name="transactions",TitleKey="Vonuara", Parametar="late"}
+            };
+            RentedCarsByRentId = new ObservableCollection<RentedCar>();
+            ProjectionItems = projectionItems;
+            LatestTransactions = new ObservableCollection<RentedCar>();
+            LatestTransactionsLate = new ObservableCollection<RentedCar>();
+            LatestTransactionsOnGoing = new ObservableCollection<RentedCar>();
+            LatestTransactionsFinished = new ObservableCollection<RentedCar>();
+            Clients = new ObservableCollection<Client>();
+            RentedCarsByRentId = new ObservableCollection<RentedCar>();
             //Task.Run(LoadRents);
         }
 
+        private async Task KtheVeturenAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                
+                var json = JsonConvert.SerializeObject(CurrentRentedCar);
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await App.client.PutAsync(App.API_URL_BASE + "rentedcars/update", httpContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    UserDialogs.Instance.Alert("Vetura u kthye me sukses", "Sukses", "OK");
+                }
+                else
+                {
+                    UserDialogs.Instance.Alert("Vetura nuk u kthye  me sukses", "Error", "OK");
+                }
+                var responseString = await response.Content.ReadAsStringAsync();
+                RentedCar addedCar = JsonConvert.DeserializeObject<RentedCar>(responseString);
+                IsSuccessfullRent = addedCar != null ? true : false;
+                var page = new PostRentedCarPage();
+                page.BindingContext = this;
+                var car = TakenCars.FirstOrDefault(x => x.Id == addedCar.CarId);
+                LatestTransactionsFinished.Add(addedCar);
+                LatestTransactionsOnGoing.Remove(addedCar);
+                if (LatestTransactionsFinished.Count > 5)
+                {
+                    App.instance.DashboardViewModel.LatestTransactions.RemoveAt(0);
+                }
+                RentedCarsByRentId.Remove(CurrentRentedCar);
+                RentedCarsByRentId.Add(addedCar);
+                var teHyrat = RentedCarsByRentId.ToList().FindAll(x => x.IsFinished && x.KohaELeshimit >= DateTime.Now.AddMonths(-1));
+                decimal count = 0.00m;
+                foreach (var item in teHyrat)
+                {
+                    count += (decimal)item.DitetELeshimit * item.CmimiDitor;
+                }
+                TeHyrat = count;
+                OnPropertyChanged("TeHyrat");
+                car.Statusi = Car.StatusTypes.Aktiv;
+                AvailableCars.Add(car);
+                TakenCars.Remove(car);
+                var ongoing = LatestTransactionsOnGoing.FirstOrDefault(x => x.Id == addedCar.Id);
+                if (ongoing != null)
+                {
+                    LatestTransactionsOnGoing.Remove(ongoing);
+                }
+                OnPropertyChanged("LatestTransactionsOnGoing");
+                HasTakenCars = TakenCars.Any();
+                HasAvailableCars = AvailableCars.Any();
+                OnPropertyChanged("HasTakenCars");
+                await Task.Delay(500);
+
+                App.instance.ChangeDetailPage(page);
+            }
+        }
+        public void PropertyChangedList()
+        {
+            HasLatestTransactions = LatestTransactions.Any();
+            HasLatestTransactionsFinished = LatestTransactionsFinished.Any();
+            HasLatestTransactionsLate = LatestTransactionsLate.Any();
+            HasLatestTransactionsOnGoing = LatestTransactionsOnGoing.Any();
+            OnPropertyChanged("TeHyrat");
+            OnPropertyChanged("AvailableCars");
+            OnPropertyChanged("TakenCars");
+            OnPropertyChanged("UnregisteredCars");
+            OnPropertyChanged("OnServiseCars");
+            OnPropertyChanged("LatestTransactionsOnGoing");
+            OnPropertyChanged("HasLatestTransactions");
+            OnPropertyChanged("HasLatestTransactionsFinished");
+            OnPropertyChanged("HasLatestTransactionsLate");
+            OnPropertyChanged("HasLatestTransactionsOnGoing");
+            HasTakenCars = TakenCars.Any();
+            OnPropertyChanged("HasTakenCars");
+        }
         private async Task GoToDashboardAsync()
         {
             DashboardPage dashboardPage = new DashboardPage();
@@ -200,15 +333,22 @@ namespace RentACar.ViewModels
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                ClientsPage ClientsPage = new ClientsPage();
+                ClientsOperationPage ClientsPage = new ClientsOperationPage();
                 App.instance.ClientsViewModel = new ClientsViewModel();
                 ClientsPage.BindingContext = App.instance.ClientsViewModel;
-                Clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
+                //Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
                 (App.instance.MainPage as MainPage).IsPresented = false;
                 await App.instance.PushAsyncNewPage(ClientsPage);
             }
         }
-
+        private async Task GetClients()
+        {
+            var clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
+            foreach(var client in clients)
+            {
+                Clients.Add(client);
+            }
+        }
         private async Task LeshoMeQiraAsync()
         {
             using (UserDialogs.Instance.Loading("Loading"))
@@ -242,6 +382,7 @@ namespace RentACar.ViewModels
 
         private async Task CreateACarAsync()
         {
+            SelectedCar.RentId = CurrentRent.Id;
             var json = JsonConvert.SerializeObject(SelectedCar);
             var g = json.Remove(1, 7);
             App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
@@ -259,6 +400,8 @@ namespace RentACar.ViewModels
             Car addedCar = JsonConvert.DeserializeObject<Car>(responseString);
             Cars.Add(addedCar);
             HasCars = Cars.Any();
+            OnPropertyChanged("Cars");
+            OnPropertyChanged("HasCars");
         }
 
         private async Task PickPhotoAsync()
@@ -339,6 +482,8 @@ namespace RentACar.ViewModels
                     dashboard.BindingContext = this;
                     CurrentRent = await LoadRentById(data.RentID);
                     if(CurrentRent != null) Cars = await LoadCarsFromRent(CurrentRent);
+                    //App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
+                    //await GetClients();
                     App.instance.ChangeDetailPage(dashboard);
                 }
                 else
@@ -385,6 +530,11 @@ namespace RentACar.ViewModels
         public async Task CarDetailsAsync(Car c)
         {
             SelectedCar = c;
+            if(SelectedCar.Statusi == Car.StatusTypes.Zene)
+            {
+                CurrentRentedCar = RentedCarsByRentId.FirstOrDefault(x => x.CarId == SelectedCar.Id && x.IsFinished == false);
+                CurrentRentedCar.CmimiTotal = (int)(CurrentRentedCar.KohaEKthimit - CurrentRentedCar.KohaELeshimit).TotalDays * CurrentRentedCar.CmimiDitor;
+            }
             CarDetailsPage carDetailsPage = new CarDetailsPage();
             await App.instance.PushAsyncNewPage(carDetailsPage);
         }
@@ -403,7 +553,6 @@ namespace RentACar.ViewModels
                 else
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
-                    Debug.WriteLine("Debuging : " + responseString);
                 }
             }
             catch(Exception e)
@@ -427,6 +576,45 @@ namespace RentACar.ViewModels
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
                     var Rent = JsonConvert.DeserializeObject<Rent>(responseString);
+                    var responseForRentedCars = await App.client.GetAsync(App.API_URL_BASE + "rentedcars/rent/" + Rent.Id);
+                    RentedCarsByRentId = JsonConvert.DeserializeObject<ObservableCollection<RentedCar>>( await responseForRentedCars.Content.ReadAsStringAsync());
+                    if(RentedCarsByRentId != null)
+                    {
+                        var list = RentedCarsByRentId.OrderBy(i => i.DitetELeshimit);
+                        foreach (var item in list)
+                        {
+                            if (LatestTransactions.Count < 5)
+                                LatestTransactions.Add(item);
+                            if (item.KohaEKthimit > DateTime.Now && LatestTransactionsOnGoing.Count < 5 && !item.IsFinished)
+                            {
+                                LatestTransactionsOnGoing.Add(item);
+                            }
+                            if (item.KohaEKthimit < DateTime.Now && LatestTransactionsLate.Count < 5)
+                            {
+                                LatestTransactionsLate.Add(item);
+                            }
+                            if (item.IsFinished && LatestTransactionsFinished.Count < 5)
+                            {
+                                LatestTransactionsFinished.Add(item);
+                            }
+                        }
+                        var teHyrat = RentedCarsByRentId.ToList().FindAll(x => x.IsFinished && x.KohaELeshimit >= DateTime.Now.AddMonths(-1));
+                        decimal count = 0.00m;
+                        foreach (var item in teHyrat)
+                        {
+                            count += (decimal)item.DitetELeshimit * item.CmimiDitor;
+                        }
+                        TeHyrat = count;
+                    }
+                    HasLatestTransactions = LatestTransactions.Any();
+                    HasLatestTransactionsFinished = LatestTransactionsFinished.Any();
+                    HasLatestTransactionsLate = LatestTransactionsLate.Any();
+                    HasLatestTransactionsOnGoing = LatestTransactionsOnGoing.Any();
+                    OnPropertyChanged("HasLatestTransactions");
+                    OnPropertyChanged("HasLatestTransactionsFinished");
+                    OnPropertyChanged("HasLatestTransactionsLate");
+                    OnPropertyChanged("HasLatestTransactionsOnGoing");
+                    
                     return Rent;
                 }
             }
@@ -437,3 +625,4 @@ namespace RentACar.ViewModels
         }
     }
 }
+

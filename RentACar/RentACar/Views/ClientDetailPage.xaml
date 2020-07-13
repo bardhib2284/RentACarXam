@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:components="clr-namespace:RentACar.Components"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.ClientDetailPage"
+             BackgroundImageSource="https://wallup.net/wp-content/uploads/2017/11/23/512884-blue-degree-gradient-748x1330.jpg">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="{Binding SelectedClient.Name}" SubTitle="{Binding SelectedClient.LastName}" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="Transparent">
+            
+        <StackLayout>
+            <ff:CachedImage Source="{Binding SelectedClient.ClientFrontImage}" WidthRequest="150" HeightRequest="150" />
+                <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" >
+                    <Label Text="Transaksionet e fundit" FontSize="Large" Margin="10,0" FontAttributes="Bold" TextColor="White"/>
+                    <controls:CarouselViewControl Orientation="Horizontal" ShowIndicators="False" BackgroundColor="Transparent"
+                                              VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                              ShowArrows="True" Position="{Binding TabPosition}"
+                                              ItemsSource="{Binding ProjectionItems}"
+                                              HeightRequest="60" ArrowsTintColor="Black"
+                                              ArrowsBackgroundColor="Transparent"
+                                              ItemTemplate="{StaticResource ProjectionItemTemplateClient}">
+
+                    </controls:CarouselViewControl>
+                </StackLayout>
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}">
+                    
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Emri" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.Name}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Mbiemri" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.LastName}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Data e lindjes" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.DateOfBirth}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Nacionaliteti" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.Nationality}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Gjinia" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.Gender}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Numri Personal" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.ID_PersonalNumber}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Email" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.Email}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                        <Label Text="Adresa" Style="{StaticResource TitleLabel}" />
+                        <Label Text="{Binding SelectedClient.Address}" Style="{StaticResource ValueLabel}" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Nr Telefonit" Style="{StaticResource TitleLabel}" />
+                            <Label Text="044269607" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+            </StackLayout>
+
+                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
+                    <ListView x:Name="clientransactions" VerticalOptions="Fill" SelectionMode="None" Margin="20"
+                        ItemsSource="{Binding ClientsTransactions}" SeparatorColor="White" RowHeight="65" CachingStrategy="RecycleElementAndDataTemplate"
+                        ItemTemplate="{StaticResource TransactionItemDataTemplateClient}">
+
+                    </ListView>
+                    <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsFinished,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione te perfunduara" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -58,6 +58,7 @@
             </Frame>-->
 
             <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Gjenero PDF" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Ballina" TextColor="White" HeightRequest="60" Command="{Binding GoToDashboardCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

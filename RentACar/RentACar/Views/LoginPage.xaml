@@ -6,9 +6,10 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.LoginPage"
              xmlns:components="clr-namespace:RentACar.Components"
+             BackgroundImageSource="https://i.pinimg.com/originals/9d/1f/d6/9d1fd6966f030951a34dcac009c39005.jpg"
              >
     <NavigationPage.TitleView>
-        <components:NavTitleView Title="Kyçu" SubTitle="Rent Name" SearchVisible="False" />
+        <components:NavTitleView BackgroundColor="Transparent" Title="Kyçu" SubTitle="Rent Name" SearchVisible="False" />
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>

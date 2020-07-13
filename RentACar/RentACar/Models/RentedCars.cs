@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,9 +12,15 @@ namespace RentACar.Models
         public DateTime KohaEKthimit { get; set; }
         public int CarId { get; set; }
         public int ClientId { get; set; }
+        public int RentId { get; set; }
         public decimal CmimiDitor { get; set; }
         public int DitetELeshimit { get; set; }
         public decimal PerqindjaEVoneses { get; set; }
         public bool IsTermin { get; set; }
+        public bool IsFinished { get; set; }
+        public string CarName { get; set; }
+        public string ClientName { get; set; }
+        [JsonIgnore]
+        public decimal CmimiTotal { get; set; }
     }
 }

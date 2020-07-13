@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +67,7 @@ namespace RentACar.ViewModels
         public ICommand GoToRentedCarDetailsCommand { get; set; }
         public ICommand RentThisCarCommand { get; set; }
         public ICommand GeneratePdfCommand { get; set; }
+        public ICommand GoToDashboardCommand { get; set; }
 
         public RentACarViewModel(ObservableCollection<Client> Clients)
         {
@@ -81,6 +83,15 @@ namespace RentACar.ViewModels
             RentedCar = new RentedCar();
             RentedCar.KohaELeshimit = DateTime.Today;
             GeneratePdfCommand = new Command(async () => await GeneratePdfAsync());
+            GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
+        }
+
+        private async Task GoToDashboardAsync()
+        {
+            DashboardPage page = new DashboardPage();
+            page.BindingContext = App.instance.DashboardViewModel;
+            App.instance.DashboardViewModel.PropertyChangedList();
+            App.instance.ChangeDetailPage(page);
         }
 
         private async Task<int> GeneratePdfAsync()
@@ -118,6 +129,9 @@ namespace RentACar.ViewModels
             using (UserDialogs.Instance.Loading("Loading"))
             {
                 RentedCar.IsTermin = IsTermin;
+                RentedCar.ClientName = SelectedClient.Name;
+                RentedCar.CarName = SelectedCar.Name;
+                RentedCar.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
                 var json = JsonConvert.SerializeObject(RentedCar);
                 var g = json.Remove(1, 7);
                 App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
@@ -136,6 +150,21 @@ namespace RentACar.ViewModels
                 IsSuccessfullRent = addedCar != null ? true : false;
                 var page = new PostRentedCarPage();
                 page.BindingContext = this;
+                App.instance.DashboardViewModel.LatestTransactions?.Add(addedCar);
+                var car = App.instance.DashboardViewModel.AvailableCars.FirstOrDefault(x => x.Id == addedCar.CarId);
+                car.Statusi = Car.StatusTypes.Zene;
+                App.instance.DashboardViewModel.AvailableCars.Remove(car);
+                if (App.instance.DashboardViewModel.TakenCars.Count == 0)
+                    App.instance.DashboardViewModel.TakenCars = new ObservableCollection<Car>();
+                App.instance.DashboardViewModel.TakenCars.Add(car);
+                if (App.instance.DashboardViewModel.LatestTransactions.Count > 5)
+                {
+                    App.instance.DashboardViewModel.LatestTransactions.RemoveAt(0);
+                }
+                App.instance.DashboardViewModel.RentedCarsByRentId?.Add(addedCar);
+                App.instance.DashboardViewModel.PropertyChangedList();
+                App.instance.DashboardViewModel.LatestTransactionsOnGoing.Add(addedCar);
+                await Task.Delay(1000);
                 App.instance.ChangeDetailPage(page);
             }
         }

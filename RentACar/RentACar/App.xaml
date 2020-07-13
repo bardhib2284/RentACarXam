@@ -15,26 +15,45 @@
             <converters:FromBoolToAvailableText x:Key="FromBoolToAvailableText"/>
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <!-- Black Edition 
-            <Color x:Key="ModeColorPrimary">#000000</Color> 
+            <Color x:Key="ModeColorPrimary">#ffffff</Color> 
             <Color x:Key="ModeColorText">#ffffff</Color>
-            -->
-            <!-- White Edition -->
+            
+            <!-- White Edition 
             <Color x:Key="ModeColorPrimary">#ffffff</Color>
             <Color x:Key="ModeColorText">#000000</Color>
-
+-->
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource ModeColorPrimary}" />
-                <Setter Property="BarTextColor" Value="{StaticResource ModeColorText}" />
+                <Setter Property="BarTextColor" Value="Black" />
             </Style>
             <Style TargetType="Label" x:Key="LabelStyleDefault">
                 <Setter Property="TextColor" Value="{StaticResource ModeColorText}"/>
                 <Setter Property="FontSize" Value="15"/>
             </Style>
-            
+
+            <Style TargetType="Label" x:Key="TitleLabel">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+            <Style TargetType="Label" x:Key="ValueLabel" BasedOn="{StaticResource TitleLabel}">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style TargetType="BoxView" x:Key="DisplayValueBox">
+                <Setter Property="Grid.ColumnSpan" Value="2" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Color" Value="LightGray" />
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
             <!-- car view images data template for carousel-->
             <DataTemplate x:Key="CarImageSlider">
-                <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="{StaticResource ModeColorPrimary}">
+                <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="Transparent">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardViewModel}}, Path=CarDetailsCommand}"
                                               CommandParameter="{Binding .}" />
@@ -50,7 +69,7 @@
                             CornerRadius="10"
                             BackgroundColor="Transparent">
                         <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
-                            <ff:CachedImage Opacity="0.85" Source="https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                            <ff:CachedImage Opacity="0.85" Source="https://images.squarespace-cdn.com/content/v1/5d043742ae0fa4000170914a/1573229727182-LH8F5GD9P93BJBSOFYJM/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbeDbaZv1s3QfpIA4TYnL5Qao8BosUKjCVjCf8TKewJIH3bqxw7fF48mhrq5Ulr0Hg/dark-blue-bg.png?format=2500w" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
                             <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
                                 <ff:CachedImage Source="{Binding .Brand}" Aspect="AspectFill"/>
                             </StackLayout>
@@ -68,7 +87,69 @@
                     </Frame>
                 </StackLayout>
             </DataTemplate>
+
+            <DataTemplate x:Key="TransactionItemDataTemplate">
+                <ViewCell>
+                    <StackLayout VerticalOptions="Center" Margin="20,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterDay}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" FontSize="15"/>
+                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterMonth}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" FontSize="19" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                            <Label Text="{Binding DitetELeshimit}" Style="{StaticResource LabelStyleDefault}"  FontAttributes="Bold" FontSize="19" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding CmimiDitor,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="19" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="Start" HorizontalOptions="EndAndExpand" Padding="0" Margin="0">
+                            <Label Text="{Binding CarName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="17" VerticalOptions="FillAndExpand" />
+                            <Label Text="{Binding ClientName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="17" VerticalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <Image Source="incoming" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="TransactionItemDataTemplateClient">
+                <ViewCell>
+                    <StackLayout VerticalOptions="Center" Margin="20,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterDay}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" TextColor="Black" FontSize="15"/>
+                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterMonth}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" TextColor="Black" FontSize="19" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                            <Label Text="{Binding DitetELeshimit}" Style="{StaticResource LabelStyleDefault}"  FontAttributes="Bold" FontSize="19" VerticalOptions="FillAndExpand" TextColor="Black" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding CmimiDitor,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" TextColor="Black" FontSize="19" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="Start" HorizontalOptions="EndAndExpand" Padding="0" Margin="0">
+                            <Label Text="{Binding CarName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="17" TextColor="Black" VerticalOptions="FillAndExpand" />
+                            <Label Text="{Binding ClientName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="17" TextColor="Black" VerticalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <Image Source="incoming" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
             
+            <DataTemplate x:Key="ProjectionItemTemplate">
+                <StackLayout BackgroundColor="Transparent">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Command}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="{Binding TitleKey}" TextColor="White"
+          FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"
+          HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" />
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ProjectionItemTemplateClient">
+                <StackLayout BackgroundColor="Transparent">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Command}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="{Binding TitleKey}" TextColor="Black"
+          FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"
+          HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" />
+                </StackLayout>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
     

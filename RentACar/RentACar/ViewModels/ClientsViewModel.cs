@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using MenuItem = RentACar.Models.MenuItem;
 
 namespace RentACar.ViewModels
 {
@@ -22,6 +23,20 @@ namespace RentACar.ViewModels
             get { return _clients; }
             set { SetProperty(ref _clients, value); }
         }
+        private ObservableCollection<Client> _unwantedClients;
+        public ObservableCollection<Client> UnwantedClients
+        {
+            get { return _unwantedClients; }
+            set { SetProperty(ref _unwantedClients, value); }
+        }
+        public ObservableCollection<RentedCar> ClientsTransactions { get; set; }
+        private bool _hasUnwantedClients;
+        public bool HasUnwantedClients
+        {
+            get { return _hasUnwantedClients; }
+            set { SetProperty(ref _hasUnwantedClients, value); }
+        }
+
         private bool _hasClients;
         public bool HasClients
         {
@@ -35,13 +50,95 @@ namespace RentACar.ViewModels
             get { return _SelectedClient; }
             set { SetProperty(ref _SelectedClient, value); }
         }
+
+        protected int tabPosition = 0;
+        public int TabPosition
+        {
+            get { return tabPosition; }
+            set { SetProperty(ref tabPosition, value); }
+        }
+        public virtual List<MenuItem> ProjectionItems { get; protected set; }
+
         public ICommand GoToCreateClientCommand { get; set; }
         public ICommand CreateAClientCommand { get; set; }
+        public ICommand GoToClientsPageCommand { get; set; }
+        public ICommand GoToClientsUnwantedPageCommand { get; set; }
+        public ICommand GoToClientDetailsCommand { get; set; }
+
         public ClientsViewModel()
         {
             Clients = new ObservableCollection<Client>();
             GoToCreateClientCommand = new Command(async () => await GoToCreateClientAsync());
             CreateAClientCommand = new Command(async () => await CreateAClientAsync());
+            GoToClientsPageCommand = new Command(async () => await GoToClientsPageAsync());
+            GoToClientsUnwantedPageCommand = new Command(async () => await GoToClientsUnwantedPageAsync());
+            GoToClientDetailsCommand = new Command(async (c) => await GoToClientDetailsAsync((c as Client)));
+            var projectionItems = new List<MenuItem>() {
+                new MenuItem(){Name="transactions",TitleKey="Detajet e klientit", Parametar="all"},
+                new MenuItem(){Name="transactions",TitleKey="Transaksionet", Parametar="finished"},
+            };
+            ProjectionItems = projectionItems;
+            ClientsTransactions = new ObservableCollection<RentedCar>();
+        }
+
+        public async Task GoToClientDetailsAsync(Client c)
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+            ClientDetailPage ClientsPage = new ClientDetailPage();
+            ClientsPage.BindingContext = this;
+            SelectedClient = c;
+            ClientsTransactions = new ObservableCollection<RentedCar>();
+            if (App.instance.DashboardViewModel.HasLatestTransactions)
+            {
+                var list = App.instance.DashboardViewModel.RentedCarsByRentId.OrderByDescending(i => i.KohaELeshimit);
+                foreach (var transaction in list)
+                {
+                    if (transaction.ClientId == SelectedClient.Id)
+                    {
+                        ClientsTransactions.Add(transaction);
+                    }
+                }
+            }
+            OnPropertyChanged("ClientsTransactions");
+            await Task.Delay(1000);
+            await App.instance.PushAsyncNewPage(ClientsPage);
+            }
+        }
+
+        private async Task GoToClientsPageAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                ClientsPage ClientsPage = new ClientsPage();
+                App.instance.ClientsViewModel = new ClientsViewModel();
+                ClientsPage.BindingContext = App.instance.ClientsViewModel;
+                Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(App.instance.DashboardViewModel.CurrentRent);
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(ClientsPage);
+            }
+        }
+
+        private async Task GoToClientsUnwantedPageAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                ClientsUnwantedPage ClientsPage = new ClientsUnwantedPage();
+                App.instance.ClientsViewModel = new ClientsViewModel();
+                ClientsPage.BindingContext = App.instance.ClientsViewModel;
+                Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(App.instance.DashboardViewModel.CurrentRent);
+                foreach (var item in Clients)
+                {
+                    UnwantedClients = new ObservableCollection<Client>();
+                    if (item.IsUnwanted)
+                    {
+                        UnwantedClients.Add(item);
+                    }
+                }
+                HasUnwantedClients = UnwantedClients.Any();
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(ClientsPage);
+            }
         }
 
         private async Task CreateAClientAsync()

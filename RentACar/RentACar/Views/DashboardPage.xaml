@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.DashboardPage"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
-             xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters"
+             xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              BackgroundColor="{StaticResource ModeColorPrimary}"
              x:Name="ThaPage">
     <NavigationPage.TitleView>
@@ -26,19 +26,116 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <StackLayout Spacing="0">
-            <StackLayout IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-                <Label Text="NUK KA VETURA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" FontAttributes="Bold"
+        <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <!--"https://i.pinimg.com/originals/fe/e5/ea/fee5eab30a698c169dc4fd5752359c2c.jpg"-->
+            <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" RotationX="180" HorizontalOptions="FillAndExpand" Source="https://wallup.net/wp-content/uploads/2017/11/23/512884-blue-degree-gradient-748x1330.jpg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"/>
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Grid Padding="10" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Row="0" Grid.Column="0" Padding="5" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ff:CachedImage HorizontalOptions="Start" Source="https://image.flaticon.com/icons/png/512/1466/1466703.png" WidthRequest="90" Aspect="AspectFit"/>
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="Te Hyrat Mujore" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" LineBreakMode="WordWrap" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding TeHyrat,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" Padding="0" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="90" Aspect="AspectFit" Source="services1"/>
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="Serviset" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding TeHyrat}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="0" Padding="0" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="90" Aspect="AspectFit" Source="https://images.vexels.com/media/users/3/128573/isolated/preview/057cf8e7e960d13efa5f6240456fba15-red-circle-retro-car-by-vexels.png"/>
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="Veturat" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding Cars.Count}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="1" Padding="0" BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="90" Aspect="AspectFit" Source="https://img.pngio.com/client-icon-png-371736-free-icons-library-client-png-300_300.jpg"/>
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="Klientet" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding Clients.Count}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" >
+                    <Label Text="Transaksionet e fundit" FontSize="Large" Margin="10,0" FontAttributes="Bold" TextColor="White"/>
+                    <controls:CarouselViewControl Orientation="Horizontal" ShowIndicators="False" BackgroundColor="Transparent"
+                                              VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                              ShowArrows="True" Position="{Binding TabPosition}"
+                                              ItemsSource="{Binding ProjectionItems}"
+                                              HeightRequest="60" ArrowsTintColor="White"
+                                              ArrowsBackgroundColor="Transparent"
+                                              ItemTemplate="{StaticResource ProjectionItemTemplate}">
+
+                    </controls:CarouselViewControl>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="Fill">
+                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                          ItemsSource="{Binding LatestTransactions}" SeparatorColor="White" RowHeight="80" 
+                            ItemTemplate="{StaticResource TransactionItemDataTemplate}"  >
+                        
+                    </ListView>
+                    <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactions,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione " Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+                </StackLayout>
+                
+                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
+                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                          ItemsSource="{Binding LatestTransactionsFinished}" SeparatorColor="White" RowHeight="80" 
+                          ItemTemplate="{StaticResource TransactionItemDataTemplate}">
+                        
+                    </ListView>
+                    <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsFinished,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione te perfunduara" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}" VerticalOptions="Fill">
+                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                          ItemsSource="{Binding LatestTransactionsOnGoing}" SeparatorColor="White" RowHeight="80" 
+                              ItemTemplate="{StaticResource TransactionItemDataTemplate}">
+                        
+                    </ListView>
+                    <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsOnGoing,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione ne vazhdim" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+                </StackLayout>
+                
+                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='3'}" VerticalOptions="Fill">
+                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                          ItemsSource="{Binding LatestTransactionsLate}" SeparatorColor="White" RowHeight="80" 
+                              ItemTemplate="{StaticResource TransactionItemDataTemplate}">
+                        
+                    </ListView>
+                    <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsLate,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione me vones" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+                </StackLayout>
+                
+                <StackLayout IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}"  HorizontalOptions="Center">
+                    <Label Text="NUK KA VETURA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" FontAttributes="Bold"
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}" HorizontalOptions="Center" WidthRequest="160"/>
-            </StackLayout >
-            <StackLayout IsVisible="{Binding HasCars}">
-                <Label Margin="15,20,0,0" Text="Vetuarat E Lira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
-                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
-                <StackLayout x:Name="carview">
-                    <controls:CarouselViewControl Position="0" 
+                    <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}" HorizontalOptions="Center" WidthRequest="160"/>
+                </StackLayout >
+                <StackLayout>
+                    <Label Margin="15,20,0,0" Text="Vetuarat E Lira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                    <StackLayout x:Name="carview">
+                        <controls:CarouselViewControl Position="0" 
                                               ItemsSource="{Binding AvailableCars}" 
                                               IsVisible="{Binding HasAvailableCars}"
                                               VerticalOptions="Fill" 
@@ -47,22 +144,22 @@
                                               HeightRequest="300"
                                               ItemTemplate="{StaticResource CarImageSlider}"
                                               HorizontalOptions="FillAndExpand">
-                    </controls:CarouselViewControl>
-                </StackLayout>
-                <StackLayout IsVisible="{Binding HasAvailableCars,Converter={converters:InverseBoolConverter}}">
-                    <Label Text="NUK KA VETURA TE LIRA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+                        </controls:CarouselViewControl>
+                    </StackLayout>
+                    <StackLayout IsVisible="{Binding HasAvailableCars,Converter={converters:InverseBoolConverter}}">
+                        <Label Text="NUK KA VETURA TE LIRA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                    <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}"/>
-                </StackLayout >
-            </StackLayout>
+                        <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}"/>
+                    </StackLayout >
+                </StackLayout>
 
-            <StackLayout IsVisible="{Binding HasCars}">
-                <Label Margin="15,20,0,0" Text="Vetuarat E Leshuara Me Qira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
-                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
-                <StackLayout x:Name="carview2">
-                    <controls:CarouselViewControl Position="0" 
+                <StackLayout>
+                    <Label Margin="15,20,0,0" Text="Vetuarat E Leshuara Me Qira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                    <StackLayout x:Name="carview2">
+                        <controls:CarouselViewControl Position="0" 
                                               ItemsSource="{Binding TakenCars}" 
                                               IsVisible="{Binding HasTakenCars}"
                                               VerticalOptions="Fill" 
@@ -71,22 +168,22 @@
                                               HeightRequest="300"
                                               ItemTemplate="{StaticResource CarImageSlider}"
                                               HorizontalOptions="FillAndExpand">
-                    </controls:CarouselViewControl>
-                </StackLayout>
+                        </controls:CarouselViewControl>
+                    </StackLayout>
 
-                <StackLayout IsVisible="{Binding HasTakenCars,Converter={converters:InverseBoolConverter}}">
-                    <Label Text="NUK KA VETURA TE ZENA, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+                    <StackLayout IsVisible="{Binding HasTakenCars,Converter={converters:InverseBoolConverter}}">
+                        <Label Text="NUK KA VETURA TE ZENA, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                </StackLayout >
-            </StackLayout>
+                    </StackLayout >
+                </StackLayout>
 
-            <StackLayout IsVisible="{Binding HasCars}">
-                <Label Margin="15,20,0,0" Text="Vetuarat E Pa Regjistruara" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
-                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
-                <StackLayout x:Name="carview3">
-                    <controls:CarouselViewControl Position="0" 
+                <StackLayout>
+                    <Label Margin="15,20,0,0" Text="Vetuarat E Pa Regjistruara" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                    <StackLayout x:Name="carview3">
+                        <controls:CarouselViewControl Position="0" 
                                               ItemsSource="{Binding UnregisteredCars}" 
                                               IsVisible="{Binding HasUnregisteredCars}"
                                               VerticalOptions="Fill" 
@@ -96,22 +193,22 @@
                                               HeightRequest="300"
                                               ItemTemplate="{StaticResource CarImageSlider}"
                                               HorizontalOptions="FillAndExpand">
-                    </controls:CarouselViewControl>
-                </StackLayout>
+                        </controls:CarouselViewControl>
+                    </StackLayout>
 
-                <StackLayout IsVisible="{Binding HasUnregisteredCars,Converter={converters:InverseBoolConverter}}">
-                    <Label Text="NUK KA VETURA TE PA REGJISTRUARA, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+                    <StackLayout IsVisible="{Binding HasUnregisteredCars,Converter={converters:InverseBoolConverter}}">
+                        <Label Text="NUK KA VETURA TE PA REGJISTRUARA, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                </StackLayout >
-            </StackLayout>
+                    </StackLayout >
+                </StackLayout>
 
-            <StackLayout IsVisible="{Binding HasCars}">
-                <Label Margin="15,20,0,0" Text="Vetuarat Ne Servisim" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
-                <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
-                <StackLayout x:Name="carview4">
-                    <controls:CarouselViewControl Position="0" 
+                <StackLayout>
+                    <Label Margin="15,20,0,0" Text="Vetuarat Ne Servisim" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                    <StackLayout x:Name="carview4">
+                        <controls:CarouselViewControl Position="0" 
                                               ItemsSource="{Binding OnServiseCars}" 
                                               IsVisible="{Binding HasOnServiceCars}"
                                               VerticalOptions="Fill"
@@ -120,17 +217,18 @@
                                               HeightRequest="300"
                                               ItemTemplate="{StaticResource CarImageSlider}"
                                               HorizontalOptions="FillAndExpand">
-                    </controls:CarouselViewControl>
-                </StackLayout>
+                        </controls:CarouselViewControl>
+                    </StackLayout>
 
-                <StackLayout IsVisible="{Binding HasOnServiceCars,Converter={converters:InverseBoolConverter}}">
-                    <Label Text="NUK KA VETURA NE SERVIS, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
+                    <StackLayout IsVisible="{Binding HasOnServiceCars,Converter={converters:InverseBoolConverter}}">
+                        <Label Text="NUK KA VETURA NE SERVIS, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" 
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                </StackLayout >
+                    </StackLayout >
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </AbsoluteLayout>
     </ScrollView>
 
 </ContentPage>

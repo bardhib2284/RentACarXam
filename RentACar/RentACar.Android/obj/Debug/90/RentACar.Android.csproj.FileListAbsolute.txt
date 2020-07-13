@@ -101,6 +101,9 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\carsettings.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\carrentallogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\xml\provider_paths.xml
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\services.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\services1.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\incoming.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\uploadflags.txt
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\resolvedassemblies.hash
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\android\assets\Acr.UserDialogs.dll

@@ -6,7 +6,7 @@
              xmlns:components="clr-namespace:RentACar.Components"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              mc:Ignorable="d"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:converters="clr-namespace:RentACar.Converters"
              x:Class="RentACar.Views.CarDetailsPage">
     <NavigationPage.TitleView>
         <components:NavTitleView Title="Detajet" SubTitle="{Binding SelectedCar.Name}" SearchVisible="False"/>
@@ -33,21 +33,162 @@
                                             VerticalOptions="FillAndExpand" 
                                             HorizontalOptions="FillAndExpand">
                     </controls:CarouselViewControl>-->
-                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10">
-                        <Label Text="Cmimi Ditor" TextColor="Gray" />
-                        <Label Text="40" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                        <Label Text="Numri i karrikave" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.NumberOfSeats}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                        <Label Text="Karburanti" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.Fuel}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                        <Label Text="Marshi" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.Transmission}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                        <Label Text="Km e kaluara deri me tani" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.Km}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
-                        <Label Text="Viti i prodhimit" TextColor="Gray" />
-                        <Label Text="{Binding SelectedCar.ProductionYear, StringFormat='{0:yyyy}'}" Margin="10,0" TextColor="Black" FontAttributes="Bold" FontSize="22"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" Padding="10" IsVisible="{Binding SelectedCar.Statusi, Converter={converters:StringEqualConverter}, ConverterParameter='Aktiv'}">
+
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Emri" Style="{StaticResource TitleLabel}" />
+                                    <Label Text="{Binding SelectedCar.Name}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Mbiemri" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.Brand}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Data e lindjes" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.Model}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Nacionaliteti" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.ProductionYear}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Gjinia" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.NumberOfSeats}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Numri Personal" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.Fuel}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Email" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.Color}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Adresa" Style="{StaticResource TitleLabel}" />
+                                <Label Text="{Binding SelectedCar.Transmission}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Adresa" Style="{StaticResource TitleLabel}" />
+                                    <Label Text="{Binding SelectedCar.Km}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Adresa" Style="{StaticResource TitleLabel}" />
+                                    <Label Text="{Binding SelectedCar.DateOfRegister}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Adresa" Style="{StaticResource TitleLabel}" />
+                                    <Label Text="{Binding SelectedCar.DateOfStartCheck}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                <StackLayout Padding="20,0,20,10" Spacing="0">
+                                    <Label Text="Adresa" Style="{StaticResource TitleLabel}" />
+                                    <Label Text="{Binding SelectedCar.NextDateOfCheck}" Style="{StaticResource ValueLabel}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource DisplayValueBox}" />
+                            </StackLayout>
+                            <StackLayout Padding="0,10,0,0" Spacing="0">
+                                    <StackLayout Padding="20,0,20,10" Spacing="0">
+                                        <Label Text="Nr Telefonit" Style="{StaticResource TitleLabel}" />
+                                    <Label Text="{Binding SelectedCar.Statusi}" Style="{StaticResource ValueLabel}" />
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                                </StackLayout>
+                            <Button Text="Lesho Me Qira" Command="{Binding LeshoMeQiraCommand}"/>
                     </StackLayout>
-                    <Button Text="Lesho Me Qira" Command="{Binding LeshoMeQiraCommand}"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="10" IsVisible="{Binding SelectedCar.Statusi, Converter={converters:StringEqualConverter}, ConverterParameter='Zene'}">
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Koha E Leshimit" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.KohaELeshimit}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Koha E Kthimit" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.KohaEKthimit}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Cmimi Ditor" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.CmimiDitor}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Ditet E Leshimit" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.DitetELeshimit}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Perqindja E Voneses" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.PerqindjaEVoneses}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Vetura" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.CarName}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Klienti" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.ClientName}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Cmimi Total" Style="{StaticResource TitleLabel}" />
+                            <Label Text="{Binding CurrentRentedCar.CmimiTotal}" Style="{StaticResource ValueLabel}" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <Button Text="Kthe veturen" Command="{Binding KtheVeturenCommand}"/>
+
                 </StackLayout>
 
             </StackLayout>

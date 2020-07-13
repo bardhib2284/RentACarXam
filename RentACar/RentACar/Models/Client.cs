@@ -27,7 +27,7 @@ namespace RentACar.Models
         public int RentId { get; set; }
         public byte[] ClientImageFront { get; set; }
         public byte[] ClientImageBack { get; set; }
-
+        public bool IsUnwanted { get; set; }
         private MemoryStream ms => new MemoryStream(ClientImageFront);
 
         [JsonIgnore]

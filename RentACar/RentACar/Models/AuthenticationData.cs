@@ -9,8 +9,9 @@ namespace RentACar.Models
         public int Id { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
-
+        public int Role { get; set; }
         public int RentID { get; set; }
+        public Roles RoleOfUser { get; set; }
+        public enum Roles { Administrator, Manager, Punetor };
     }
 }

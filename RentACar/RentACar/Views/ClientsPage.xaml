@@ -16,6 +16,8 @@
             <ListView
                 ItemsSource="{Binding Clients}"
                 RowHeight="100"
+                SelectionMode="None"
+                ItemTapped="ListView_ItemTappedAsync"
                 >
                 <ListView.ItemTemplate>
                     <DataTemplate>
