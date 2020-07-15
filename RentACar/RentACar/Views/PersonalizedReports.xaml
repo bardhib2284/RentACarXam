@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.PersonalizedReports">
+    <ContentPage.Content>
+        <ScrollView x:Name="MainScroll">
+            <Grid x:Name="gridrented" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Spacing="0" Padding="15" >
+                    <Label Margin="5,0,0,0"  Text="Klienti" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                    <BoxView Margin="5,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                    <BoxView Margin="5,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                    <SearchBar x:Name="search" Placeholder="Kerko Klientin Me Emer Ose ID" HorizontalOptions="FillAndExpand"/>
+                    <ListView 
+                ItemsSource="{Binding Clients}"
+                RowHeight="100"
+                MinimumHeightRequest="150"
+                HeightRequest="200"
+                    VerticalOptions="Fill"
+                ItemTapped="ListView_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Padding="20,10">
+                                        <ff:CachedImage WidthRequest="90" HeightRequest="90" Aspect="AspectFit" VerticalOptions="Fill" HorizontalOptions="Fill" Source="{Binding ClientFrontImage}"/>
+                                        <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" TextColor="Black"/>
+                                            <Label Text="{Binding ID_PersonalNumber}" FontSize="15" TextColor="LightGray"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout x:Name="carview" Grid.Row="1" Spacing="0" Padding="15">
+                    <Label Margin="5,0,0,0"  Text="Vetura" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                    <BoxView Margin="5,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                    <BoxView Margin="5,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                    <controls:CarouselViewControl Position="{Binding CarPosition}" 
+                                              ItemsSource="{Binding Cars}" 
+                                              VerticalOptions="Fill" 
+                                              Orientation="Horizontal" 
+                                              WidthRequest="300"
+                                              HeightRequest="250"
+                                              ItemTemplate="{StaticResource CarImageSlider}"
+                                              HorizontalOptions="FillAndExpand">
+                    </controls:CarouselViewControl>
+                </StackLayout>
+
+                <StackLayout Spacing="0" Grid.Row="2" Padding="15">
+                    <Label Margin="0,0,0,0"  Text="Ekstras" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                    <BoxView Margin="0,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                    <BoxView Margin="0,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Padding="15" Margin="0,40">
+                    
+                    
+                    <Label Text="Koha Minimale" VerticalOptions="Fill"/>
+                    <DatePicker Date="{Binding FilterRaports.KohaEFillimit}" MinimumDate="01/01/2020" VerticalOptions="Fill"/>
+                    <Label Text="Koha Maksimale"/>
+                    <DatePicker Date="{Binding FilterRaports.KohaEMbarimit}" MinimumDate="01/01/2020"/>
+                    <Label Text="Cmimi minimal"/>
+                    <Entry Text="{Binding FilterRaports.MinPrice}"/>
+                    <Label Text="Cmimi maksimal"/>
+                    <Entry Text="{Binding FilterRaports.MaxPrice}" />
+                    <Button Text="Gjenero Raportin" Command="{Binding GeneratePdfWithFilterCommand}" HeightRequest="50" />
+                </StackLayout>
+                
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

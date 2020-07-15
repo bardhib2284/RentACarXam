@@ -307,10 +307,14 @@ namespace RentACar.ViewModels
             //var statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
             //if(statusread != Xamarin.Essentials.PermissionStatus.Granted || statuswrite != Xamarin.Essentials.PermissionStatus.Granted)
             //{
-                //var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
-                //var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            //var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            //var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
             //}
-            var response = await App.client.GetAsync(App.API_URL_BASE + "rentedcars/pdf/javore");
+            var filter = new FilterRaports();
+            var json = JsonConvert.SerializeObject(filter);
+            App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+            HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars/pdf/filtered", httpContent);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
@@ -494,8 +498,8 @@ namespace RentACar.ViewModels
                     dashboard.BindingContext = this;
                     CurrentRent = await LoadRentById(data.RentID);
                     if(CurrentRent != null) Cars = await LoadCarsFromRent(CurrentRent);
-                    //App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
-                    //await GetClients();
+                    App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
+                    await GetClients();
                     App.instance.ChangeDetailPage(dashboard);
                 }
                 else

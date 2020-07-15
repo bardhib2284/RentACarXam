@@ -17,6 +17,7 @@
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Tarifat Shtese" TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsUnwantedPageCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Zbritjet " TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
                 <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Raportet" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raport i personalizuar" TextColor="White" HeightRequest="60"  Command="{Binding GoToPersonalizedReportCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Ditore" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Javore" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Mujor" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>

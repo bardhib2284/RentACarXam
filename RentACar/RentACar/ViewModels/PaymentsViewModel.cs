@@ -1,10 +1,13 @@
 ﻿using Acr.UserDialogs;
 using Newtonsoft.Json;
+using RentACar.Dependencies;
+using RentACar.Models;
 using RentACar.Views;
 using RentACarAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -16,18 +19,30 @@ namespace RentACar.ViewModels
 {
     public class PaymentsViewModel : ViewModelBase
     {
+        private int _CarPosition;
+        public int CarPosition
+        {
+            get { return _CarPosition; }
+            set { SetProperty(ref _CarPosition, value); }
+        }
+        public ObservableCollection<Client> Clients { get; set; }
+        public ObservableCollection<Car> Cars { get; private set; }
+        public FilterRaports FilterRaports { get; set; }
         public ICommand GoToCmimetCommand { get; set; }
         public ICommand GoToTarifatCommand { get; set; }
         public ICommand GoToSezonetCommand { get; set; }
         public ICommand GoToZbritjetCommand { get; set; }
         public ICommand AddASeasonCommand { get; set; }
         public ICommand GoToCreateSeazonCommand { get; set; }
+        public ICommand GoToPersonalizedReportCommand { get; set; }
+        public ICommand GeneratePdfWithFilterCommand { get; set; }
         public Sezonet SelectedSezoni
         {
             get;set;
         }
         public ObservableCollection<Sezonet> Sezonet { get; private set; }
         public bool HasSezone { get; private set; }
+        public Client SelectedClient { get; set; }
 
         public PaymentsViewModel()
         {
@@ -37,7 +52,48 @@ namespace RentACar.ViewModels
             GoToSezonetCommand = new Command(async () => await GoToSezonetAsync());
             AddASeasonCommand = new Command(async () => await CreateASeasonAsync());
             GoToCreateSeazonCommand = new Command(async () => await GoToCreateSeazonAsync());
+            GoToPersonalizedReportCommand = new Command(async () => await GoToPersonalizedReportAsync());
+            GeneratePdfWithFilterCommand = new Command(async () => await GeneratePdfWithFilterAsync());
             SelectedSezoni = new Sezonet();
+        }
+
+        private async Task GeneratePdfWithFilterAsync()
+        {
+            FilterRaports.Client = SelectedClient;
+            FilterRaports.Car = Cars[CarPosition];
+            FilterRaports.RentID = App.instance.DashboardViewModel.CurrentRent.Id;
+            var json = JsonConvert.SerializeObject(FilterRaports);
+            App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+            HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars/pdf/filtered", httpContent);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+            }
+            else
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                var pdfcontent = JsonConvert.DeserializeObject<byte[]>(responseString);
+                using (MemoryStream ms = new MemoryStream(pdfcontent))
+                {
+                    //await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", ms);
+
+                }
+                DependencyService.Get<IFileLauncher>().Open(pdfcontent, $"Rent---.pdf");
+            }
+        }
+
+        private async Task GoToPersonalizedReportAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                PersonalizedReports PersonalizedReports = new PersonalizedReports();
+                PersonalizedReports.BindingContext = this;
+                FilterRaports = new FilterRaports();
+                Clients = App.instance.DashboardViewModel.Clients;
+                Cars = App.instance.DashboardViewModel.Cars;
+                await App.instance.PushAsyncNewPage(PersonalizedReports);
+            }
         }
 
         private async Task GoToCreateSeazonAsync()
