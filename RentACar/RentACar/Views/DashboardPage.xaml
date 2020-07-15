@@ -7,7 +7,7 @@
              x:Class="RentACar.Views.DashboardPage"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
              xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             BackgroundColor="{StaticResource ModeColorPrimary}"
+             BackgroundImageSource="https://i.pinimg.com/originals/9d/1f/d6/9d1fd6966f030951a34dcac009c39005.jpg"
              x:Name="ThaPage">
     <NavigationPage.TitleView>
         <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="{Binding CurrentRent.Location}" SearchVisible="True" Margin="0,0,-30,0"/>
@@ -28,7 +28,6 @@
     <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <!--"https://i.pinimg.com/originals/fe/e5/ea/fee5eab30a698c169dc4fd5752359c2c.jpg"-->
-            <ff:CachedImage VerticalOptions="FillAndExpand" Aspect="AspectFill" RotationX="180" HorizontalOptions="FillAndExpand" Source="https://wallup.net/wp-content/uploads/2017/11/23/512884-blue-degree-gradient-748x1330.jpg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"/>
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
                 <Grid Padding="10" Grid.Row="0">
                     <Grid.RowDefinitions>

@@ -14,6 +14,8 @@
         <Button BackgroundColor="Transparent" Text="Renti" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToDashboardCommand}"/>
         <Button BackgroundColor="Transparent" Text="Veturat" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToCreateACarCommand}"/>
         <Button BackgroundColor="Transparent" Text="Menagjimi i klienteve" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
+        <Button BackgroundColor="Transparent" Text="Pagesat" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToPaymentsCommand}"/>
+        <Button BackgroundColor="Transparent" Text="Menagjimi i punetoreve" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
     </StackLayout>
 
 </ContentPage>

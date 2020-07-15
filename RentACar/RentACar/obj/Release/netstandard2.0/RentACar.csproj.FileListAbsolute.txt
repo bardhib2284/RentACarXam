@@ -49,3 +49,6 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\RentACar.dll
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\ref\RentACar.dll
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\RentACar.pdb
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ClientDetailPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ClientsOperationPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ClientsUnwantedPage.xaml.g.cs

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.SezonetPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Sezonet" SubTitle="Lista e sezoneve" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Add-icon.png" Command="{Binding GoToCreateSeazonCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Sezonet}" IsVisible="{Binding HasSezone}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="Sezoni"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label IsVisible="{Binding HasSezone,Converter={converters:InverseBoolConverter}}" Text="Nuk ka sezone te ruajtura ne rent, ju lutem shtoni sezonet"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

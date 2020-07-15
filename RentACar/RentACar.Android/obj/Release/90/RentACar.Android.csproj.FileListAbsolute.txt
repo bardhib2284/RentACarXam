@@ -692,3 +692,4 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\stamp\_ResolveLibraryProjectImports.stamp
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\services.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\services1.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\incoming.png

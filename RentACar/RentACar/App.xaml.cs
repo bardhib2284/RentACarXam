@@ -17,6 +17,7 @@ namespace RentACar
 
         public DashboardViewModel DashboardViewModel;
         public ClientsViewModel ClientsViewModel;
+        public PaymentsViewModel PaymentsViewModel;
         public static readonly HttpClient client = new HttpClient();
         public const string API_URL_BASE = "https://rentacarapi.conveyor.cloud/api/";
         public Page CurrentPage;

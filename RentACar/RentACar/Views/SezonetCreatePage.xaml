@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.SezonetCreatePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="20">
+                <Label  Text="Emri" />
+                <Entry  Placeholder="Emri" Text="{Binding SelectedSezoni.Emri}"/>
+                <Label   Text="Data e fillimit" />
+                <DatePicker x:Name="dataefillimit" Date="{Binding SelectedSezoni.DataEFillimit}"/>
+                <Label  Text="Data e mbarimit" />
+                <DatePicker x:Name="dataembarimit" Date="{Binding SelectedSezoni.DataEMbarimit}"/>
+                <Label  Text="Perioda minimale e rentit(dite)" />
+                <Picker x:Name="minPeriodDite" SelectedItem="{Binding SelectedSezoni.MinRentalPeriod,Mode=TwoWay}" SelectedIndex="0"/>
+                <Label  Text="Perioda minimale e rentit(dite)" />
+                <Picker x:Name="maxPeriodDite" SelectedItem="{Binding SelectedSezoni.MaxRentalPeriod,Mode=TwoWay}" SelectedIndex="0"/>
+                <Label  Text="Perioda minimale e rentit(ore)" />
+                <Picker x:Name="minPeriodOre" SelectedItem="{Binding SelectedSezoni.MinRentalHours,Mode=TwoWay}" SelectedIndex="0"/>
+                <Label  Text="Perioda minimale e rentit(ore)" />
+                <Picker x:Name="maxPeriodOre" SelectedItem="{Binding SelectedSezoni.MaxRentalHours,Mode=TwoWay}" SelectedIndex="0"/>
+                <Button Text="Ruaj Sezonin" Command="{Binding AddASeasonCommand}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

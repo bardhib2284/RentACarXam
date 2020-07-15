@@ -183,6 +183,7 @@ namespace RentACar.ViewModels
         public ICommand GetPdfCommand { get; set; }
         public ICommand GoToDashboardCommand { get; set; }
         public ICommand KtheVeturenCommand { get; set; }
+        public ICommand GoToPaymentsCommand { get; set; }
         public DashboardViewModel()
         {
             CarDetailsCommand = new Command<Car>(async (c) => await CarDetailsAsync(c));
@@ -197,6 +198,7 @@ namespace RentACar.ViewModels
             CarSettingsCommand = new Command(async () => await GoToCreateACarAsync());
             LeshoMeQiraCommand = new Command(async () => await LeshoMeQiraAsync());
             GoToClientsCommand = new Command(async () => await GoToClientsPageAsync());
+            GoToPaymentsCommand = new Command(async () => await GoToPaymentsPageAsync());
             GetPdfCommand = new Command(async () => await GetPdfAsync());
             GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
             KtheVeturenCommand = new Command(async () => await KtheVeturenAsync());
@@ -308,7 +310,7 @@ namespace RentACar.ViewModels
                 //var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
                 //var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
             //}
-            var response = await App.client.GetAsync(App.API_URL_BASE + "rents/pdf");
+            var response = await App.client.GetAsync(App.API_URL_BASE + "rentedcars/pdf/javore");
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
@@ -328,7 +330,17 @@ namespace RentACar.ViewModels
             }
 
         }
-
+        private async Task GoToPaymentsPageAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                PaymentOperationPage PaymentPage = new PaymentOperationPage();
+                App.instance.PaymentsViewModel = new PaymentsViewModel();
+                PaymentPage.BindingContext = App.instance.PaymentsViewModel;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(PaymentPage);
+            }
+        }
         private async Task GoToClientsPageAsync()
         {
             using (UserDialogs.Instance.Loading("Loading"))
@@ -336,7 +348,7 @@ namespace RentACar.ViewModels
                 ClientsOperationPage ClientsPage = new ClientsOperationPage();
                 App.instance.ClientsViewModel = new ClientsViewModel();
                 ClientsPage.BindingContext = App.instance.ClientsViewModel;
-                //Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
+                Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
                 (App.instance.MainPage as MainPage).IsPresented = false;
                 await App.instance.PushAsyncNewPage(ClientsPage);
             }
