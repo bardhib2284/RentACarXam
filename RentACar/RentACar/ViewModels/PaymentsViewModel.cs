@@ -36,12 +36,34 @@ namespace RentACar.ViewModels
         public ICommand GoToCreateSeazonCommand { get; set; }
         public ICommand GoToPersonalizedReportCommand { get; set; }
         public ICommand GeneratePdfWithFilterCommand { get; set; }
+        public ICommand AddACmimCommand { get; set; }
+        public ICommand GoToCreateCmimeCommand { get; set; }
+
+        
+        #region Cmimet
+        public Cmimet SelectedCmimi
+        {
+            get; set;
+        }
+        public ObservableCollection<Cmimet> Cmimet { get; private set; }
+        private bool hasCmime;
+        public bool HasCmime
+        {
+            get { return hasCmime; }
+            set { SetProperty(ref hasCmime, value); }
+        }
+        #endregion
         public Sezonet SelectedSezoni
         {
             get;set;
         }
         public ObservableCollection<Sezonet> Sezonet { get; private set; }
-        public bool HasSezone { get; private set; }
+        private bool hasSezone;
+        public bool HasSezone
+        {
+            get { return hasSezone; }
+            set { SetProperty(ref hasSezone, value); }
+        }
         public Client SelectedClient { get; set; }
 
         public PaymentsViewModel()
@@ -51,10 +73,38 @@ namespace RentACar.ViewModels
             GoToZbritjetCommand = new Command(async () => await GoToZbritjetAsync());
             GoToSezonetCommand = new Command(async () => await GoToSezonetAsync());
             AddASeasonCommand = new Command(async () => await CreateASeasonAsync());
+            AddACmimCommand = new Command(async () => await CreateACmimAsync());
+            GoToCreateCmimeCommand = new Command(async () => await GoToCreateCmimetAsync());
             GoToCreateSeazonCommand = new Command(async () => await GoToCreateSeazonAsync());
             GoToPersonalizedReportCommand = new Command(async () => await GoToPersonalizedReportAsync());
             GeneratePdfWithFilterCommand = new Command(async () => await GeneratePdfWithFilterAsync());
             SelectedSezoni = new Sezonet();
+            SelectedCmimi = new Cmimet();
+            Sezonet = new ObservableCollection<Sezonet>();
+            Cmimet = new ObservableCollection<Cmimet>();
+        }
+
+        private async Task CreateACmimAsync()
+        {
+            SelectedCmimi.SeasonID = SelectedSezoni.id;
+            var json = JsonConvert.SerializeObject(SelectedCmimi);
+            var g = json.Remove(1, 7);
+            App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+            HttpContent httpContent = new StringContent(g, Encoding.UTF8, "application/json");
+            var response = await App.client.PostAsync(App.API_URL_BASE + "payments/cmimet", httpContent);
+            if (response.IsSuccessStatusCode)
+            {
+                UserDialogs.Instance.Alert("Cmimi u shtua me sukses", "Sukses", "OK");
+            }
+            else
+            {
+                UserDialogs.Instance.Alert("Cmimi nuk u shtua me sukses", "Error", "OK");
+            }
+            var responseString = await response.Content.ReadAsStringAsync();
+            Cmimet addedCmimet = JsonConvert.DeserializeObject<Cmimet>(responseString);
+            Cmimet.Add(addedCmimet);
+            HasCmime = Cmimet.Any();
+            OnPropertyChanged("HasCmime");
         }
 
         private async Task GeneratePdfWithFilterAsync()
@@ -105,7 +155,15 @@ namespace RentACar.ViewModels
                 await App.instance.PushAsyncNewPage(SezonetCreatePage);
             }
         }
-
+        private async Task GoToCreateCmimetAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                CreateACmimetPage CreateACmimetPage = new CreateACmimetPage();
+                CreateACmimetPage.BindingContext = this;
+                await App.instance.PushAsyncNewPage(CreateACmimetPage);
+            }
+        }
         private async Task<ObservableCollection<Sezonet>> GetSezonet()
         {
             try
@@ -187,8 +245,36 @@ namespace RentACar.ViewModels
             using (UserDialogs.Instance.Loading("Loading"))
             {
                 CmimetPage CmimetPage = new CmimetPage();
+                await GetSezonet();
+                await GetCmimet();
                 CmimetPage.BindingContext = this;
                 await App.instance.PushAsyncNewPage(CmimetPage);
+            }
+        }
+
+        private async Task<ObservableCollection<Cmimet>> GetCmimet()
+        {
+            try
+            {
+                var response = await App.client.GetAsync(App.API_URL_BASE + "payments/cmimet");
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+                    return null;
+                }
+                else
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var cmimet = JsonConvert.DeserializeObject<ObservableCollection<Cmimet>>(responseString);
+                    Cmimet = cmimet;
+                    HasCmime = Cmimet.Any();
+                    OnPropertyChanged("HasCmime");
+                    return Cmimet;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
             }
         }
     }

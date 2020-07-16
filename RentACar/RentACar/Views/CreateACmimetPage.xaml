@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.CreateACmimetPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="20">
+                <Label  Text="Dega" />
+                <Entry  Placeholder="Emri" Text="{Binding SelectedCmimi.Dega}"/>
+                <Label  Text="Sezoni" />
+                <Picker x:Name="dataefillimit" SelectedIndexChanged="dataefillimit_SelectedIndexChanged" SelectedIndex="{Binding SelectedSezoni.id}"/>
+                <Label  Text="Klasa e vetures" />
+                <Picker x:Name="klasaEVetures" SelectedIndex="{Binding SelectedCmimi.VehicleClass}" />
+                <Label  Text="Cmimi per ore" />
+                <Entry x:Name="minPeriodDite" Text="{Binding SelectedCmimi.CmimiPerOre,Mode=TwoWay}" Keyboard="Numeric"/>
+                <Label  Text="Cmimi per dite" />
+                <Entry x:Name="maxPeriodDite" Text="{Binding SelectedCmimi.CmimiPerDite,Mode=TwoWay}" Keyboard="Numeric"/>
+                <Label  Text="Cmimi per jave" />
+                <Entry x:Name="minPeriodOre" Text="{Binding SelectedCmimi.CmimiPerJave,Mode=TwoWay}" Keyboard="Numeric"/>
+                <Label  Text="Ka zbritje ne baza ditore" />
+                <Switch IsToggled="{Binding SelectedCmimi.KaZbritjeNeBazeTeDiteve,Mode=TwoWay}"/>
+                <Label  Text="Ka zbritje ne baze te oreve" />
+                <Switch IsToggled="{Binding SelectedCmimi.KaZbritjeNeBazeTeOreve,Mode=TwoWay}"/>
+                <Button Text="Ruaj Cmimin" Command="{Binding AddACmimCommand}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

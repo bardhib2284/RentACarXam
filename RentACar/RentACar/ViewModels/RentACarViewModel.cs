@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using RentACar.Models;
 using RentACar.Views;
+using RentACarAPI.Models;
 using Syncfusion.Drawing;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
@@ -63,6 +64,14 @@ namespace RentACar.ViewModels
         }
         public ObservableCollection<Car> Cars => new ObservableCollection<Car> { SelectedCar };
 
+        public ObservableCollection<Cmimet> Cmimet { get; set; }
+        private bool _hasCmime;
+        public bool HasCmime
+        {
+            get { return _hasCmime; }
+            set { SetProperty(ref _hasCmime, value); }
+        }
+
         public bool IsSuccessfullRent;
         public ICommand GoToRentedCarDetailsCommand { get; set; }
         public ICommand RentThisCarCommand { get; set; }
@@ -94,6 +103,31 @@ namespace RentACar.ViewModels
             App.instance.ChangeDetailPage(page);
         }
 
+        private async Task<ObservableCollection<Cmimet>> GetCmimet()
+        {
+            try
+            {
+                var response = await App.client.GetAsync(App.API_URL_BASE + "payments/cmimet");
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+                    return null;
+                }
+                else
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var cmimet = JsonConvert.DeserializeObject<ObservableCollection<Cmimet>>(responseString);
+                    Cmimet = cmimet;
+                    HasCmime = Cmimet.Any();
+                    OnPropertyChanged("HasCmime");
+                    return Cmimet;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         private async Task<int> GeneratePdfAsync()
         {
             // Create a new PDF document
@@ -175,6 +209,8 @@ namespace RentACar.ViewModels
             RentedCar.ClientId = SelectedClient.Id;
             RentACarSecondStepPage rentedCarPage2 = new RentACarSecondStepPage();
             rentedCarPage2.BindingContext = this;
+            Cmimet = await GetCmimet();
+            OnPropertyChanged("Cmimet");
             await App.instance.PushAsyncNewPage(rentedCarPage2);
         }
     }

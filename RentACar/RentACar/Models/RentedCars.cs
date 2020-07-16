@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RentACarAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,11 @@ namespace RentACar.Models
         public bool IsFinished { get; set; }
         public string CarName { get; set; }
         public string ClientName { get; set; }
+        public int CmimiID { get; set; }
+
         [JsonIgnore]
         public decimal CmimiTotal { get; set; }
+        [JsonIgnore]
+        public Cmimet Cmimi { get; set; }
     }
 }

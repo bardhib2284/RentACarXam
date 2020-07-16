@@ -12,7 +12,7 @@
         <StackLayout>
             <StackLayout Padding="10,0">
                 <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Cmimorja" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Cmimet" TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsPageCommand}"/>
+                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Cmimet" TextColor="White" HeightRequest="60"  Command="{Binding GoToCmimetCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Sezonet" TextColor="White" HeightRequest="60"  Command="{Binding GoToSezonetCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Tarifat Shtese" TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsUnwantedPageCommand}"/>
                 <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Zbritjet " TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>

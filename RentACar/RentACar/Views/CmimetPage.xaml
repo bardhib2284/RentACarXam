@@ -2,14 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters"
              mc:Ignorable="d"
              x:Class="RentACar.Views.CmimetPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Cmimet" SubTitle="Lista e cmimeve" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Add-icon.png" Command="{Binding GoToCreateCmimeCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Cmimet}" IsVisible="{Binding HasCmime}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="Cmimi"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label IsVisible="{Binding HasCmime,Converter={converters:InverseBoolConverter}}" Text="Nuk ka sezone te ruajtura ne rent, ju lutem shtoni sezonet"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

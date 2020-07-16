@@ -17,14 +17,15 @@
                 <DatePicker MinimumDate="{Binding RentedCar.KohaELeshimit}"  Margin="10,0" Date="{Binding RentedCar.KohaELeshimit}" IsEnabled="{Binding IsTermin}"/>
                 <Label Text="Koha E Kthimit" TextColor="Black" FontAttributes="Bold" FontSize="20" />
                 <DatePicker MinimumDate="{Binding RentedCar.KohaELeshimit}" Date="{Binding RentedCar.KohaEKthimit}"  Margin="10,0" />
-                <Label Text="Cmimi ditor" TextColor="Black" FontAttributes="Bold" FontSize="20" />
-                <Entry Text="{Binding RentedCar.CmimiDitor}" Placeholder="Cmimi Ditor" Keyboard="Numeric"/>
+                <Label Text="Cmimi" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                <Picker x:Name="cmimiPicker" ItemsSource="{Binding Cmimet}" ItemDisplayBinding="{Binding Dega}" SelectedItem="{Binding RentedCar.Cmimi}"/>
                 <Label Text="Perqindja e voneses" TextColor="Black" FontAttributes="Bold" FontSize="20" />
                 <Entry Text="{Binding RentedCar.PerqindjaEVoneses}" Placeholder="Cmimi Ditor" Keyboard="Numeric"/>
                 <Label Text="Vetura" TextColor="Black" FontAttributes="Bold" FontSize="20" />
                 <Label Text="{Binding SelectedCar.Name}" TextColor="Black"  FontSize="20" />
                 <Label Text="Klienti" TextColor="Black" FontAttributes="Bold" FontSize="20" />
                 <Label Text="{Binding SelectedClient.Name}" TextColor="Black"  FontSize="20" />
+                
             </StackLayout>
             
             <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="70" >

@@ -90,3 +90,4 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\n
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\ZbritjetPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\SezonetCreatePage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\PersonalizedReports.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\CreateACmimetPage.xaml.g.cs
