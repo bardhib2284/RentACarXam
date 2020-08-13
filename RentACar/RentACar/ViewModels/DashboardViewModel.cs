@@ -303,13 +303,18 @@ namespace RentACar.ViewModels
 
         private async Task<object> GetPdfAsync()
         {
-            //var statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
-            //var statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
-            //if(statusread != Xamarin.Essentials.PermissionStatus.Granted || statuswrite != Xamarin.Essentials.PermissionStatus.Granted)
-            //{
-            //var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
-            //var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
-            //}
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    var statusread = await Permissions.RequestAsync<Permissions.StorageRead>();
+                    var statuswrite = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                    if (statusread != Xamarin.Essentials.PermissionStatus.Granted || statuswrite != Xamarin.Essentials.PermissionStatus.Granted)
+                    {
+                        var cameraresults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                        var storageResults = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                    }
+                    break;
+            }
             var filter = new FilterRaports();
             var json = JsonConvert.SerializeObject(filter);
             App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
@@ -398,26 +403,29 @@ namespace RentACar.ViewModels
 
         private async Task CreateACarAsync()
         {
-            SelectedCar.RentId = CurrentRent.Id;
-            var json = JsonConvert.SerializeObject(SelectedCar);
-            var g = json.Remove(1, 7);
-            App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
-            HttpContent httpContent = new StringContent(g, Encoding.UTF8, "application/json");
-            var response = await App.client.PostAsync(App.API_URL_BASE + "cars", httpContent);
-            if (response.IsSuccessStatusCode)
+            using (UserDialogs.Instance.Loading("Loading"))
             {
-                UserDialogs.Instance.Alert("Vetura u shtua me sukses", "Sukses", "OK");
+                SelectedCar.RentId = CurrentRent.Id;
+                var json = JsonConvert.SerializeObject(SelectedCar);
+                var g = json.Remove(1, 7);
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(g, Encoding.UTF8, "application/json");
+                var response = await App.client.PostAsync(App.API_URL_BASE + "cars", httpContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    UserDialogs.Instance.Alert("Vetura u shtua me sukses", "Sukses", "OK");
+                }
+                else
+                {
+                    UserDialogs.Instance.Alert("Vetura nuk u shtua me sukses", "Error", "OK");
+                }
+                var responseString = await response.Content.ReadAsStringAsync();
+                Car addedCar = JsonConvert.DeserializeObject<Car>(responseString);
+                Cars.Add(addedCar);
+                HasCars = Cars.Any();
+                OnPropertyChanged("Cars");
+                OnPropertyChanged("HasCars");
             }
-            else
-            {
-                UserDialogs.Instance.Alert("Vetura nuk u shtua me sukses", "Error", "OK");
-            }
-            var responseString = await response.Content.ReadAsStringAsync();
-            Car addedCar = JsonConvert.DeserializeObject<Car>(responseString);
-            Cars.Add(addedCar);
-            HasCars = Cars.Any();
-            OnPropertyChanged("Cars");
-            OnPropertyChanged("HasCars");
         }
 
         private async Task PickPhotoAsync()

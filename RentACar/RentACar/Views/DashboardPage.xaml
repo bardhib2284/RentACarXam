@@ -7,7 +7,7 @@
              x:Class="RentACar.Views.DashboardPage"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" 
              xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             BackgroundImageSource="https://i.pinimg.com/originals/9d/1f/d6/9d1fd6966f030951a34dcac009c39005.jpg"
+             BackgroundImageSource="https://i.pinimg.com/originals/f7/f6/8f/f7f68f4ef9e52fea71f91547c99e2431.jpg"
              x:Name="ThaPage">
     <NavigationPage.TitleView>
         <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="{Binding CurrentRent.Location}" SearchVisible="True" Margin="0,0,-30,0"/>
@@ -75,7 +75,7 @@
                         </StackLayout>
                     </Frame>
                 </Grid>
-                <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" >
+                <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="Transparent">
                     <Label Text="Transaksionet e fundit" FontSize="Large" Margin="10,0" FontAttributes="Bold" TextColor="White"/>
                     <controls:CarouselViewControl Orientation="Horizontal" ShowIndicators="False" BackgroundColor="Transparent"
                                               VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
@@ -87,7 +87,7 @@
 
                     </controls:CarouselViewControl>
                 </StackLayout>
-                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="Fill">
+                <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="Fill">
                     <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactions}" SeparatorColor="White" RowHeight="80" 
                             ItemTemplate="{StaticResource TransactionItemDataTemplate}"  >
@@ -96,7 +96,7 @@
                     <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactions,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione " Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
                 </StackLayout>
                 
-                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
+                <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
                     <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactionsFinished}" SeparatorColor="White" RowHeight="80" 
                           ItemTemplate="{StaticResource TransactionItemDataTemplate}">
@@ -105,7 +105,7 @@
                     <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsFinished,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione te perfunduara" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
                 </StackLayout>
 
-                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}" VerticalOptions="Fill">
+                <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}" VerticalOptions="Fill">
                     <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactionsOnGoing}" SeparatorColor="White" RowHeight="80" 
                               ItemTemplate="{StaticResource TransactionItemDataTemplate}">
@@ -114,7 +114,7 @@
                     <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsOnGoing,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione ne vazhdim" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
                 </StackLayout>
                 
-                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='3'}" VerticalOptions="Fill">
+                <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='3'}" VerticalOptions="Fill">
                     <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactionsLate}" SeparatorColor="White" RowHeight="80" 
                               ItemTemplate="{StaticResource TransactionItemDataTemplate}">

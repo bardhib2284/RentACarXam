@@ -52,3 +52,11 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ClientDetailPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ClientsOperationPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ClientsUnwantedPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\CmimetPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\CreateACmimetPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\PaymentOperationPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\PersonalizedReports.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\SezonetCreatePage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\SezonetPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\TarifatPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ZbritjetPage.xaml.g.cs

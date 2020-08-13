@@ -43,62 +43,62 @@
 	.section	.rodata.map_aname.7,"aMS",@progbits,1
 	.type	.L.map_aname.7, @object
 .L.map_aname.7:
-	.asciz	"Xamarin.Essentials"
-	.size	.L.map_aname.7, 19
+	.asciz	"Xamarin.Android.Support.Core.UI"
+	.size	.L.map_aname.7, 32
 
 	.section	.rodata.map_aname.8,"aMS",@progbits,1
 	.type	.L.map_aname.8, @object
 .L.map_aname.8:
-	.asciz	"Xamarin.Android.Support.Core.UI"
-	.size	.L.map_aname.8, 32
+	.asciz	"Com.Android.DeskClock"
+	.size	.L.map_aname.8, 22
 
 	.section	.rodata.map_aname.9,"aMS",@progbits,1
 	.type	.L.map_aname.9, @object
 .L.map_aname.9:
-	.asciz	"Com.Android.DeskClock"
-	.size	.L.map_aname.9, 22
+	.asciz	"Xamarin.Android.Support.Loader"
+	.size	.L.map_aname.9, 31
 
 	.section	.rodata.map_aname.10,"aMS",@progbits,1
 	.type	.L.map_aname.10, @object
 .L.map_aname.10:
-	.asciz	"Xamarin.Android.Support.Loader"
-	.size	.L.map_aname.10, 31
+	.asciz	"Plugin.Connectivity"
+	.size	.L.map_aname.10, 20
 
 	.section	.rodata.map_aname.11,"aMS",@progbits,1
 	.type	.L.map_aname.11, @object
 .L.map_aname.11:
-	.asciz	"Plugin.Connectivity"
-	.size	.L.map_aname.11, 20
+	.asciz	"Plugin.Media"
+	.size	.L.map_aname.11, 13
 
 	.section	.rodata.map_aname.12,"aMS",@progbits,1
 	.type	.L.map_aname.12, @object
 .L.map_aname.12:
-	.asciz	"Plugin.Media"
-	.size	.L.map_aname.12, 13
+	.asciz	"Syncfusion.SfProgressBar.XForms.Android"
+	.size	.L.map_aname.12, 40
 
 	.section	.rodata.map_aname.13,"aMS",@progbits,1
 	.type	.L.map_aname.13, @object
 .L.map_aname.13:
-	.asciz	"Syncfusion.SfProgressBar.XForms.Android"
+	.asciz	"Xamarin.Android.Support.v7.RecyclerView"
 	.size	.L.map_aname.13, 40
 
 	.section	.rodata.map_aname.14,"aMS",@progbits,1
 	.type	.L.map_aname.14, @object
 .L.map_aname.14:
-	.asciz	"Xamarin.Android.Support.v7.RecyclerView"
-	.size	.L.map_aname.14, 40
+	.asciz	"Xamarin.Forms.Platform.Android"
+	.size	.L.map_aname.14, 31
 
 	.section	.rodata.map_aname.15,"aMS",@progbits,1
 	.type	.L.map_aname.15, @object
 .L.map_aname.15:
-	.asciz	"Xamarin.Forms.Platform.Android"
-	.size	.L.map_aname.15, 31
+	.asciz	"Syncfusion.SfRangeSlider.Android"
+	.size	.L.map_aname.15, 33
 
 	.section	.rodata.map_aname.16,"aMS",@progbits,1
 	.type	.L.map_aname.16, @object
 .L.map_aname.16:
-	.asciz	"Syncfusion.SfRangeSlider.Android"
-	.size	.L.map_aname.16, 33
+	.asciz	"Xamarin.Essentials"
+	.size	.L.map_aname.16, 19
 
 	.section	.rodata.map_aname.17,"aMS",@progbits,1
 	.type	.L.map_aname.17, @object

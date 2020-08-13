@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.LoginPage"
              xmlns:components="clr-namespace:RentACar.Components"
-             BackgroundImageSource="https://i.pinimg.com/originals/9d/1f/d6/9d1fd6966f030951a34dcac009c39005.jpg"
+             BackgroundImageSource="https://i.pinimg.com/originals/f7/f6/8f/f7f68f4ef9e52fea71f91547c99e2431.jpg"
              >
     <NavigationPage.TitleView>
         <components:NavTitleView BackgroundColor="Transparent" Title="Kyçu" SubTitle="Rent Name" SearchVisible="False" />
@@ -32,9 +32,9 @@
                 HorizontalOptions="CenterAndExpand" />
 
             <StackLayout Padding="25,0" VerticalOptions="CenterAndExpand" >
-                <Entry Placeholder="Email" VerticalOptions="CenterAndExpand" Text="{Binding EmailAddress}"
+                <Entry TextColor="White" Placeholder="Email" VerticalOptions="CenterAndExpand" Text="{Binding EmailAddress}"
                 HorizontalOptions="Center" WidthRequest="210" />
-                <Entry Placeholder="Password" IsPassword="True" VerticalOptions="CenterAndExpand" Text="{Binding Password}"
+                <Entry TextColor="White" Placeholder="Password" IsPassword="True" VerticalOptions="CenterAndExpand" Text="{Binding Password}"
                 HorizontalOptions="Center" WidthRequest="210"/>
                 <Button Text="Kyçu" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
                  Command="{Binding LoginCommand}"/>

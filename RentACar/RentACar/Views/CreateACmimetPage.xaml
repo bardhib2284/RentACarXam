@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="20">
-                <Label  Text="Dega" />
+                <Label  Text="Emri" />
                 <Entry  Placeholder="Emri" Text="{Binding SelectedCmimi.Dega}"/>
                 <Label  Text="Sezoni" />
                 <Picker x:Name="dataefillimit" SelectedIndexChanged="dataefillimit_SelectedIndexChanged" SelectedIndex="{Binding SelectedSezoni.id}"/>

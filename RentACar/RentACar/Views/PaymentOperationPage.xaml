@@ -9,20 +9,105 @@
         <components:NavTitleView Title="Pagesat" SubTitle="" SearchVisible="True" Margin="0,0,-30,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Padding="10,0">
-                <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Cmimorja" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Cmimet" TextColor="White" HeightRequest="60"  Command="{Binding GoToCmimetCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Sezonet" TextColor="White" HeightRequest="60"  Command="{Binding GoToSezonetCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Tarifat Shtese" TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsUnwantedPageCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Zbritjet " TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
-                <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Raportet" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raport i personalizuar" TextColor="White" HeightRequest="60"  Command="{Binding GoToPersonalizedReportCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Ditore" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Javore" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Mujor" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
-                <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Raporti Sezonal" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+        <ScrollView>
+            <StackLayout Padding="00,0" Spacing="0">
+                <Label Margin="10,0,0,0" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Cmimorja" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+                <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToCmimetCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Cmimet" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo dhe menaxho cmimet e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSezonetCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Sezonet" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo dhe menaxho sezonet e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSezonetCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Tarifat Shtese" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo dhe menaxho Tarifat Shtese te rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSezonetCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Zbritjet" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo dhe menaxho Zbritjet ee rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <Label Margin="10,0,0,0" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Raportet" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+                <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToPersonalizedReportCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Raport i personalizuar" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo raport duke zgjedhur klientin, veture, daten ose cmimin e personalizuar" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToDailyRaportsCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Raporti ditor" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo raportin ditor" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GeneratePdfWeeklyCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Raporti Javor" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo raportin javor" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSezonetCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Raporti Mujor" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo raportin mujor" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
+                <StackLayout Spacing="0" Padding="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSezonetCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                        <Label Text="Raporti Sezonal" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                        <Label Text="Krijo raportin sezonal" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -9,14 +9,40 @@
         <components:NavTitleView Title="Klientet" SubTitle="" SearchVisible="True" Margin="0,0,-30,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout Padding="10,0">
-            <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Klientet" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
-            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Klientet" TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsPageCommand}"/>
-            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Klientet e pa deshiruar " TextColor="White" HeightRequest="60"  Command="{Binding GoToClientsUnwantedPageCommand}"/>
-            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Kompanite " TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
-            <Label VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Shto Klientin/Kompanine" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
-            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Shto nje klient te ri" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
-            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Shto nje kompani te re" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+        <StackLayout Padding="10,0" Spacing="0">
+            <Label Margin="10,0,0,0" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Klientet" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+            <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+            <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToClientsPageCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Klientet" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Krijo dhe menaxho te gjithe klientet e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToClientsUnwantedPageCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Klientet e pa deshiruar" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Shto dhe menaxho te gjithe klientet e padeshiruar te rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToClientsUnwantedPageCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Kompanite" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Shto dhe menaxho te gjithe kompanite e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

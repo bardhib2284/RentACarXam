@@ -16,11 +16,11 @@
                 <DatePicker x:Name="dataembarimit" Date="{Binding SelectedSezoni.DataEMbarimit}"/>
                 <Label  Text="Perioda minimale e rentit(dite)" />
                 <Picker x:Name="minPeriodDite" SelectedItem="{Binding SelectedSezoni.MinRentalPeriod,Mode=TwoWay}" SelectedIndex="0"/>
-                <Label  Text="Perioda minimale e rentit(dite)" />
+                <Label  Text="Perioda maksimale e rentit(dite)" />
                 <Picker x:Name="maxPeriodDite" SelectedItem="{Binding SelectedSezoni.MaxRentalPeriod,Mode=TwoWay}" SelectedIndex="0"/>
                 <Label  Text="Perioda minimale e rentit(ore)" />
                 <Picker x:Name="minPeriodOre" SelectedItem="{Binding SelectedSezoni.MinRentalHours,Mode=TwoWay}" SelectedIndex="0"/>
-                <Label  Text="Perioda minimale e rentit(ore)" />
+                <Label  Text="Perioda maksimale e rentit(ore)" />
                 <Picker x:Name="maxPeriodOre" SelectedItem="{Binding SelectedSezoni.MaxRentalHours,Mode=TwoWay}" SelectedIndex="0"/>
                 <Button Text="Ruaj Sezonin" Command="{Binding AddASeasonCommand}" />
             </StackLayout>

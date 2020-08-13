@@ -91,6 +91,7 @@ namespace RentACar.ViewModels
             RentThisCarCommand = new Command(async () => await RentThisCarAsync());
             RentedCar = new RentedCar();
             RentedCar.KohaELeshimit = DateTime.Today;
+            RentedCar.KohaEKthimit = RentedCar.KohaELeshimit.AddDays(1);
             GeneratePdfCommand = new Command(async () => await GeneratePdfAsync());
             GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
         }
@@ -166,6 +167,7 @@ namespace RentACar.ViewModels
                 RentedCar.ClientName = SelectedClient.Name;
                 RentedCar.CarName = SelectedCar.Name;
                 RentedCar.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
+                RentedCar.CmimiID = RentedCar.Cmimi.ID;
                 var json = JsonConvert.SerializeObject(RentedCar);
                 var g = json.Remove(1, 7);
                 App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");

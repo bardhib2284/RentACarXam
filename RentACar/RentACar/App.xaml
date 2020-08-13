@@ -17,7 +17,8 @@
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="ModeColorPrimary">#ffffff</Color> 
             <Color x:Key="ModeColorText">#ffffff</Color>
-            
+            <Color x:Key="DarkGray">#777777</Color>
+
             <!-- White Edition 
             <Color x:Key="ModeColorPrimary">#ffffff</Color>
             <Color x:Key="ModeColorText">#000000</Color>
@@ -66,10 +67,10 @@
                             IsClippedToBounds="true"
                             HeightRequest="290"
                             MinimumHeightRequest="200"
-                            CornerRadius="10"
+                            CornerRadius="19"
                             BackgroundColor="Transparent">
                         <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
-                            <ff:CachedImage Opacity="0.85" Source="https://images.squarespace-cdn.com/content/v1/5d043742ae0fa4000170914a/1573229727182-LH8F5GD9P93BJBSOFYJM/ke17ZwdGBToddI8pDm48kNvT88LknE-K9M4pGNO0Iqd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbeDbaZv1s3QfpIA4TYnL5Qao8BosUKjCVjCf8TKewJIH3bqxw7fF48mhrq5Ulr0Hg/dark-blue-bg.png?format=2500w" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                            <ff:CachedImage Opacity="0.85" Source="https://miro.medium.com/max/700/1*NzLGpAE4V7LJCfibfgIlHA@2x.png" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
                             <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
                                 <ff:CachedImage Source="{Binding .Brand}" Aspect="AspectFill"/>
                             </StackLayout>
