@@ -13,7 +13,7 @@
 namespace RentACar.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\CreateACarPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/CreateACarPage.xaml")]
     public partial class CreateACarPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

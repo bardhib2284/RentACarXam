@@ -38,5 +38,7 @@
 	<string>This app needs to access your photos</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>This app needs access</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs access to camera</string>
 </dict>
 </plist>

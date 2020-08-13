@@ -193,3 +193,7 @@ C:/Users/bardh.bejtullahu/source/repos/RentACar/RentACar/RentACar.iOS/obj/iPhone
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/RentACar.iOS.csproj.CopyComplete
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/RentACar.iOS.exe
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/RentACar.iOS.pdb
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/device-builds/iphone8.1-13.4.1/optimized/Audi.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/device-builds/iphone8.1-13.4.1/optimized/carRentalLogo.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/device-builds/iphone8.1-13.4.1/optimized/Mercedes.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhone/Debug/device-builds/iphone8.1-13.4.1/optimized/rentlogo.png

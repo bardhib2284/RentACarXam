@@ -365,10 +365,14 @@ namespace RentACar.ViewModels
         private async Task GetClients()
         {
             var clients = await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
-            foreach(var client in clients)
+            if(clients != null && clients.Any())
             {
-                Clients.Add(client);
+                foreach (var client in clients)
+                {
+                    Clients.Add(client);
+                }
             }
+
         }
         private async Task LeshoMeQiraAsync()
         {
@@ -421,10 +425,19 @@ namespace RentACar.ViewModels
                 }
                 var responseString = await response.Content.ReadAsStringAsync();
                 Car addedCar = JsonConvert.DeserializeObject<Car>(responseString);
+                if(Cars != null && !Cars.Any())
+                {
+                    Cars = new ObservableCollection<Car>();
+                }
                 Cars.Add(addedCar);
                 HasCars = Cars.Any();
                 OnPropertyChanged("Cars");
                 OnPropertyChanged("HasCars");
+                HasAvailableCars = true;
+                AvailableCars.Add(addedCar);
+                OnPropertyChanged("HasAvailableCars");
+                OnPropertyChanged("AvailableCars");
+
             }
         }
 
@@ -494,7 +507,7 @@ namespace RentACar.ViewModels
                 var json = JsonConvert.SerializeObject(new AuthenticationData
                 {
                     EmailAddress = EmailAddress ?? "bardhib",
-                    Password = Password ?? "rent.123"
+                    Password = Password ?? "zZzWhite_1@"
                 });
                 App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                 HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");

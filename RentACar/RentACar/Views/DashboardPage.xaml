@@ -42,7 +42,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <ff:CachedImage HorizontalOptions="Start" Source="https://image.flaticon.com/icons/png/512/1466/1466703.png" WidthRequest="90" Aspect="AspectFit"/>
                             <StackLayout VerticalOptions="Center">
-                                <Label Text="Te Hyrat Mujore" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" LineBreakMode="WordWrap" HorizontalTextAlignment="Center"/>
+                                <Label FontSize="Medium" Text="Te Hyrat Mujore" Style="{StaticResource LabelStyleDefault}" TextColor="White" LineBreakMode="WordWrap" HorizontalTextAlignment="Center"/>
                                 <Label Text="{Binding TeHyrat,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
                             </StackLayout>
                         </StackLayout>
@@ -88,7 +88,7 @@
                     </controls:CarouselViewControl>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="Fill">
-                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                    <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactions}" SeparatorColor="White" RowHeight="80" 
                             ItemTemplate="{StaticResource TransactionItemDataTemplate}"  >
                         
@@ -97,7 +97,7 @@
                 </StackLayout>
                 
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
-                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                    <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactionsFinished}" SeparatorColor="White" RowHeight="80" 
                           ItemTemplate="{StaticResource TransactionItemDataTemplate}">
                         
@@ -106,7 +106,7 @@
                 </StackLayout>
 
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}" VerticalOptions="Fill">
-                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                    <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactionsOnGoing}" SeparatorColor="White" RowHeight="80" 
                               ItemTemplate="{StaticResource TransactionItemDataTemplate}">
                         
@@ -115,7 +115,7 @@
                 </StackLayout>
                 
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='3'}" VerticalOptions="Fill">
-                    <ListView VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                    <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
                           ItemsSource="{Binding LatestTransactionsLate}" SeparatorColor="White" RowHeight="80" 
                               ItemTemplate="{StaticResource TransactionItemDataTemplate}">
                         

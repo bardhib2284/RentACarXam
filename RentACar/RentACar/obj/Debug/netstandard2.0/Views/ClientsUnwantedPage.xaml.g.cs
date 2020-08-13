@@ -13,7 +13,7 @@
 namespace RentACar.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\ClientsUnwantedPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/ClientsUnwantedPage.xaml")]
     public partial class ClientsUnwantedPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
