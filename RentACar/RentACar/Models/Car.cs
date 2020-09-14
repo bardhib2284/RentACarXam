@@ -30,6 +30,8 @@ namespace RentACar.Models
         public string CarImageUrl { get; set; }
         public enum TransmissionTypes { Automatic = 0, Manual = 1 }
         public enum StatusTypes { Aktiv = 0, Zene = 1, Pa_Regjistruar = 2, NeServis = 3, IRezervuar = 4 }
+        public int KmForService { get; set; }
+        public string Targa { get; set; }
 
         //EXTRAS
         private MemoryStream ms => new MemoryStream(CarImage_1);

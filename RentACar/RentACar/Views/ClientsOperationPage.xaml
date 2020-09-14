@@ -18,7 +18,7 @@
                     <TapGestureRecognizer Command="{Binding GoToClientsPageCommand}"/>
                 </StackLayout.GestureRecognizers>
                 <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
-                    <Label Text="Klientet" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Regjistro Individ" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
                     <Label Text="Krijo dhe menaxho te gjithe klientet e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
                 </StackLayout>
                 <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
@@ -38,8 +38,8 @@
                     <TapGestureRecognizer Command="{Binding GoToClientsUnwantedPageCommand}"/>
                 </StackLayout.GestureRecognizers>
                 <StackLayout Orientation="Vertical" Margin="20,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
-                    <Label Text="Kompanite" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
-                    <Label Text="Shto dhe menaxho te gjithe kompanite e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                    <Label Text="Regjistro Biznes" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Shto dhe menaxho te gjithe bizneset e rentit" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
                 </StackLayout>
                 <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
             </StackLayout>

@@ -100,6 +100,7 @@ LinearLayout;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACa
 LinearLayout;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\57\jl\res\layout\bottomtablayout.xml
 path;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\15\jl\res\drawable\formfieldcheckbox_checked.xml
 path;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\15\jl\res\drawable\formfieldcheckbox_unchecked.xml
+path;obj\Release\90\res\drawable\outline_home_24.xml
 paths;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\56\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 paths;obj\Release\90\res\xml\file_paths.xml
 paths;obj\Release\90\res\xml\provider_paths.xml
@@ -197,4 +198,5 @@ translate;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.A
 translate;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\57\jl\res\anim\exittoright.xml
 vector;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\15\jl\res\drawable\formfieldcheckbox_checked.xml
 vector;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\15\jl\res\drawable\formfieldcheckbox_unchecked.xml
+vector;obj\Release\90\res\drawable\outline_home_24.xml
 xamarin.forms.platform.android.appcompat.FormsViewPager;C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\lp\57\jl\res\layout\rootlayout.xml

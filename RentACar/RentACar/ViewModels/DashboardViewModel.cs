@@ -60,8 +60,10 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _OnServiseCars, value); }
         }
 
-        public ObservableCollection<Client> Clients { get; set; }
+        public List<Car> ServiceCloseCars => Cars.OrderBy(x => x.KmForService).ToList();
+        public List<Car> RegistrationCloseCars => Cars.OrderBy(x => x.NextDateOfCheck).ToList();
 
+        public ObservableCollection<Client> Clients { get; set; }
         public ObservableCollection<RentedCar> RentedCarsByRentId { get; set; }
         public ObservableCollection<RentedCar> LatestTransactions { get; set; }
         public ObservableCollection<RentedCar> LatestTransactionsOnGoing { get; set; }
@@ -169,6 +171,8 @@ namespace RentACar.ViewModels
             set { SetProperty(ref tabPosition, value); }
         }
         public virtual List<MenuItem> ProjectionItems { get ; protected set; }
+        public virtual List<MenuItem> ProjectionItemsCars { get; protected set; }
+        public virtual List<MenuItem> ProjectionItemsCarsRegisterAndService { get; protected set; }
 
         public byte[] ImgByte;
         public List<string> CarImageOptions => new List<string> { "Imazh", "URL" };
@@ -184,6 +188,13 @@ namespace RentACar.ViewModels
         public ICommand GoToDashboardCommand { get; set; }
         public ICommand KtheVeturenCommand { get; set; }
         public ICommand GoToPaymentsCommand { get; set; }
+        public ICommand GoToCarsCommand { get; set; }
+        public ICommand GoToCarsStatusesCommand { get; set; }
+        public ICommand GoToCarsRegisterAndServiceCommand { get; set; }
+        public ICommand GoToCarsServicesTimeCommand { get; set; }
+
+
+        
         public DashboardViewModel()
         {
             CarDetailsCommand = new Command<Car>(async (c) => await CarDetailsAsync(c));
@@ -198,18 +209,36 @@ namespace RentACar.ViewModels
             CarSettingsCommand = new Command(async () => await GoToCreateACarAsync());
             LeshoMeQiraCommand = new Command(async () => await LeshoMeQiraAsync());
             GoToClientsCommand = new Command(async () => await GoToClientsPageAsync());
+            GoToCarsCommand = new Command(async () => await GoToCarsCommandPageAsync());
             GoToPaymentsCommand = new Command(async () => await GoToPaymentsPageAsync());
             GetPdfCommand = new Command(async () => await GetPdfAsync());
             GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
             KtheVeturenCommand = new Command(async () => await KtheVeturenAsync());
+            GoToCarsStatusesCommand = new Command(async () => await GoToCarsStatusesAsync());
+            GoToCarsRegisterAndServiceCommand = new Command(async () => await GoToCarsRegisterAndServiceAsync());
+            GoToCarsServicesTimeCommand = new Command(async () => await GoToCarsServicesTimeAsync());
             var projectionItems = new List<MenuItem>() {
                     new MenuItem(){Name="transactions",TitleKey="Te gjitha", Parametar="all"},
                     new MenuItem(){Name="transactions",TitleKey="Perfunduara", Parametar="finished"},
                     new MenuItem(){Name="transactions",TitleKey="Ne Vazhdim", Parametar="ongoing"},
                     new MenuItem(){Name="transactions",TitleKey="Vonuara", Parametar="late"}
             };
+            var projectionItemsCars = new List<MenuItem>()
+            {
+                    new MenuItem(){Name="cars",TitleKey="TE GJITHA VETURAT", Parametar="all"},
+                    new MenuItem(){Name="transactions",TitleKey="TE LIRA", Parametar="finished"},
+                    new MenuItem(){Name="transactions",TitleKey="TE LESHUARA ME QIRA", Parametar="ongoing"},
+                    new MenuItem(){Name="transactions",TitleKey="TE PAREGJISTRUARA", Parametar="late" },
+                    new MenuItem(){Name="transactions",TitleKey="TEK SERVISI", Parametar="servis"}
+            };
+            var projectionItemsRegisterAndService = new List<MenuItem>() {
+                    new MenuItem(){Name="transactions",TitleKey="Veturat per servisim", Parametar="all"},
+                    new MenuItem(){Name="transactions",TitleKey="Veturat per regjistrim", Parametar="late"}
+            };
             RentedCarsByRentId = new ObservableCollection<RentedCar>();
             ProjectionItems = projectionItems;
+            ProjectionItemsCars = projectionItemsCars;
+            ProjectionItemsCarsRegisterAndService = projectionItemsRegisterAndService;
             LatestTransactions = new ObservableCollection<RentedCar>();
             LatestTransactionsLate = new ObservableCollection<RentedCar>();
             LatestTransactionsOnGoing = new ObservableCollection<RentedCar>();
@@ -217,6 +246,50 @@ namespace RentACar.ViewModels
             Clients = new ObservableCollection<Client>();
             RentedCarsByRentId = new ObservableCollection<RentedCar>();
             //Task.Run(LoadRents);
+        }
+
+        private async Task GoToCarsServicesTimeAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                CarsServiseTimePage CarsServiseTimePage = new CarsServiseTimePage();
+                CarsServiseTimePage.BindingContext = this;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(CarsServiseTimePage);
+            }
+        }
+
+        private async Task GoToCarsRegisterAndServiceAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                CarsTimeForRegistrationAndServisePage CarsTimeForRegistrationAndServisePage = new CarsTimeForRegistrationAndServisePage();
+                CarsTimeForRegistrationAndServisePage.BindingContext = this;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(CarsTimeForRegistrationAndServisePage);
+            }
+        }
+
+        private async Task GoToCarsStatusesAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                CarsStatusPage CarsStatusPage = new CarsStatusPage();
+                CarsStatusPage.BindingContext = this;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(CarsStatusPage);
+            }
+        }
+        
+        private async Task GoToCarsCommandPageAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                CarsOperationPage CarsOperationPage = new CarsOperationPage();
+                CarsOperationPage.BindingContext = this;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(CarsOperationPage);
+            }
         }
 
         private async Task KtheVeturenAsync()
@@ -259,6 +332,7 @@ namespace RentACar.ViewModels
                 TeHyrat = count;
                 OnPropertyChanged("TeHyrat");
                 car.Statusi = Car.StatusTypes.Aktiv;
+                car.Km = CurrentRentedCar.KilometrazhiAktual;
                 AvailableCars.Add(car);
                 TakenCars.Remove(car);
                 var ongoing = LatestTransactionsOnGoing.FirstOrDefault(x => x.Id == addedCar.Id);
@@ -497,37 +571,51 @@ namespace RentACar.ViewModels
 
         private async Task LoginAsync()
         {
-            using (UserDialogs.Instance.Loading("Duke u kyçur"))
+            try
             {
-                var values = new Dictionary<string, string>
+                using (UserDialogs.Instance.Loading("Duke u kyçur"))
+                {
+                    var values = new Dictionary<string, string>
                 {
                     { "emailaddress", EmailAddress },
                     { "password", Password }
                 };
-                var json = JsonConvert.SerializeObject(new AuthenticationData
-                {
-                    EmailAddress = EmailAddress ?? "bardhib",
-                    Password = Password ?? "zZzWhite_1@"
-                });
-                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
-                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await App.client.PostAsync(App.API_URL_BASE + "rents", httpContent);
-                AuthenticationData data = JsonConvert.DeserializeObject<AuthenticationData>(await response.Content.ReadAsStringAsync());
-                if(data != null)
-                {
-                    DashboardPage dashboard = new DashboardPage();
-                    dashboard.BindingContext = this;
-                    CurrentRent = await LoadRentById(data.RentID);
-                    if(CurrentRent != null) Cars = await LoadCarsFromRent(CurrentRent);
-                    App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
-                    await GetClients();
-                    App.instance.ChangeDetailPage(dashboard);
+                    var json = JsonConvert.SerializeObject(new AuthenticationData
+                    {
+                        EmailAddress = EmailAddress ?? "bardhib",
+                        Password = Password ?? "zZzWhite_1@"
+                    });
+                    App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                    HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await App.client.PostAsync(App.API_URL_BASE + "rents", httpContent);
+                    if (response.IsSuccessStatusCode)
+                    {
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.Alert("Probleme me server", "Error", "OK");
+                    }
+                    AuthenticationData data = JsonConvert.DeserializeObject<AuthenticationData>(await response.Content.ReadAsStringAsync());
+                    if (data != null)
+                    {
+                        DashboardPage dashboard = new DashboardPage();
+                        dashboard.BindingContext = this;
+                        CurrentRent = await LoadRentById(data.RentID);
+                        if (CurrentRent != null) Cars = await LoadCarsFromRent(CurrentRent);
+                        App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
+                        await GetClients();
+                        App.instance.ChangeDetailPage(dashboard);
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.Alert("Rishikoni kredencialet", "Error", "Ok");
+                        return;
+                    }
                 }
-                else
-                {
-                    UserDialogs.Instance.Alert("Rishikoni kredencialet", "Error", "Ok");
-                    return;
-                }
+            }
+            catch(Exception e)
+            {
+
             }
         }
 
@@ -570,7 +658,13 @@ namespace RentACar.ViewModels
             if(SelectedCar.Statusi == Car.StatusTypes.Zene)
             {
                 CurrentRentedCar = RentedCarsByRentId.FirstOrDefault(x => x.CarId == SelectedCar.Id && x.IsFinished == false);
+                if(CurrentRentedCar == null)
+                {
+
+                }
                 CurrentRentedCar.CmimiTotal = (int)(CurrentRentedCar.KohaEKthimit - CurrentRentedCar.KohaELeshimit).TotalDays * CurrentRentedCar.CmimiDitor;
+                CurrentRentedCar.KaPesuarAksident = false;
+                CurrentRentedCar.KaThyerNdonjeRregull = false;
             }
             CarDetailsPage carDetailsPage = new CarDetailsPage();
             await App.instance.PushAsyncNewPage(carDetailsPage);

@@ -25,29 +25,31 @@
                     <Label Grid.Row="1" Grid.Column="0" Text="Mbiemri" />
                     <Entry Grid.Row="1" Grid.Column="1" Placeholder="Mbiemri" Text="{Binding SelectedClient.LastName}"/>
                     <Label Grid.Row="2" Grid.Column="0" Text="Data e lindjes" />
-                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding SelectedClient.DateOfBirth}"/>
+                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding SelectedClient.DateOfBirth}" MinimumDate="01/01/1950" MaximumDate="01/01/2002"/>
                     <Label Grid.Row="3" Grid.Column="0" Text="Nacionaliteti" />
                     <Entry Grid.Row="3" Grid.Column="1" Placeholder="Nacionaliteti" Text="{Binding SelectedClient.Nationality}"/>
-                    <Label Grid.Row="4" Grid.Column="0" Text="Signature" />
-                    <Entry Grid.Row="4" Grid.Column="1" Placeholder="Signature" Text="{Binding SelectedClient.Signature}"/>
-                    <Label Grid.Row="5" Grid.Column="0" Text="Gjinia" />
-                    <Entry Grid.Row="5" Grid.Column="1" Placeholder="Gjinia" Text="{Binding SelectedClient.Gender}"/>
-                    <Label Grid.Row="6" Grid.Column="0" Text="ID_PersonalNumber" />
-                    <Entry Grid.Row="6" Grid.Column="1" Placeholder="ID_PersonalNumber" Text="{Binding SelectedClient.ID_PersonalNumber}" Keyboard="Numeric" />
-                    <Label Grid.Row="7" Grid.Column="0" Text="ID_CardNumber" />
-                    <Entry Grid.Row="7" Grid.Column="1" Placeholder="ID_CardNumber" Text="{Binding SelectedClient.ID_CardNumber}" />
-                    <Label Grid.Row="8" Grid.Column="0" Text="ID_GivenBy" />
-                    <Entry Grid.Row="8" Grid.Column="1" Placeholder="ID_GivenBy" Text="{Binding SelectedClient.ID_GivenBy}"/>
-                    <Label Grid.Row="9" Grid.Column="0" Text="Address" />
-                    <Entry Grid.Row="9" Grid.Column="1" Placeholder="Address" Text="{Binding SelectedClient.Address}" />
-                    <Label Grid.Row="10" Grid.Column="0" Text="Email" />
-                    <Entry Grid.Row="10" Grid.Column="1" Placeholder="Email" Text="{Binding SelectedClient.Email}"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Gjinia" />
+                    <Picker x:Name="gjinia" Grid.Row="4" Grid.Column="1" SelectedIndex="{Binding SelectedClient.Gender}"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="ID_PersonalNumber" />
+                    <Entry Grid.Row="5" Grid.Column="1" Placeholder="ID_PersonalNumber" Text="{Binding SelectedClient.ID_PersonalNumber}" Keyboard="Numeric" />
+                    <Label Grid.Row="6" Grid.Column="0" Text="ID_CardNumber" />
+                    <Entry Grid.Row="6" Grid.Column="1" Placeholder="ID_CardNumber" Text="{Binding SelectedClient.ID_CardNumber}" />
+                    <Label Grid.Row="7" Grid.Column="0" Text="ID_GivenBy" />
+                    <Entry Grid.Row="7" Grid.Column="1" Placeholder="ID_GivenBy" Text="{Binding SelectedClient.ID_GivenBy}"/>
+                    <Label Grid.Row="8" Grid.Column="0" Text="Address" />
+                    <Entry Grid.Row="8" Grid.Column="1" Placeholder="Address" Text="{Binding SelectedClient.Address}" />
+                    <Label Grid.Row="9" Grid.Column="0" Text="Email" />
+                    <Entry Grid.Row="9" Grid.Column="1" Placeholder="Email" Text="{Binding SelectedClient.Email}"/>
+                    <Label Grid.Row="10" Grid.Column="0" Text="Nr. Telefonit" />
+                    <Entry Grid.Row="10" Grid.Column="1" Placeholder="Email" Text="{Binding SelectedClient.PhoneNumber}"/>
                     <Label Grid.Row="11" Grid.Column="0" Text="WorkPlace" />
                     <Entry Grid.Row="11" Grid.Column="1" Placeholder="WorkPlace" Text="{Binding SelectedClient.WorkPlace}"/>
                     <Label Grid.Row="12" Grid.Column="0" Text="Leternjoftimi Para" />
                     <Button Grid.Row="12" Grid.Column="1" Text="Imazhi 1" Clicked="Button_ClickedAsync"/>
                     <Label Grid.Row="13" Grid.Column="0" Text="Leternjoftimi Mbrapa" />
-                    <Button Grid.Row="13" Grid.Column="1" Text="Imazhi 1" Clicked="Button_Clicked"/>
+                    <Button Grid.Row="13" Grid.Column="1" Text="Imazhi 2" Clicked="Button_Clicked"/>
+                    <Label Grid.Row="14" Grid.Column="0" Text="Patent Shoferi" />
+                    <Button Grid.Row="14" Grid.Column="1" Text="Imazhi 3" Clicked="Button_Clicked_patent"/>
                 </Grid>
                 <Button Text="Ruaj Klientin" Command="{Binding CreateAClientCommand}" />
             </StackLayout>

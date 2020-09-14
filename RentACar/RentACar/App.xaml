@@ -52,15 +52,111 @@
                 <Setter Property="VerticalOptions" Value="EndAndExpand" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+            </Style>
             <!-- car view images data template for carousel-->
-            <DataTemplate x:Key="CarImageSlider">
-                <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="Transparent">
+            <DataTemplate x:Key="CarImageSliderRegister">
+                <ViewCell>
+                    <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="Transparent">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardViewModel}}, Path=CarDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
+                        </StackLayout.GestureRecognizers>
+                        <Frame
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            Padding="0"
+                            HasShadow="false"
+                            IsClippedToBounds="true"
+                            HeightRequest="290"
+                            MinimumHeightRequest="200"
+                            CornerRadius="19"
+                            BackgroundColor="Transparent">
+                            <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
+                                <ff:CachedImage Opacity="0.85" Source="https://miro.medium.com/max/700/1*NzLGpAE4V7LJCfibfgIlHA@2x.png" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                                <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
+                                    <ff:CachedImage Source="{Binding .Brand}" Aspect="AspectFill"/>
+                                </StackLayout>
+                                <StackLayout MinimumWidthRequest="220" WidthRequest="280" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15,00,15,0">
+                                    <ff:CachedImage BackgroundColor="Transparent" HeightRequest="190" Source="{Binding .CarImageSource}" Aspect="AspectFit"/>
+                                </StackLayout>
+                                <Label Margin="0,0,0,-215" Text="{Binding .Name}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Margin="0,20" Text="{Binding .ProductionYear, StringFormat='{0:MMMM dd, yyyy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                <Label Margin="0,20,50,0" Text="{Binding .Km}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End" HorizontalTextAlignment="Center"/>
+                                <Label Margin="0,20,25,0" Text="Km" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                                <Label Margin="0,40,25,0" Text="01-123-PR" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                                <Label Margin="20,0,0,10" Text="{Binding NextDateOfCheck, Converter={converters:DateConverterDay}}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Margin="180,0,0,10" Text="{Binding NextDateOfCheck, Converter={converters:DateConverterMonth}}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Margin="280,0,0,10" Text="{Binding NextDateOfCheck, StringFormat='{}{0:yy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Margin="15,0,0,10" Text="Data per regjistrim: " Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="CarImageSliderService">
+                <ViewCell>
+                    <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="Transparent">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardViewModel}}, Path=CarDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
+                        </StackLayout.GestureRecognizers>
+                        <Frame
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            Padding="0"
+                            HasShadow="false"
+                            IsClippedToBounds="true"
+                            HeightRequest="290"
+                            MinimumHeightRequest="200"
+                            CornerRadius="19"
+                            BackgroundColor="Transparent">
+                            <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
+                                <ff:CachedImage Opacity="0.85" Source="https://miro.medium.com/max/700/1*NzLGpAE4V7LJCfibfgIlHA@2x.png" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                                <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
+                                    <ff:CachedImage Source="{Binding .Brand}" Aspect="AspectFill"/>
+                                </StackLayout>
+                                <StackLayout MinimumWidthRequest="220" WidthRequest="280" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15,00,15,0">
+                                    <ff:CachedImage BackgroundColor="Transparent" HeightRequest="190" Source="{Binding .CarImageSource}" Aspect="AspectFit"/>
+                                </StackLayout>
+                                <Label Margin="0,0,0,-215" Text="{Binding .Name}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Margin="0,20" Text="{Binding .ProductionYear, StringFormat='{0:MMMM dd, yyyy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                <Label Margin="0,20,50,0" Text="{Binding .Km}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End" HorizontalTextAlignment="Center"/>
+                                <Label Margin="0,20,25,0" Text="Km" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                                <Label Margin="0,40,25,0" Text="{Binding .Targa}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                                <Label Margin="110,0,0,10" Text="{Binding .KmForService}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Margin="15,0,0,10" Text="Km te mbetura per servisim: " Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="CarImageSliderStatus">
+                <ViewCell>
+
+                    <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="Transparent">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardViewModel}}, Path=CarDetailsCommand}"
                                               CommandParameter="{Binding .}" />
                     </StackLayout.GestureRecognizers>
                     <Frame
-                            VerticalOptions="Center"
+                            VerticalOptions="Fill"
                             HorizontalOptions="Fill"
                             Padding="0"
                             HasShadow="false"
@@ -77,10 +173,48 @@
                             <StackLayout MinimumWidthRequest="220" WidthRequest="280" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15,00,15,0">
                                 <ff:CachedImage BackgroundColor="Transparent" HeightRequest="190" Source="{Binding .CarImageSource}" Aspect="AspectFit"/>
                             </StackLayout>
-                            <Label Margin="0,0,0,-200" Text="{Binding .Name}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Margin="0,0,0,-215" Text="{Binding .Name}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
                             <Label Margin="0,20" Text="{Binding .ProductionYear, StringFormat='{0:MMMM dd, yyyy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
                             <Label Margin="0,20,25,0" Text="{Binding .Km}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
-                            <Label Margin="0,40,25,0" Text="01-123-PR" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                            <Label Margin="0,40,25,0" Text="{Binding .Targa}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                            <Label Margin="0,0,0,10" Text="{Binding .Statusi}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                            <Label Margin="25,0,0,10" Text="{Binding .Fuel}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
+                            <Label Margin="0,0,25,10" Text="{Binding .Transmission}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <DataTemplate x:Key="CarImageSlider">
+                <StackLayout Padding="10" WidthRequest="200" HeightRequest="200" BackgroundColor="Transparent">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardViewModel}}, Path=CarDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
+                    </StackLayout.GestureRecognizers>
+                    <Frame
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            Padding="0"
+                            HasShadow="false"
+                            IsClippedToBounds="true"
+                            HeightRequest="290"
+                            MinimumHeightRequest="200"
+                            CornerRadius="19"
+                            BackgroundColor="Transparent">
+                        <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
+                            <ff:CachedImage Opacity="0.85" Source="https://miro.medium.com/max/700/1*NzLGpAE4V7LJCfibfgIlHA@2x.png" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
+                            <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
+                                <ff:CachedImage Source="{Binding .Brand}" Aspect="AspectFill"/>
+                            </StackLayout>
+                            <StackLayout MinimumWidthRequest="220" WidthRequest="280" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15,00,15,0">
+                                <ff:CachedImage BackgroundColor="Transparent" HeightRequest="190" Source="{Binding .CarImageSource}" Aspect="AspectFit"/>
+                            </StackLayout>
+                            <Label Margin="0,0,0,-215" Text="{Binding .Name}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Margin="0,20" Text="{Binding .ProductionYear, StringFormat='{0:MMMM dd, yyyy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
+                            <Label Margin="0,20,25,0" Text="{Binding .Km}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                            <Label Margin="0,40,25,0" Text="{Binding .Targa}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
                             <Label Margin="0,0,0,10" Text="{Binding .Statusi}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
                             <Label Margin="25,0,0,10" Text="{Binding .Fuel}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
                             <Label Margin="0,0,25,10" Text="{Binding .Transmission}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="End"/>
@@ -88,21 +222,21 @@
                     </Frame>
                 </StackLayout>
             </DataTemplate>
-
+            
             <DataTemplate x:Key="TransactionItemDataTemplate">
                 <ViewCell>
                     <StackLayout VerticalOptions="Center" Margin="20,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
-                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterDay}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" FontSize="15"/>
-                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterMonth}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" FontSize="19" />
+                        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" >
+                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterDay}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" FontSize="14"/>
+                            <Label Text="{Binding KohaELeshimit, Converter={converters:DateConverterMonth}}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelStyleDefault}" FontSize="17" />
                         </StackLayout>
-                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" >
                             <Label Text="{Binding DitetELeshimit}" Style="{StaticResource LabelStyleDefault}"  FontAttributes="Bold" FontSize="19" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-                            <Label Text="{Binding CmimiDitor,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="19" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding CmimiDitor,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="17" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
                         </StackLayout>
-                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="Start" HorizontalOptions="EndAndExpand" Padding="0" Margin="0">
-                            <Label Text="{Binding CarName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="17" VerticalOptions="FillAndExpand" />
-                            <Label Text="{Binding ClientName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="17" VerticalOptions="FillAndExpand"/>
+                        <StackLayout Orientation="Vertical" WidthRequest="70" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" Padding="0" Margin="0">
+                            <Label Text="{Binding ClientName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="14" VerticalOptions="FillAndExpand"/>
+                            <Label Text="{Binding CarName}" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleDefault}"  FontSize="14" VerticalOptions="FillAndExpand" LineBreakMode="TailTruncation" />
                         </StackLayout>
                         <Image Source="incoming" WidthRequest="20" HeightRequest="20" Aspect="AspectFit" />
                     </StackLayout>
@@ -151,6 +285,17 @@
                 </StackLayout>
             </DataTemplate>
 
+            <DataTemplate x:Key="ProjectionItemTemplateCars">
+                <StackLayout BackgroundColor="Transparent">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Command}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="{Binding TitleKey}" TextColor="Black"
+          FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="14"
+          HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" />
+                </StackLayout>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
     

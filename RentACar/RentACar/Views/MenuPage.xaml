@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="RentACar.Views.MenuPage"
-             Title="Menu" Opacity="0.9" BackgroundImageSource="https://i.pinimg.com/originals/f7/f6/8f/f7f68f4ef9e52fea71f91547c99e2431.jpg">
+             Title="Menu" Opacity="0.8" BackgroundImageSource="https://i.pinimg.com/originals/f7/f6/8f/f7f68f4ef9e52fea71f91547c99e2431.jpg">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
@@ -13,15 +13,14 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20,60" >
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Start" Padding="20,60" >
         <Image Source="rentlogo" WidthRequest="200" HeightRequest="200" Aspect="AspectFit"
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        <Button BackgroundColor="Transparent" Text="Renti"  VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToDashboardCommand}"/>
-        <Button BackgroundColor="Transparent" Text="Veturat" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToCreateACarCommand}"/>
-        <Button BackgroundColor="Transparent" Text="Menagjimi i klienteve" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
-        <Button BackgroundColor="Transparent" Text="Pagesat" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToPaymentsCommand}"/>
-        <Button BackgroundColor="Transparent" Text="Menagjimi i punetoreve" VerticalOptions="Fill" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
+        <Button ImageSource="outline_home_white_36.png" BackgroundColor="Transparent" Text="  Ballina" VerticalOptions="Fill" HeightRequest="60" HorizontalOptions="StartAndExpand" Command="{Binding GoToDashboardCommand}"/>
+        <Button ImageSource="carMecanic.png"  BackgroundColor="Transparent" Text="  Menaxho Veturat" VerticalOptions="Fill" HeightRequest="60" HorizontalOptions="Start" Command="{Binding GoToCarsCommand}"/>
+        <Button ImageSource="userManagement.png" BackgroundColor="Transparent" Text="  Menaxho Klientet" VerticalOptions="Fill" HorizontalOptions="Start" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
+        <Button ImageSource="paymentsManagement.png" BackgroundColor="Transparent" Text="  Pagesat" VerticalOptions="Fill" HeightRequest="60" HorizontalOptions="Start" Command="{Binding GoToPaymentsCommand}"/>
     </StackLayout>
 
 </ContentPage>

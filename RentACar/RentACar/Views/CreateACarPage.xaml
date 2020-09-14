@@ -6,16 +6,13 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.CreateACarPage">
     <NavigationPage.TitleView>
-        <components:NavTitleView Title="Shto Veture" SubTitle="" SearchVisible="False" />
+        <components:NavTitleView Title="REGJISTRO NJE VETURE" SubTitle="" SearchVisible="False" />
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BorderColor" Value="Gray"/>
-                <Setter Property="BorderWidth" Value="1"/>
-                <Setter Property="CornerRadius" Value="19"/>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="#101010"/>
                 <Setter Property="HeightRequest" Value="40"/>
                 <Setter Property="FontSize" Value="12"/>
             </Style>
@@ -37,22 +34,28 @@
                     <Label  Text="VitiIProdhimit" />
                     <DatePicker  Date="{Binding SelectedCar.ProductionYear}" MinimumDate="01/01/1980"/>
                     <Label  Text="Numri I Uleseve" />
-                    <Picker x:Name="numberOfSeats" SelectedItem="{Binding SelectedCar.NumberOfSeats,Mode=TwoWay}" SelectedIndex="0"/>
+                    <Picker x:Name="numberOfSeats" SelectedItem="{Binding SelectedCar.NumberOfSeats,Mode=TwoWay}" SelectedIndex="1"/>
                     <Label  Text="Fuel" />
                     <Picker x:Name="fuelPicker" SelectedItem="{Binding SelectedCar.Fuel,Mode=TwoWay}" SelectedIndex="0"/>
                     <Label  Text="Ngjyra"/>
                     <Entry  Placeholder="Ngjyra" Text="{Binding SelectedCar.Color}" />
                     <Label  Text="Transmission" />
-                    <Picker x:Name="transmissionPicker" SelectedItem="{Binding SelectedCar.Transmission,Mode=TwoWay}" SelectedIndex="0" />
+                    <Picker x:Name="transmissionPicker" SelectedItem="{Binding SelectedCar.Transmission,Mode=TwoWay}" SelectedIndex="1" />
+                    <Label  Text="Targa" />
+                    <Entry  Placeholder="Numri i targes" Text="{Binding SelectedCar.Targa}" />
                     <Label  Text="Km te kaluara" />
                     <Entry  Placeholder="Km te kaluara" Text="{Binding SelectedCar.Km}" Keyboard="Numeric" />
                     <Label  Text="Data e regjistrimit" />
-                    <DatePicker   Date="{Binding SelectedCar.DateOfRegister}" />
+                    <DatePicker   Date="{Binding SelectedCar.DateOfRegister}" MinimumDate="01/01/1980"/>
                     <Label  Text="Data e kontrolles se fundit" />
-                    <DatePicker Date="{Binding SelectedCar.DateOfStartCheck}"/>
+                    <DatePicker Date="{Binding SelectedCar.DateOfStartCheck}" MinimumDate="01/01/1980"/>
                     <Label  Text="Data e kontrolles se rradhes" />
-                    <DatePicker  Date="{Binding SelectedCar.NextDateOfCheck}"/>
-                    <StackLayout >
+                    <DatePicker  Date="{Binding SelectedCar.NextDateOfCheck}" MinimumDate="{Binding SelectedCar.DateOfStartCheck}"/>
+                    <Label Text="Kontrolli per servis permes :"/>
+                    <Picker x:Name="servisPicker" SelectedIndex="0"/>
+                    <Entry Placeholder="Gjdo ? Kilometra" x:Name="servisEntry" Text="{Binding SelectedCar.KmForService}"/>
+                <Picker x:Name="kohorePicker" />
+                <StackLayout >
                         <Label Text="Imazhi i vetures(opcionale)" />
                         <Button Text="Zgjedh ne foto" Clicked="Button_ClickedAsync"/>
                     </StackLayout>

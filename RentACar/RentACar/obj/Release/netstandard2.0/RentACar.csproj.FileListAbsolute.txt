@@ -60,3 +60,8 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\SezonetPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\TarifatPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\ZbritjetPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\DailyReportsPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\CarsOperationPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\CarsServiseTimePage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\CarsStatusPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Release\netstandard2.0\Views\CarsTimeForRegistrationAndServisePage.xaml.g.cs

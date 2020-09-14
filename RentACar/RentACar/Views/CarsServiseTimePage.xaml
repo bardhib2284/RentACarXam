@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.CarsServiseTimePage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="Koha per servisim" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+
+            <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="Transparent">
+                <Label Margin="5,0,0,0"  Text="Veturat per servisim" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                <Label Margin="5,0,0,0"  Text="Te renditura sipas Km me te peraferta per servis" FontSize="12" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                <BoxView Margin="5,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                <BoxView Margin="5,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand">
+                <ListView VerticalOptions="FillAndExpand"
+                                                    ItemsSource="{Binding ServiceCloseCars}" 
+                                                    IsVisible="{Binding HasCars}"
+                                RowHeight="300" ItemTemplate="{StaticResource CarImageSliderService}"
+                                                    HorizontalOptions="FillAndExpand">
+                </ListView>
+                <StackLayout IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE REGJISTRUARA NE RENT" LineBreakMode="WordWrap" 
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                       Style="{StaticResource LabelStyleDefault}" Margin="30"
+                       VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                    <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}"/>
+                </StackLayout >
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

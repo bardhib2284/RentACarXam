@@ -175,11 +175,11 @@ namespace RentACar.ViewModels
                 var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars", httpContent);
                 if (response.IsSuccessStatusCode)
                 {
-                    UserDialogs.Instance.Alert("Vetura u shtua me sukses", "Sukses", "OK");
+                    UserDialogs.Instance.Alert("Vetura u leshua me sukses", "Sukses", "OK");
                 }
                 else
                 {
-                    UserDialogs.Instance.Alert("Vetura nuk u shtua me sukses", "Error", "OK");
+                    UserDialogs.Instance.Alert("Vetura nuk u leshua me sukses", "Error", "OK");
                 }
                 var responseString = await response.Content.ReadAsStringAsync();
                 RentedCar addedCar = JsonConvert.DeserializeObject<RentedCar>(responseString);

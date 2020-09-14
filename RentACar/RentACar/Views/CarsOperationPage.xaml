@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:RentACar.Components"
+             mc:Ignorable="d"
+             x:Class="RentACar.Views.CarsOperationPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="VETURAT" SubTitle="Opero me veturat" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Padding="10,0" Spacing="0">
+            <Label Margin="10,0,0,0" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" Text="Veturat" HeightRequest="60" FontSize="19" TextColor="Black" FontAttributes="Bold"/>
+            <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+            <BoxView Margin="10,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToCreateACarCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="10,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Regjistro nje veture" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Regjistro nje veture ne rent" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToCarsStatusesCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="10,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Statusi i veturave" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Shiko statusin e veturave" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToCarsRegisterAndServiceCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="10,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Koha e regjistrimit- Sigurimi" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Lista e veturave kur e kan kohen te regjistrohen" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
+            <StackLayout Spacing="0" Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToCarsServicesTimeCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout Orientation="Vertical" Margin="10,10,20,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="50" HeightRequest="50">
+                    <Label Text="Kontrolla teknike" Style="{StaticResource ValueLabel}" VerticalTextAlignment="End" />
+                    <Label Text="Lista e veturave kur e kan kohen per kontroll teknike" Style="{StaticResource TitleLabel}" VerticalTextAlignment="Start" />
+                </StackLayout>
+                <BoxView Style="{StaticResource DisplayValueBox}" Color="{StaticResource DarkGray}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

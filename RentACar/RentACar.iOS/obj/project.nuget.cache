@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "z5jPr8ELWkMxyeQeMWP2z9q1fY+9/3xrDi9gwHpwbJFQ5pL44JBhw+tLdTSKZxu41jy9uR5g477gjcTuV58zxg==",
+  "dgSpecHash": "+CVSsVde4w9PL2RzwLMRRNFTZ4uZMWxCjbLavBOJFH+ygfWlGwBG1kTAridChRvagsOwRfNeN0Bwo+RpqrLCug==",
   "success": true,
   "projectFilePath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.iOS\\RentACar.iOS.csproj",
   "expectedPackageFiles": [
@@ -44,7 +44,7 @@
       "code": "NU1605",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package downgrade: Xamarin.Forms from 4.7.0.1080 to 4.7.0.968. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Forms (>= 4.7.0.1080) \r\n RentACar.iOS -> Xamarin.Forms (>= 4.7.0.968)",
+      "message": "Detected package downgrade: Xamarin.Forms from 4.8.0.1269 to 4.7.0.968. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Forms (>= 4.8.0.1269) \r\n RentACar.iOS -> Xamarin.Forms (>= 4.7.0.968)",
       "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "Xamarin.iOS,Version=v1.0",

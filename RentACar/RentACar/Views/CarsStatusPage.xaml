@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             xmlns:viewmodels="clr-namespace:RentACar.ViewModels" xmlns:components="clr-namespace:RentACar.Components"
+             x:Class="RentACar.Views.CarsStatusPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="Statusi i veturave" SearchVisible="True" Margin="0,0,-30,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+        <StackLayout Padding="20" VerticalOptions="FillAndExpand">
+            <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="Transparent">
+                <Label Text="Veturat" FontSize="Large" Margin="10,0" FontAttributes="Bold" TextColor="Black"/>
+                <controls:CarouselViewControl Orientation="Horizontal" ShowIndicators="False" BackgroundColor="Transparent"
+                                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                                  ShowArrows="True" Position="{Binding TabPosition}"
+                                                  ItemsSource="{Binding ProjectionItemsCars}"
+                                                  HeightRequest="60" ArrowsTintColor="Black"
+                                                  ArrowsBackgroundColor="Transparent"
+                                                  ItemTemplate="{StaticResource ProjectionItemTemplateCars}">
+
+                </controls:CarouselViewControl>
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="FillAndExpand">
+                <ListView VerticalOptions="FillAndExpand"
+                                                ItemsSource="{Binding Cars}" 
+                                                IsVisible="{Binding HasCars}"
+                            RowHeight="300" ItemTemplate="{StaticResource CarImageSliderStatus}"
+                                                HorizontalOptions="FillAndExpand">
+                </ListView>
+                <StackLayout IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE REGJISTRUARA NE RENT" LineBreakMode="WordWrap" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                   Style="{StaticResource LabelStyleDefault}" Margin="30"
+                   VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                    <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}"/>
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" >
+                <ListView VerticalOptions="FillAndExpand"
+                                                ItemsSource="{Binding AvailableCars}" 
+                                                IsVisible="{Binding HasAvailableCars}"
+                            RowHeight="300" ItemTemplate="{StaticResource CarImageSliderStatus}"
+                                                HorizontalOptions="FillAndExpand">
+                </ListView>
+                <StackLayout IsVisible="{Binding HasAvailableCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE LIRA NE RENT" LineBreakMode="WordWrap" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                   Style="{StaticResource LabelStyleDefault}" Margin="30" TextColor="Black"
+                   VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                    <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}"/>
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}">
+                <ListView VerticalOptions="FillAndExpand"
+                                                ItemsSource="{Binding TakenCars}" 
+                                                IsVisible="{Binding HasTakenCars}"
+                            RowHeight="300" ItemTemplate="{StaticResource CarImageSliderStatus}"
+                                                HorizontalOptions="FillAndExpand">
+                </ListView>
+                <StackLayout IsVisible="{Binding HasTakenCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE LESHUARA ME QIRA" LineBreakMode="WordWrap" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                   Style="{StaticResource LabelStyleDefault}" Margin="30" TextColor="Black"
+                   VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='3'}">
+                <ListView VerticalOptions="FillAndExpand"
+                                                ItemsSource="{Binding UnregisteredCars}" 
+                                                IsVisible="{Binding HasUnregisteredCars}"
+                            RowHeight="300" ItemTemplate="{StaticResource CarImageSliderStatus}"
+                                                HorizontalOptions="FillAndExpand">
+                </ListView>
+                <StackLayout IsVisible="{Binding HasUnregisteredCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA TE PA REGJISTRUARA" LineBreakMode="WordWrap" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                   Style="{StaticResource LabelStyleDefault}" Margin="30" TextColor="Black"
+                   VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout >
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='4'}">
+                    <ListView VerticalOptions="FillAndExpand"
+                                                ItemsSource="{Binding OnServiseCars}" 
+                                                IsVisible="{Binding HasOnServiceCars}"
+                            RowHeight="300" ItemTemplate="{StaticResource CarImageSliderStatus}"
+                                                HorizontalOptions="FillAndExpand">
+                    </ListView>
+                <StackLayout IsVisible="{Binding HasOnServiceCars,Converter={converters:InverseBoolConverter}}">
+                    <Label Text="NUK KA VETURA NE SERVIS" LineBreakMode="WordWrap" 
+                   VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                   Style="{StaticResource LabelStyleDefault}" Margin="30" TextColor="Black"
+                   VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout >
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

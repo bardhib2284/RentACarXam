@@ -25,6 +25,25 @@ namespace RentACar.Views
             transmissionPicker.SelectedItem = "Automatic";
             fuelPicker.SelectedItem = "Diezel";
             numberOfSeats.SelectedItem = 4;
+            servisPicker.ItemsSource = new List<string> { "Kilometrazh", "Kohor" };
+            servisPicker.SelectedIndexChanged += ServisPicker_SelectedIndexChanged;
+            kohorePicker.ItemsSource = new List<string> { "6 Mujor","9 Mujor", "Vjetor" };
+            kohorePicker.IsVisible = false;
+            servisEntry.IsVisible = false;
+        }
+
+        private void ServisPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(((Picker)sender).SelectedItem.ToString() == "Kilometrazh")
+            {
+                kohorePicker.IsVisible = false;
+                servisEntry.IsVisible = true;
+            }
+            else if (((Picker)sender).SelectedItem.ToString() == "Vjetor")
+            {
+                kohorePicker.IsVisible = true;
+                servisEntry.IsVisible = false;
+            }
         }
 
         private async void Button_ClickedAsync(object sender, EventArgs e)

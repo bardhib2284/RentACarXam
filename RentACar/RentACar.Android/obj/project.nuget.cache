@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rnL2RyH309pd5DSBiLjHkni95G85BmK8jKX6Xfmh67DWeeAI1CLZCQPsQveCMD7IcZO//qZvhC7KlZDG3C0fYw==",
+  "dgSpecHash": "aqx2flqBRN44tDZaECPXJ4rLNwPad5Bcjpnyqan24UArI+yDzuNzK1e4sOnB45RZr1AQUdZNrFz5q+Dxq2eTjg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.Android\\RentACar.Android.csproj",
   "expectedPackageFiles": [
@@ -64,5 +64,16 @@
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
     "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\xamarin.forms\\4.7.0.1080\\xamarin.forms.4.7.0.1080.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 4.8.0.1269 to 4.7.0.1080. Reference the package directly from the project to select a different version. \r\n RentACar.Android -> RentACar -> Xamarin.Forms (>= 4.8.0.1269) \r\n RentACar.Android -> Xamarin.Forms (>= 4.7.0.1080)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "MonoAndroid,Version=v9.0"
+      ]
+    }
+  ]
 }

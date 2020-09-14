@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RentACar",
+    "\\RentACar\\RentACar"
   ],
+  "SelectedNode": "\\RentACar.sln",
   "PreviewInSolutionExplorer": false
 }

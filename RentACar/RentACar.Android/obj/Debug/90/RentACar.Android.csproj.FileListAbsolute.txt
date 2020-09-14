@@ -90,10 +90,7 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\luggages.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\passengers.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\transmission.png
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\mipmap-hdpi\rentlogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\mipmap-anydpi-v26\rentlogo.png
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\mipmap-mdpi\rentlogo.png
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\mipmap-xhdpi\rentlogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\rentlogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\audi.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\mercedes.png
@@ -104,6 +101,14 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\services.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\services1.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\incoming.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\outline_home_24.xml
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\mipmap-hdpi\outline_home_white_24.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\mipmap-mdpi\outline_home_white_24.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\outline_home_white_24.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\outline_home_white_36.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\carmecanic.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\usermanagement.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\res\drawable\paymentsmanagement.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\uploadflags.txt
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\resolvedassemblies.hash
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Debug\90\android\assets\Acr.UserDialogs.dll

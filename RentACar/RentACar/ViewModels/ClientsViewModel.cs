@@ -57,6 +57,12 @@ namespace RentACar.ViewModels
             get { return tabPosition; }
             set { SetProperty(ref tabPosition, value); }
         }
+        private bool isEditing;
+        public bool IsEditing
+        {
+            get { return isEditing; }
+            set { SetProperty(ref isEditing, value); }
+        }
         public virtual List<MenuItem> ProjectionItems { get; protected set; }
 
         public ICommand GoToCreateClientCommand { get; set; }
@@ -64,7 +70,8 @@ namespace RentACar.ViewModels
         public ICommand GoToClientsPageCommand { get; set; }
         public ICommand GoToClientsUnwantedPageCommand { get; set; }
         public ICommand GoToClientDetailsCommand { get; set; }
-
+        public ICommand DeleteClientCommand { get; set; }
+        public ICommand EditClientCommand { get; set; }
         public ClientsViewModel()
         {
             Clients = new ObservableCollection<Client>();
@@ -73,6 +80,8 @@ namespace RentACar.ViewModels
             GoToClientsPageCommand = new Command(async () => await GoToClientsPageAsync());
             GoToClientsUnwantedPageCommand = new Command(async () => await GoToClientsUnwantedPageAsync());
             GoToClientDetailsCommand = new Command(async (c) => await GoToClientDetailsAsync((c as Client)));
+            DeleteClientCommand = new Command(async () => await DeleteClientAsync());
+            EditClientCommand = new Command(async () => await EditClientAsync());
             var projectionItems = new List<MenuItem>() {
                 new MenuItem(){Name="transactions",TitleKey="Detajet e klientit", Parametar="all"},
                 new MenuItem(){Name="transactions",TitleKey="Transaksionet", Parametar="finished"},
@@ -81,28 +90,62 @@ namespace RentACar.ViewModels
             ClientsTransactions = new ObservableCollection<RentedCar>();
         }
 
+        private async Task EditClientAsync()
+        {
+            IsEditing = true;
+            CreateClientPage CreateAClientPage = new CreateClientPage();
+            CreateAClientPage.BindingContext = this;
+            (App.instance.MainPage as MainPage).IsPresented = false;
+            await App.instance.PushAsyncNewPage(CreateAClientPage);
+        }
+
+        private async Task DeleteClientAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                SelectedClient.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
+                var json = JsonConvert.SerializeObject(SelectedClient);
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await App.client.DeleteAsync(App.API_URL_BASE + "rents/clients/delete/"+SelectedClient.RentId + "/" + SelectedClient.Id);
+                if (response.IsSuccessStatusCode)
+                {
+                    UserDialogs.Instance.Alert("Clienti u fshi me sukses", "Sukses", "OK");
+                    Clients.Remove(SelectedClient);
+                    SelectedClient = new Client();
+                    HasClients = Clients.Any();
+                    await App.instance.GoToPreviousPage();
+                }
+                else
+                {
+                    UserDialogs.Instance.Alert("Clienti nuk u fshi me sukses", "Error", "OK");
+                    return;
+                }
+            }
+        }
+
         public async Task GoToClientDetailsAsync(Client c)
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-            ClientDetailPage ClientsPage = new ClientDetailPage();
-            ClientsPage.BindingContext = this;
-            SelectedClient = c;
-            ClientsTransactions = new ObservableCollection<RentedCar>();
-            if (App.instance.DashboardViewModel.HasLatestTransactions)
-            {
-                var list = App.instance.DashboardViewModel.RentedCarsByRentId.OrderByDescending(i => i.KohaELeshimit);
-                foreach (var transaction in list)
+                ClientDetailPage ClientsPage = new ClientDetailPage();
+                ClientsPage.BindingContext = this;
+                SelectedClient = c;
+                ClientsTransactions = new ObservableCollection<RentedCar>();
+                if (App.instance.DashboardViewModel.HasLatestTransactions)
                 {
-                    if (transaction.ClientId == SelectedClient.Id)
+                    var list = App.instance.DashboardViewModel.RentedCarsByRentId.OrderByDescending(i => i.KohaELeshimit);
+                    foreach (var transaction in list)
                     {
-                        ClientsTransactions.Add(transaction);
+                        if (transaction.ClientId == SelectedClient.Id)
+                        {
+                            ClientsTransactions.Add(transaction);
+                        }
                     }
                 }
-            }
-            OnPropertyChanged("ClientsTransactions");
-            await Task.Delay(1000);
-            await App.instance.PushAsyncNewPage(ClientsPage);
+                OnPropertyChanged("ClientsTransactions");
+                await Task.Delay(1000);
+                await App.instance.PushAsyncNewPage(ClientsPage);
             }
         }
 
@@ -143,29 +186,62 @@ namespace RentACar.ViewModels
 
         private async Task CreateAClientAsync()
         {
-            SelectedClient.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
-            var json = JsonConvert.SerializeObject(SelectedClient);
-            var g = json.Remove(1, 7);
-            App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
-            HttpContent httpContent = new StringContent(g, Encoding.UTF8, "application/json");
-            var response = await App.client.PostAsync(App.API_URL_BASE + "rents/clients", httpContent);
-            if (response.IsSuccessStatusCode)
+            if(IsEditing)
             {
-                UserDialogs.Instance.Alert("Clienti u shtua me sukses", "Sukses", "OK");
+                using (UserDialogs.Instance.Loading("Loading"))
+                {
+                    SelectedClient.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
+                    SelectedClient.Signature = ".";
+                    var json = JsonConvert.SerializeObject(SelectedClient);
+                    App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                    HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await App.client.PutAsync(App.API_URL_BASE + "rents/clients/" + SelectedClient.RentId, httpContent);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Clients.Remove(SelectedClient);
+                        UserDialogs.Instance.Alert("Clienti u editua me sukses", "Sukses", "OK");
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.Alert("Clienti nuk u editua me sukses", "Error", "OK");
+                    }
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    Client addedClient = JsonConvert.DeserializeObject<Client>(responseString);
+                    SelectedClient = addedClient;
+                    Clients.Add(SelectedClient);
+                    HasClients = true;
+                }
+                return;
             }
-            else
+            using (UserDialogs.Instance.Loading("Loading"))
             {
-                UserDialogs.Instance.Alert("Clienti nuk u shtua me sukses", "Error", "OK");
+                SelectedClient.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
+                SelectedClient.Signature = ".";
+                var json = JsonConvert.SerializeObject(SelectedClient);
+                var g = json.Remove(1, 7);
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(g, Encoding.UTF8, "application/json");
+                var response = await App.client.PostAsync(App.API_URL_BASE + "rents/clients", httpContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    UserDialogs.Instance.Alert("Clienti u shtua me sukses", "Sukses", "OK");
+                }
+                else
+                {
+                    UserDialogs.Instance.Alert("Clienti nuk u shtua me sukses", "Error", "OK");
+                }
+                var responseString = await response.Content.ReadAsStringAsync();
+                Client addedClient = JsonConvert.DeserializeObject<Client>(responseString);
+                Clients.Add(addedClient);
+                HasClients = Clients.Any();
             }
-            var responseString = await response.Content.ReadAsStringAsync();
-            Client addedClient = JsonConvert.DeserializeObject<Client>(responseString);
-            Clients.Add(addedClient);
-            HasClients = Clients.Any();
+            
         }
 
         private async Task GoToCreateClientAsync()
         {
             SelectedClient = new Client();
+            IsEditing = false;
             CreateClientPage CreateAClientPage = new CreateClientPage();
             CreateAClientPage.BindingContext = this;
             (App.instance.MainPage as MainPage).IsPresented = false;

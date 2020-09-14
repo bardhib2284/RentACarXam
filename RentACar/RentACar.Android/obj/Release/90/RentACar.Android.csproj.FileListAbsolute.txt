@@ -693,3 +693,11 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\services.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\services1.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\incoming.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\outline_home_24.xml
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\mipmap-hdpi\outline_home_white_24.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\mipmap-mdpi\outline_home_white_24.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\outline_home_white_24.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\outline_home_white_36.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\carmecanic.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\usermanagement.png
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\paymentsmanagement.png

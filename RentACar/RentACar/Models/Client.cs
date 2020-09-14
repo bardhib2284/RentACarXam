@@ -28,8 +28,10 @@ namespace RentACar.Models
         public byte[] ClientImageFront { get; set; }
         public byte[] ClientImageBack { get; set; }
         public bool IsUnwanted { get; set; }
+        [JsonIgnore]
         private MemoryStream ms => new MemoryStream(ClientImageFront);
-
+        public byte[] ClientPatentShofer { get; set; }
+        public int PhoneNumber { get; set; }
         [JsonIgnore]
         public ImageSource ClientFrontImage
         {
@@ -43,7 +45,7 @@ namespace RentACar.Models
                 }
                 else
                 {
-                    return ImageSource.FromFile("Audi.png");
+                    return ImageSource.FromFile("Passengers.png");
                 }
                 
             }

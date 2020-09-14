@@ -25,5 +25,9 @@ namespace RentACar.Models
         public decimal CmimiTotal { get; set; }
         [JsonIgnore]
         public Cmimet Cmimi { get; set; }
+        public bool? KaPesuarAksident { get; set; }
+        public bool? KaThyerNdonjeRregull { get; set; }
+        public int KilometrazhiAktual { get; set; }
+
     }
 }

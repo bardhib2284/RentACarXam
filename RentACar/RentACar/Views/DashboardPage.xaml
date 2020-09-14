@@ -38,7 +38,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Frame Grid.Row="0" Grid.Column="0" Padding="5" BackgroundColor="Transparent">
+                    <!-- <Frame Grid.Row="0" Grid.Column="0" Padding="5" BackgroundColor="Transparent">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <ff:CachedImage HorizontalOptions="Start" Source="https://image.flaticon.com/icons/png/512/1466/1466703.png" WidthRequest="90" Aspect="AspectFit"/>
                             <StackLayout VerticalOptions="Center">
@@ -46,30 +46,30 @@
                                 <Label Text="{Binding TeHyrat,Converter={converters:EuroAdditionConverter}}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
                             </StackLayout>
                         </StackLayout>
-                    </Frame>
+                    </Frame>-->
                     <Frame Grid.Row="0" Grid.Column="1" Padding="0" BackgroundColor="Transparent">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="90" Aspect="AspectFit" Source="services1"/>
+                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="70" Aspect="AspectFit" Source="services1"/>
                             <StackLayout VerticalOptions="Center">
-                                <Label Text="Serviset" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"/>
+                                <Label Text="Serviset" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
                                 <Label Text="{Binding TeHyrat}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
                             </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Row="1" Grid.Column="0" Padding="0" BackgroundColor="Transparent">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="90" Aspect="AspectFit" Source="https://images.vexels.com/media/users/3/128573/isolated/preview/057cf8e7e960d13efa5f6240456fba15-red-circle-retro-car-by-vexels.png"/>
+                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="70" Aspect="AspectFit" Source="https://images.vexels.com/media/users/3/128573/isolated/preview/057cf8e7e960d13efa5f6240456fba15-red-circle-retro-car-by-vexels.png"/>
                             <StackLayout VerticalOptions="Center">
-                                <Label Text="Veturat" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" />
+                                <Label Text="Veturat" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="15" HorizontalTextAlignment="Center" />
                                 <Label Text="{Binding Cars.Count}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
                             </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Row="1" Grid.Column="1" Padding="0" BackgroundColor="Transparent">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="90" Aspect="AspectFit" Source="https://img.pngio.com/client-icon-png-371736-free-icons-library-client-png-300_300.jpg"/>
+                            <ff:CachedImage HorizontalOptions="Start" WidthRequest="70" Aspect="AspectFit" Source="https://img.pngio.com/client-icon-png-371736-free-icons-library-client-png-300_300.jpg"/>
                             <StackLayout VerticalOptions="Center">
-                                <Label Text="Klientet" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"/>
+                                <Label Text="Klientet" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontSize="15" HorizontalTextAlignment="Center"/>
                                 <Label Text="{Binding Clients.Count}" Style="{StaticResource LabelStyleDefault}" TextColor="White" FontAttributes="Bold" FontSize="22" HorizontalTextAlignment="Center"/>
                             </StackLayout>
                         </StackLayout>
@@ -88,8 +88,8 @@
                     </controls:CarouselViewControl>
                 </StackLayout>
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="Fill">
-                    <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
-                          ItemsSource="{Binding LatestTransactions}" SeparatorColor="White" RowHeight="80" 
+                    <ListView SeparatorColor="Transparent" BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                          ItemsSource="{Binding LatestTransactions}" RowHeight="100" 
                             ItemTemplate="{StaticResource TransactionItemDataTemplate}"  >
                         
                     </ListView>
@@ -97,8 +97,8 @@
                 </StackLayout>
                 
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
-                    <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
-                          ItemsSource="{Binding LatestTransactionsFinished}" SeparatorColor="White" RowHeight="80" 
+                    <ListView SeparatorColor="Transparent" BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
+                          ItemsSource="{Binding LatestTransactionsFinished}" RowHeight="100" 
                           ItemTemplate="{StaticResource TransactionItemDataTemplate}">
                         
                     </ListView>
@@ -107,7 +107,7 @@
 
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}" VerticalOptions="Fill">
                     <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
-                          ItemsSource="{Binding LatestTransactionsOnGoing}" SeparatorColor="White" RowHeight="80" 
+                          ItemsSource="{Binding LatestTransactionsOnGoing}" SeparatorColor="Transparent" RowHeight="100" 
                               ItemTemplate="{StaticResource TransactionItemDataTemplate}">
                         
                     </ListView>
@@ -116,7 +116,7 @@
                 
                 <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='3'}" VerticalOptions="Fill">
                     <ListView BackgroundColor="Transparent" VerticalOptions="Fill" SelectionMode="None" Margin="20" MinimumHeightRequest="75"
-                          ItemsSource="{Binding LatestTransactionsLate}" SeparatorColor="White" RowHeight="80" 
+                          ItemsSource="{Binding LatestTransactionsLate}" SeparatorColor="Transparent" RowHeight="100" 
                               ItemTemplate="{StaticResource TransactionItemDataTemplate}">
                         
                     </ListView>
