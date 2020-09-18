@@ -90,10 +90,7 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\luggages.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\passengers.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\transmission.png
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\mipmap-hdpi\rentlogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\mipmap-anydpi-v26\rentlogo.png
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\mipmap-mdpi\rentlogo.png
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\mipmap-xhdpi\rentlogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\rentlogo.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\audi.png
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar.Android\obj\Release\90\res\drawable\mercedes.png

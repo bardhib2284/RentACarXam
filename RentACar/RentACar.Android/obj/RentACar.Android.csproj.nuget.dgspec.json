@@ -47,9 +47,21 @@
               "target": "Package",
               "version": "[5.2.0, )"
             },
+            "CarouselView.FormsPlugin": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "Plugin.CurrentActivity": {
               "target": "Package",
               "version": "[2.1.0.4, )"
+            },
+            "Plugin.CurrentActivity": {
+              "target": "Package",
+              "version": "[2.1.0.4, )"
+            },
+            "Syncfusion.Xamarin.Pdf": {
+              "target": "Package",
+              "version": "[18.1.0.59, )"
             },
             "Syncfusion.Xamarin.Pdf": {
               "target": "Package",
@@ -59,6 +71,14 @@
               "target": "Package",
               "version": "[1.5.3.2, )"
             },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.5.3.2, )"
+            },
+            "Xamarin.FFImageLoading": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
             "Xamarin.FFImageLoading": {
               "target": "Package",
               "version": "[2.4.11.982, )"
@@ -66,6 +86,14 @@
             "Xamarin.FFImageLoading.Forms": {
               "target": "Package",
               "version": "[2.4.11.982, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[4.7.0.1080, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
