@@ -10,5 +10,7 @@ namespace RentACar.Dependencies
         void Open(byte[] byteArray, string name);
 
         string SaveFile(byte[] byteArray, string name);
+
+        string RetrivePathForPDF(string name);
     }
 }

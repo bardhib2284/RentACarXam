@@ -149,12 +149,12 @@ namespace RentACar.ViewModels
             }
         }
 
-        private async Task GoToClientsPageAsync()
+        public async Task GoToClientsPageAsync()
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
                 ClientsPage ClientsPage = new ClientsPage();
-                App.instance.ClientsViewModel = new ClientsViewModel();
+                App.instance.ClientsViewModel = App.instance.ClientsViewModel == null ? new ClientsViewModel() : App.instance.ClientsViewModel;
                 ClientsPage.BindingContext = App.instance.ClientsViewModel;
                 Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(App.instance.DashboardViewModel.CurrentRent);
                 (App.instance.MainPage as MainPage).IsPresented = false;

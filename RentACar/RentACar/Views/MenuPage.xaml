@@ -13,14 +13,84 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Start" Padding="20,60" >
-        <Image Source="rentlogo" WidthRequest="200" HeightRequest="200" Aspect="AspectFit"
-                VerticalOptions="FillAndExpand" 
+    <StackLayout x:Name="Holder" VerticalOptions="FillAndExpand" HorizontalOptions="Start" Padding="20,10" >
+        <Image Source="rentlogo" WidthRequest="150" HeightRequest="150" Aspect="AspectFit"
+                VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
-        <Button ImageSource="outline_home_white_36.png" BackgroundColor="Transparent" Text="  Ballina" VerticalOptions="Fill" HeightRequest="60" HorizontalOptions="StartAndExpand" Command="{Binding GoToDashboardCommand}"/>
-        <Button ImageSource="carMecanic.png"  BackgroundColor="Transparent" Text="  Menaxho Veturat" VerticalOptions="Fill" HeightRequest="60" HorizontalOptions="Start" Command="{Binding GoToCarsCommand}"/>
-        <Button ImageSource="userManagement.png" BackgroundColor="Transparent" Text="  Menaxho Klientet" VerticalOptions="Fill" HorizontalOptions="Start" HeightRequest="60" Command="{Binding GoToClientsCommand}"/>
-        <Button ImageSource="paymentsManagement.png" BackgroundColor="Transparent" Text="  Pagesat" VerticalOptions="Fill" HeightRequest="60" HorizontalOptions="Start" Command="{Binding GoToPaymentsCommand}"/>
+
+        <Button ImageSource="outline_home_white_36.png" Margin="-15,0" BackgroundColor="Transparent" 
+                Text="  Ballina" VerticalOptions="Fill" HeightRequest="60" 
+                HorizontalOptions="StartAndExpand" Command="{Binding GoToDashboardCommand}"/>
+
+        <Expander VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+            <Expander.Header>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="carMecanic.png" />
+                    <Label WidthRequest="150" Text="  MENAXHO VETURAT" TextColor="White" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"/>
+                    <Image Margin="80,0,0,0" Source="https://mbotaswbcw-flywheel.netdna-ssl.com/wp-content/uploads/sites/6/2019/06/white-down-arrow-png-2.png" 
+                           WidthRequest="30" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Expander.Header>
+            <Expander.Content>
+                <StackLayout Spacing="-5" Margin="40,5" VerticalOptions="Fill"  HorizontalOptions="StartAndExpand">
+                    <Button BackgroundColor="Transparent" FontSize="11"
+                Text="Regjistro nje veture" VerticalOptions="Fill" 
+                HorizontalOptions="Start" Command="{Binding GoToCreateACarCommand}"/>
+                    <Button  BackgroundColor="Transparent" FontSize="11"
+                Text="Statusi i veturave" VerticalOptions="Fill"
+                HorizontalOptions="Start" Command="{Binding GoToCarsStatusesCommand}"/>
+                    <Button BackgroundColor="Transparent" FontSize="11"
+                Text="Koha e regjistrimit- Sigurimi" VerticalOptions="Fill"
+                HorizontalOptions="Start" Command="{Binding GoToCarsRegisterAndServiceCommand}"/>
+                    <Button BackgroundColor="Transparent" FontSize="11"
+                Text="Kontrolla teknike" VerticalOptions="Fill"
+                HorizontalOptions="Start" Command="{Binding GoToCarsServicesTimeCommand}"/>
+                </StackLayout>
+            </Expander.Content>
+        </Expander>
+        
+        <Expander VerticalOptions="Fill" HorizontalOptions="StartAndExpand">
+            <Expander.Header>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <Image Source="userManagement.png" />
+                    <Label WidthRequest="150" Text="  MENAXHO KLIENTET" TextColor="White" VerticalTextAlignment="Center" FontSize="14" FontAttributes="Bold"/>
+                    <Image Margin="80,0,0,0" Source="https://mbotaswbcw-flywheel.netdna-ssl.com/wp-content/uploads/sites/6/2019/06/white-down-arrow-png-2.png" 
+                           WidthRequest="30" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Expander.Header>
+            <Expander.Content>
+                <StackLayout Spacing="-5" Margin="40,5" VerticalOptions="Fill"  HorizontalOptions="StartAndExpand">
+                    <Button BackgroundColor="Transparent" FontSize="11"
+                Text="Regjistro Individ" VerticalOptions="Fill"
+                HorizontalOptions="Start" Command="{Binding GoToClientsPageCommand}"/>
+                    <Button  BackgroundColor="Transparent" FontSize="11"
+                Text="Klientet e pa deshiruar" VerticalOptions="Fill"
+                HorizontalOptions="Start" Command="{Binding GoToClientsUnwantedPageCommand}"/>
+                    <Button BackgroundColor="Transparent" FontSize="11"
+                Text="Regjistro Biznes" VerticalOptions="Fill"
+                HorizontalOptions="Start" Command="{Binding GoToClientsUnwantedPageCommand}"/>
+                </StackLayout>
+            </Expander.Content>
+        </Expander>
+        
+        <Button ImageSource="paymentsManagement.png" BackgroundColor="Transparent" 
+                Text="  Pagesat" VerticalOptions="Fill" HeightRequest="60"
+                HorizontalOptions="Start" Command="{Binding GoToPaymentsCommand}"/>
+        
+        <Expander VerticalOptions="Fill" HorizontalOptions="StartAndExpand">
+            <Expander.Header>
+                <StackLayout Orientation="Horizontal" >
+                    <Image Source="paymentsManagement.png" />
+                    <Label Text="  Pagesat" TextColor="White" VerticalTextAlignment="Center" FontSize="15" FontAttributes="None"/>
+                </StackLayout>
+            </Expander.Header>
+            <Expander.Content>
+                <StackLayout VerticalOptions="Fill" HeightRequest="60"  HorizontalOptions="StartAndExpand">
+                    <Label Text="Test"/>
+                </StackLayout>
+            </Expander.Content>
+        </Expander>
+        
     </StackLayout>
 
 </ContentPage>

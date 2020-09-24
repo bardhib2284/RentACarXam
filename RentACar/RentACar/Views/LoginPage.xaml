@@ -36,7 +36,8 @@
                 HorizontalOptions="Center" WidthRequest="210" PlaceholderColor="White"/>
                 <Button Text="Kyçu" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
                  Command="{Binding LoginCommand}"/>
-                
+                <Button Text="Kyçu" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"
+                 Command="{Binding SendMessage}"/>
             </StackLayout>
             
         </StackLayout>

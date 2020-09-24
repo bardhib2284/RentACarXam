@@ -8,7 +8,7 @@
             x:Class="RentACar.Views.MainPage">
 
     <MasterDetailPage.Master>
-        <views:MenuPage />
+        <views:MenuPage x:Name="MenuPageForExpande"/>
     </MasterDetailPage.Master>
 
 </MasterDetailPage>

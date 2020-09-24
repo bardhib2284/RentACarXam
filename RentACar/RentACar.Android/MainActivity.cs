@@ -24,7 +24,7 @@ namespace RentACar.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
+            Xamarin.Forms.Forms.SetFlags("Expander_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             UserDialogs.Init(this);
@@ -32,6 +32,7 @@ namespace RentACar.Droid
             MainActivityInstance = this;
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             CarouselViewRenderer.Init();
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)

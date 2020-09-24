@@ -123,6 +123,10 @@ namespace RentACar.iOS.Dependencies
             }
 
         }
+        public string RetrivePathForPDF(string name)
+        {
+            return _documentsPath;
+        }
 
     }
     public class PdfItem : QLPreviewItem

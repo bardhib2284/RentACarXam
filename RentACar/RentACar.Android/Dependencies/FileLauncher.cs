@@ -150,5 +150,28 @@ namespace RentACar.Droid.Dependencies
 
             return path;
         }
+
+        public string RetrivePathForPDF(string name)
+        {
+            string _path = "";
+            _path = Path.Combine(_newPath, name);
+            Java.IO.File f = new Java.IO.File(_path);
+
+            Uri uri;
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.N)
+            {
+                uri = Uri.Parse("content://" + _path);
+            }
+            else
+            {
+                Java.IO.File file = new Java.IO.File(_path);
+                file.SetReadable(true);
+                //Android.Net.Uri uri = Android.Net.Uri.Parse("file://" + filePath);
+                uri = Uri.FromFile(file);
+            }
+
+            var uri1 = FileProvider.GetUriForFile(MainActivity.MainActivityInstance.ApplicationContext, MainActivity.MainActivityInstance.ApplicationContext.PackageName + ".provider", f);
+            return uri1.Path;
+        }
     }
 }

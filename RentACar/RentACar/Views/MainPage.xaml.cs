@@ -20,8 +20,26 @@ namespace RentACar.Views
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
-
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Detail.Unfocused += Detail_Unfocused;
+        }
+
+        private void Detail_Unfocused(object sender, FocusEventArgs e)
+        {
+            foreach (var child in MenuPageForExpande.Content.FindByName<StackLayout>("Holder").Children)
+            {
+                if (child is Expander expand)
+                {
+                    if (expand.IsExpanded)
+                    {
+                        expand.State = ExpanderState.Collapsed;
+                    }
+                }
+            }
         }
 
         public async Task NavigateFromMenu(int id)

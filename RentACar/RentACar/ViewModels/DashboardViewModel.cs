@@ -192,9 +192,10 @@ namespace RentACar.ViewModels
         public ICommand GoToCarsStatusesCommand { get; set; }
         public ICommand GoToCarsRegisterAndServiceCommand { get; set; }
         public ICommand GoToCarsServicesTimeCommand { get; set; }
+        public ICommand SendMessage { get; set; }
+        public ICommand GoToClientsPageCommand { get; set; }
 
 
-        
         public DashboardViewModel()
         {
             CarDetailsCommand = new Command<Car>(async (c) => await CarDetailsAsync(c));
@@ -217,6 +218,8 @@ namespace RentACar.ViewModels
             GoToCarsStatusesCommand = new Command(async () => await GoToCarsStatusesAsync());
             GoToCarsRegisterAndServiceCommand = new Command(async () => await GoToCarsRegisterAndServiceAsync());
             GoToCarsServicesTimeCommand = new Command(async () => await GoToCarsServicesTimeAsync());
+            GoToClientsPageCommand = new Command(async () => await GoToClientsPageAsync());
+            SendMessage = new Command(async () => await SendMessageAsync());
             var projectionItems = new List<MenuItem>() {
                     new MenuItem(){Name="transactions",TitleKey="Te gjitha", Parametar="all"},
                     new MenuItem(){Name="transactions",TitleKey="Perfunduara", Parametar="finished"},
@@ -246,6 +249,20 @@ namespace RentACar.ViewModels
             Clients = new ObservableCollection<Client>();
             RentedCarsByRentId = new ObservableCollection<RentedCar>();
             //Task.Run(LoadRents);
+        }
+
+        private async Task SendMessageAsync()
+        {
+            var message = new EmailMessage
+            {
+                Subject = "Subject",
+                Body = "body",
+                To = new List<string> { "ww" },
+                //Cc = ccRecipients,
+                //Bcc = bccRecipients
+            };
+            message.Attachments.Add(new EmailAttachment(DependencyService.Get<IFileLauncher>().RetrivePathForPDF($"Rent---.pdf")));
+            await Email.ComposeAsync(message);
         }
 
         private async Task GoToCarsServicesTimeAsync()
@@ -426,15 +443,8 @@ namespace RentACar.ViewModels
         }
         private async Task GoToClientsPageAsync()
         {
-            using (UserDialogs.Instance.Loading("Loading"))
-            {
-                ClientsOperationPage ClientsPage = new ClientsOperationPage();
-                App.instance.ClientsViewModel = new ClientsViewModel();
-                ClientsPage.BindingContext = App.instance.ClientsViewModel;
-                Clients = Clients.Any() ? Clients : await App.instance.ClientsViewModel.LoadClientsFromRent(CurrentRent);
-                (App.instance.MainPage as MainPage).IsPresented = false;
-                await App.instance.PushAsyncNewPage(ClientsPage);
-            }
+            App.instance.ClientsViewModel = App.instance.ClientsViewModel  == null ? new ClientsViewModel() : App.instance.ClientsViewModel;
+            await App.instance.ClientsViewModel.GoToClientsPageAsync();
         }
         private async Task GetClients()
         {
