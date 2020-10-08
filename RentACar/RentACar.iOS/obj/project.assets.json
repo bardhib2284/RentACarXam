@@ -2576,32 +2576,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/assecosee/.nuget/packages/": {}
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/RentACar.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.iOS\\RentACar.iOS.csproj",
       "projectName": "RentACar.iOS",
-      "projectPath": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/RentACar.iOS.csproj",
-      "packagesPath": "/Users/assecosee/.nuget/packages/",
-      "outputPath": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/",
+      "projectPath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.iOS\\RentACar.iOS.csproj",
+      "packagesPath": "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "/Users/assecosee/.config/NuGet/NuGet.Config"
+        "C:\\Users\\bardh.bejtullahu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "xamarinios10"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Projects\\nbanka.dem.ba\\ExternalDependencies\\CaruselView": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar/RentACar.csproj": {
-              "projectPath": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar/RentACar.csproj"
+            "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar\\RentACar.csproj": {
+              "projectPath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar\\RentACar.csproj"
             }
           }
         }
@@ -2650,7 +2658,7 @@
       "code": "NU1605",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package downgrade: Xamarin.Forms from 4.8.0.1269 to 4.7.0.968. Reference the package directly from the project to select a different version. \n RentACar.iOS -> RentACar -> Xamarin.Forms (>= 4.8.0.1269) \n RentACar.iOS -> Xamarin.Forms (>= 4.7.0.968)",
+      "message": "Detected package downgrade: Xamarin.Forms from 4.8.0.1269 to 4.7.0.968. Reference the package directly from the project to select a different version. \r\n RentACar.iOS -> RentACar -> Xamarin.Forms (>= 4.8.0.1269) \r\n RentACar.iOS -> Xamarin.Forms (>= 4.7.0.968)",
       "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "Xamarin.iOS,Version=v1.0",
