@@ -30,6 +30,7 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _unwantedClients, value); }
         }
         public ObservableCollection<RentedCar> ClientsTransactions { get; set; }
+        public bool HasTransactions => ClientsTransactions.Any();
         private bool _hasUnwantedClients;
         public bool HasUnwantedClients
         {
@@ -85,6 +86,7 @@ namespace RentACar.ViewModels
             var projectionItems = new List<MenuItem>() {
                 new MenuItem(){Name="transactions",TitleKey="Detajet e klientit", Parametar="all"},
                 new MenuItem(){Name="transactions",TitleKey="Transaksionet", Parametar="finished"},
+                new MenuItem(){Name="images",TitleKey="Dokumentet e klientit", Parametar="docs"}
             };
             ProjectionItems = projectionItems;
             ClientsTransactions = new ObservableCollection<RentedCar>();

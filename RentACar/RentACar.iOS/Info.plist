@@ -40,5 +40,14 @@
 	<string>This app needs access</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to camera</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PointLight.otf</string>
+		<string>PointSemiBold.otf</string>
+		<string>Ndiscover - Point DEMO Semi Bold.otf</string>
+		<string>sulphur-point.ttf</string>
+		<string>Vuldo-6Y8Y1.ttf</string>
+		<string>GRAND HALVA.otf</string>
+	</array>
 </dict>
 </plist>

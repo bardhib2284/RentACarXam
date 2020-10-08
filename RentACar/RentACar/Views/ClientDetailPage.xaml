@@ -98,14 +98,38 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" BackgroundColor="Black" VerticalOptions="Fill">
+                <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='1'}" VerticalOptions="Fill">
                     <ListView x:Name="clientransactions" VerticalOptions="Fill" SelectionMode="None" Margin="20"
                         ItemsSource="{Binding ClientsTransactions}" SeparatorColor="White" RowHeight="65" CachingStrategy="RecycleElementAndDataTemplate"
                         ItemTemplate="{StaticResource TransactionItemDataTemplateClient}">
 
                     </ListView>
-                    <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsFinished,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione te perfunduara" TextColor="Black" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+                    <Label HorizontalOptions="Center" IsVisible="{Binding HasTransactions,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione te perfunduara" TextColor="Black" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
                 </StackLayout>
+
+            <StackLayout IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='2'}" VerticalOptions="Fill">
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="5" VerticalOptions="Fill">
+                        <Label Text="ID Para" Style="{StaticResource TitleLabel}" />
+                        <Image Source="{Binding SelectedClient.ClientFrontImage}" WidthRequest="140" HeightRequest="140" Aspect="AspectFit"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="5">
+                        <Label Text="ID Mbrapa" Style="{StaticResource TitleLabel}" />
+                        <Image Source="{Binding SelectedClient.ClientFrontBack}" WidthRequest="140" HeightRequest="140" Aspect="AspectFit"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+                <StackLayout Padding="0,10,0,0" Spacing="0">
+                    <StackLayout Padding="20,0,20,10" Spacing="5">
+                        <Label Text="Patenta e shoferit" Style="{StaticResource TitleLabel}" />
+                        <Image Source="{Binding SelectedClient.ClientCarLicense}" WidthRequest="140" HeightRequest="140" Aspect="AspectFit"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource DisplayValueBox}" />
+                </StackLayout>
+            </StackLayout>
             </StackLayout>
         </ScrollView>
 

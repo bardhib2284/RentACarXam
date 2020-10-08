@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using Newtonsoft.Json;
+using RentACar.Dependencies;
 using RentACar.Models;
 using RentACar.Views;
 using RentACarAPI.Models;
@@ -16,6 +17,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace RentACar.ViewModels
@@ -50,6 +52,8 @@ namespace RentACar.ViewModels
             get { return _rentedCar; }
             set { SetProperty(ref _rentedCar, value); }
         }
+
+        public RentedCar SelectedRentedCar { get; set; }
         private bool _ready;
         public bool Ready
         {
@@ -129,34 +133,47 @@ namespace RentACar.ViewModels
                 return null;
             }
         }
-        private async Task<int> GeneratePdfAsync()
+        private async Task GeneratePdfAsync()
         {
             // Create a new PDF document
-            PdfDocument document = new PdfDocument();
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                var json = JsonConvert.SerializeObject(new KontrataObject { carId = 0, clientId = 0, rentedCarId = 0 ,car = SelectedCar, client = SelectedClient, rent = CurrentRent});
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars/pdf/kontrata", httpContent);
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+                }
+                else
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var pdfcontent = JsonConvert.DeserializeObject<byte[]>(responseString);
+                    using (MemoryStream ms = new MemoryStream(pdfcontent))
+                    {
+                        //await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", ms);
 
-            //Add a page to the document
-            PdfPage page = document.Pages.Add();
+                    }
+                    DependencyService.Get<IFileLauncher>().Open(pdfcontent, $"Rent-"+SelectedClient.Id +"-"+ SelectedCar.Id + "-"+SelectedRentedCar.Id+"-" + ".pdf");
+                }
 
-            //Create PDF graphics for the page
-            PdfGraphics graphics = page.Graphics;
-
-            //Set the standard font
-            PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 22);
-
-            //Draw the text
-            graphics.DrawString("Hello World!!!", font, PdfBrushes.Black, new PointF(0, 0));
-            graphics.DrawString("Hello awdawdawdawdawdawdawdawdawdghyhwerfgtdhwefewfewfewfewfewfewewfwefewfewfefw!!!", font, PdfBrushes.Black, new PointF(0, 1));
-
-            //Save the document to the stream
-            MemoryStream stream = new MemoryStream();
-            document.Save(stream);
-
-            //Close the document
-            document.Close(true);
-
-            //Save the stream as a file in the device and invoke it for viewing
-            await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", stream);
-            return await Task.FromResult(0);
+                var result = await UserDialogs.Instance.ConfirmAsync("Deshironi te dergoni pdf-in ne email te klientit?", "Konfirmim", "Po", "Jo");
+                if(result)
+                {
+                    var message = new EmailMessage
+                    {
+                        Subject = "Subject",
+                        Body = "body",
+                        To = new List<string> { "ww" },
+                        //Cc = ccRecipients,
+                        //Bcc = bccRecipients
+                    };
+                    message.Attachments.Add(new EmailAttachment(DependencyService.Get<IFileLauncher>().RetrivePathForPDF($"Rent-" + SelectedClient.Id + "-" + SelectedCar.Id + "-" + SelectedRentedCar.Id + "-" + ".pdf")));
+                    await Email.ComposeAsync(message);
+                    
+                }
+            }
         }
 
         private async Task RentThisCarAsync()
@@ -183,6 +200,7 @@ namespace RentACar.ViewModels
                 }
                 var responseString = await response.Content.ReadAsStringAsync();
                 RentedCar addedCar = JsonConvert.DeserializeObject<RentedCar>(responseString);
+                SelectedRentedCar = addedCar;
                 IsSuccessfullRent = addedCar != null ? true : false;
                 var page = new PostRentedCarPage();
                 page.BindingContext = this;

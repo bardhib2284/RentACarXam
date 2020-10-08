@@ -11,7 +11,6 @@
                 <Label x:Name="title" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
                 <Label x:Name="subtitle" HorizontalTextAlignment="Center" FontSize="12" TextColor="Black"/>
             </StackLayout>
-            <SearchBar x:Name="searchBar" Placeholder="Search" Margin="0,0,30,0" BackgroundColor="{StaticResource ModeColorText}" HorizontalOptions="End" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand"></SearchBar>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

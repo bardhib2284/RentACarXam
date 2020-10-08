@@ -41,7 +41,6 @@ namespace RentACar.Components
             InitializeComponent();
             title.SetBinding(Label.TextProperty, new Binding("Title", source: this));
             subtitle.SetBinding(Label.TextProperty, new Binding("SubTitle", source: this));
-            searchBar.SetBinding(SearchBar.IsVisibleProperty, new Binding("SearchVisible", source: this));
         }
     }
 }

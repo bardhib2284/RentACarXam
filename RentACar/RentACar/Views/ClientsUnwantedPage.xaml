@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.ClientsUnwantedPage">
     <NavigationPage.TitleView>
-        <components:NavTitleView Title="Klientet" SubTitle="Lista e te gjithe klienteve te padeshiruar" SearchVisible="False" Margin="0,0,0,0"/>
+        <components:NavTitleView Title="Klientet" SubTitle="Lista e te gjithe klienteve ne blacklist" SearchVisible="False" Margin="0,0,0,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
@@ -31,7 +31,7 @@
             </ListView>
 
             <StackLayout IsVisible="{Binding HasUnwantedClients,Converter={converters:InverseBoolConverter}}" VerticalOptions="Center">
-                <Label Text="NUK KA KLIENT TE PADESHIRUAR TE REGJISTRUAR NE RENT" LineBreakMode="WordWrap" 
+                <Label Text="NUK KA KLIENT TE REGJISTRUAR NE BLACKLIST" LineBreakMode="WordWrap" 
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30" TextColor="Black"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
