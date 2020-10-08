@@ -13,7 +13,7 @@
 namespace RentACar.Components {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Components\\ImageSliderView.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Components/ImageSliderView.xaml")]
     public partial class ImageSliderView : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

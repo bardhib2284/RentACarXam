@@ -7,22 +7,47 @@
              xmlns:converters="clr-namespace:RentACar.Converters"
              x:Class="RentACar.App"
              xmlns:viewmodels="clr-namespace:RentACar.ViewModels"
+             
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
 
     <Application.Resources>
         <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="GrandHalva">
+                <On Platform="iOS" Value="GrandHalva"/>
+                <On Platform="Android" Value="GRAND HALVA.otf#Regular"/>
+                <On Platform="UWP" Value="/Assets/Fonts/GRAND HALVA.otf#"/>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="SulphurPointBold">
+                <On Platform="iOS" Value="SulphurPoint-Bold"/>
+                <On Platform="Android" Value="sulphur-point.ttf#Regular"/>
+                <On Platform="UWP" Value="/Assets/Fonts/sulphur-point.ttf#Sulphur Point"/>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="PointDEMOSemiBold">
+                <On Platform="iOS" Value="PointDEMO-SemiBold"/>
+                <On Platform="Android" Value="Ndiscover - Point DEMO Semi Bold.otf#Regular"/>
+                <On Platform="UWP" Value="/Assets/Fonts/Ndiscover - Point DEMO Semi Bold.otf#Point DEMO"/>
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="PointDEMOLight">
+                <On Platform="iOS" Value="PointDEMO-SemiBold"/>
+                <On Platform="Android" Value="Ndiscover - Point DEMO Semi Bold.otf#Regular"/>
+                <On Platform="UWP" Value="/Assets/Fonts/Ndiscover - Point DEMO Semi Bold.otf#Point DEMO"/>
+            </OnPlatform>
             <converters:FromBoolToAvailableOpacity x:Key="FromBoolToAvailableOpacity"/>
             <converters:FromBoolToAvailableText x:Key="FromBoolToAvailableText"/>
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="ModeColorPrimary">#ffffff</Color> 
-            <Color x:Key="ModeColorText">#ffffff</Color>
+            <Color x:Key="ModeColorText">#000000</Color>
             <Color x:Key="DarkGray">#777777</Color>
 
             <!-- White Edition 
             <Color x:Key="ModeColorPrimary">#ffffff</Color>
             <Color x:Key="ModeColorText">#000000</Color>
 -->
+            <OnPlatform x:TypeArguments="x:String" x:Key="DancingScriptRegular">
+                <On Platform="iOS" Value="Point SemiBold"/>
+                <On Platform="Android" Value="PointSemiBold.otf#PointSemiBold"/>
+            </OnPlatform>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource ModeColorPrimary}" />
                 <Setter Property="BarTextColor" Value="Black" />
@@ -54,19 +79,19 @@
             </Style>
 
             <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOLight}"/>
             </Style>
             <Style TargetType="Entry">
-                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOLight}"/>
             </Style>
             <Style TargetType="Button">
-                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOSemiBold}"/>
             </Style>
             <Style TargetType="Picker">
-                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOSemiBold}"/>
             </Style>
             <Style TargetType="DatePicker">
-                <Setter Property="FontFamily" Value="PointSemiBold.otf#PointSemiBold"/>
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOSemiBold}"/>
             </Style>
             <!-- car view images data template for carousel-->
             <DataTemplate x:Key="CarImageSliderRegister">
@@ -98,11 +123,11 @@
                                 <Label Margin="0,20" Text="{Binding .ProductionYear, StringFormat='{0:MMMM dd, yyyy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
                                 <Label Margin="0,20,50,0" Text="{Binding .Km}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End" HorizontalTextAlignment="Center"/>
                                 <Label Margin="0,20,25,0" Text="Km" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
-                                <Label Margin="0,40,25,0" Text="01-123-PR" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
-                                <Label Margin="20,0,0,10" Text="{Binding NextDateOfCheck, Converter={converters:DateConverterDay}}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
-                                <Label Margin="180,0,0,10" Text="{Binding NextDateOfCheck, Converter={converters:DateConverterMonth}}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Margin="0,40,25,0" Text="{Binding .Targa}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="End"/>
+                                <Label Margin="20,0,0,10" Text="{Binding NextDateOfCheck, Converter={converters:DateConverterDay}}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Margin="180,0,0,10" Text="{Binding NextDateOfCheck, Converter={converters:DateConverterMonth}}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" HorizontalOptions="Center" VerticalOptions="End"/>
                                 <Label Margin="280,0,0,10" Text="{Binding NextDateOfCheck, StringFormat='{}{0:yy}'}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End"/>
-                                <Label Margin="15,0,0,10" Text="Data per regjistrim: " Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
+                                <Label Margin="15,0,0,10" Text="Data per regjistrim:" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="End"/>
                             </Grid>
                         </Frame>
                     </StackLayout>
@@ -268,7 +293,7 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Command}" />
                     </StackLayout.GestureRecognizers>
-                    <Label Text="{Binding TitleKey}" TextColor="White"
+                    <Label Text="{Binding TitleKey}" TextColor="Black"
           FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="20"
           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" />
                 </StackLayout>
@@ -284,6 +309,8 @@
           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" />
                 </StackLayout>
             </DataTemplate>
+
+            
 
             <DataTemplate x:Key="ProjectionItemTemplateCars">
                 <StackLayout BackgroundColor="Transparent">

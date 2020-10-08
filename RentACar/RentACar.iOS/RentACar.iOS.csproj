@@ -126,6 +126,24 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\PointLight.otf" />
+    <BundleResource Include="Resources\PointSemiBold.otf" />
+    <BundleResource Include="Resources\carMecanic.png" />
+    <BundleResource Include="Resources\incoming.png" />
+    <BundleResource Include="Resources\outline_home_24.xml" />
+    <BundleResource Include="Resources\outline_home_white_24.png" />
+    <BundleResource Include="Resources\outline_home_white_36.png" />
+    <BundleResource Include="Resources\paymentsManagement.png" />
+    <BundleResource Include="Resources\services.png" />
+    <BundleResource Include="Resources\services1.png" />
+    <BundleResource Include="Resources\userManagement.png" />
+    <BundleResource Include="Resources\Ndiscover - Point DEMO Semi Bold.otf" />
+    <BundleResource Include="Resources\sulphur-point.ttf" />
+    <BundleResource Include="Resources\Vuldo-6Y8Y1.ttf" />
+    <BundleResource Include="Resources\GRAND HALVA.otf" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\availableCars.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -146,7 +164,7 @@
       <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -181,5 +199,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\rentlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

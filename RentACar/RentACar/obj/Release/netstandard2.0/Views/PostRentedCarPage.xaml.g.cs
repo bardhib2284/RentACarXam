@@ -13,7 +13,7 @@
 namespace RentACar.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\PostRentedCarPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/PostRentedCarPage.xaml")]
     public partial class PostRentedCarPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

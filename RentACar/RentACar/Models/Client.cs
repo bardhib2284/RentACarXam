@@ -30,6 +30,11 @@ namespace RentACar.Models
         public bool IsUnwanted { get; set; }
         [JsonIgnore]
         private MemoryStream ms => new MemoryStream(ClientImageFront);
+        [JsonIgnore]
+        private MemoryStream msBack => new MemoryStream(ClientImageBack);
+        [JsonIgnore]
+        private MemoryStream msLicense => new MemoryStream(ClientPatentShofer);
+
         public byte[] ClientPatentShofer { get; set; }
         public int PhoneNumber { get; set; }
         [JsonIgnore]
@@ -48,6 +53,42 @@ namespace RentACar.Models
                     return ImageSource.FromFile("Passengers.png");
                 }
                 
+            }
+        }
+        [JsonIgnore]
+        public ImageSource ClientFrontBack
+        {
+            get
+            {
+
+                if (ClientImageFront != null)
+                {
+                    var image = ImageSource.FromStream(() => msBack);
+                    return image;
+                }
+                else
+                {
+                    return ImageSource.FromFile("Passengers.png");
+                }
+
+            }
+        }
+        [JsonIgnore]
+        public ImageSource ClientCarLicense
+        {
+            get
+            {
+
+                if (ClientImageFront != null)
+                {
+                    var image = ImageSource.FromStream(() => msLicense);
+                    return image;
+                }
+                else
+                {
+                    return ImageSource.FromFile("Passengers.png");
+                }
+
             }
         }
 

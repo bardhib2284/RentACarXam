@@ -251,6 +251,25 @@ namespace RentACar.ViewModels
             //Task.Run(LoadRents);
         }
 
+        protected void CheckForAlerts()
+        {
+            if(Cars.Any())
+            {
+                foreach(var car in Cars)
+                {
+                    if((car.NextDateOfCheck - DateTime.Now).TotalDays <= 2)
+                    {
+                        UserDialogs.Instance.Alert("Vetura " + car.Name + " me targat :" + car.Targa + " duhet te regjistrohet","Koha per regjistrim", "Okay");
+                    }
+                }
+            }
+        }
+
+        private async Task DisplayAlert(string v1, string v2,string v3 = "Okay")
+        {
+            await DisplayAlert(v1, v2, v3);
+        }
+
         private async Task SendMessageAsync()
         {
             var message = new EmailMessage
@@ -261,7 +280,7 @@ namespace RentACar.ViewModels
                 //Cc = ccRecipients,
                 //Bcc = bccRecipients
             };
-            message.Attachments.Add(new EmailAttachment(DependencyService.Get<IFileLauncher>().RetrivePathForPDF($"Rent---.pdf")));
+
             await Email.ComposeAsync(message);
         }
 
@@ -615,6 +634,7 @@ namespace RentACar.ViewModels
                         App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
                         await GetClients();
                         App.instance.ChangeDetailPage(dashboard);
+                        CheckForAlerts();
                     }
                     else
                     {
@@ -644,6 +664,7 @@ namespace RentACar.ViewModels
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
                     var cars = JsonConvert.DeserializeObject<ObservableCollection<Car>>(responseString);
+                    Cars = cars;
                     AvailableCars = new ObservableCollection<Car>(cars.Where(x=> x.Statusi == Car.StatusTypes.Aktiv).ToList());
                     TakenCars = new ObservableCollection<Car>(cars.Where(x => x.Statusi == Car.StatusTypes.Zene).ToList());
                     UnregisteredCars = new ObservableCollection<Car>(cars.Where(x => x.Statusi == Car.StatusTypes.Pa_Regjistruar).ToList());

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="RentACar.Views.CarsTimeForRegistrationAndServisePage">
     <NavigationPage.TitleView>
-        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="Koha per servisim" SearchVisible="True" Margin="0,0,-30,0"/>
+        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="Koha per regjistrim" SearchVisible="True" Margin="0,0,-30,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout Padding="5">

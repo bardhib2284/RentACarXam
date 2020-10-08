@@ -167,29 +167,44 @@ C:/Users/bardh.bejtullahu/source/repos/RentACar/RentACar/RentACar.iOS/obj/iPhone
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/bin/iPhoneSimulator/Debug/RentACar.pdb
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.pdb
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/ibtool/_BundleResourceWithLogicalName.items
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/actool/_PartialAppManifest.items
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/actool/_BundleResourceWithLogicalName.items
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/coremlc/_PartialAppManifest.items
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/coremlc/_BundleResourceWithLogicalName.items
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/tab_about.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/tab_about@2x.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/tab_about@3x.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/tab_feed.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/tab_feed@2x.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/tab_feed@3x.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/xamarin_logo.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/xamarin_logo@2x.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/xamarin_logo@3x.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/Doors.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/Luggages.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/Passengers.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/Transmission.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/carsettings.png
-/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.5/optimized/
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/RentACar.iOS.csprojAssemblyReference.cache
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/RentACar.iOS.csproj.CoreCompileInputs.cache
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/XamlC.stamp
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/RentACar.iOS.csproj.CopyComplete
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/RentACar.iOS.exe
 /Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/RentACar.iOS.pdb
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/ibtool/_BundleResourceWithLogicalName.items
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/actool/_PartialAppManifest.items
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/actool/_BundleResourceWithLogicalName.items
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/coremlc/_PartialAppManifest.items
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/coremlc/_BundleResourceWithLogicalName.items
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/tab_about.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/tab_about@2x.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/tab_about@3x.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/tab_feed.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/tab_feed@2x.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/tab_feed@3x.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/xamarin_logo.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/xamarin_logo@2x.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/xamarin_logo@3x.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/carMecanic.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/incoming.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/outline_home_white_24.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/outline_home_white_36.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/paymentsManagement.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/services.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/services1.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/userManagement.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/add.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/Doors.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/Luggages.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/Passengers.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/Transmission.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/carsettings.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/Audi.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/carRentalLogo.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/Mercedes.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/rentlogo.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/arrow.png
+/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro max-14.0/optimized/availableCars.png

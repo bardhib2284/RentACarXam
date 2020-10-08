@@ -49,7 +49,7 @@ namespace RentACar.iOS.Dependencies
 
         public virtual string SaveFile(byte[] byteArray, string name)
         {
-            string path = Path.Combine(_documentsPath, name);
+            string path = Path.Combine(_documentsPath, name);Path.Combine(_documentsPath, name);
             File.WriteAllBytes(path, byteArray);
             return path;
         }
@@ -125,7 +125,7 @@ namespace RentACar.iOS.Dependencies
         }
         public string RetrivePathForPDF(string name)
         {
-            return _documentsPath;
+            return Path.Combine(_documentsPath, name);
         }
 
     }
