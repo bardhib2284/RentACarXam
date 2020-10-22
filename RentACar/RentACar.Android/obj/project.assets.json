@@ -2828,32 +2828,40 @@
     ]
   },
   "packageFolders": {
-    "/Users/assecosee/.nuget/packages/": {}
+    "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.Android/RentACar.Android.csproj",
+      "projectUniqueName": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.Android\\RentACar.Android.csproj",
       "projectName": "RentACar.Android",
-      "projectPath": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.Android/RentACar.Android.csproj",
-      "packagesPath": "/Users/assecosee/.nuget/packages/",
-      "outputPath": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar.Android/obj/",
+      "projectPath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.Android\\RentACar.Android.csproj",
+      "packagesPath": "C:\\Users\\bardh.bejtullahu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "/Users/assecosee/.config/NuGet/NuGet.Config"
+        "C:\\Users\\bardh.bejtullahu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid90"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Projects\\nbanka.dem.ba\\ExternalDependencies\\CaruselView": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar/RentACar.csproj": {
-              "projectPath": "/Users/assecosee/Documents/RentACarXam/RentACar/RentACar/RentACar.csproj"
+            "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar\\RentACar.csproj": {
+              "projectPath": "C:\\Users\\bardh.bejtullahu\\source\\repos\\RentACarXam\\RentACar\\RentACar\\RentACar.csproj"
             }
           }
         }
@@ -2899,7 +2907,7 @@
       "code": "NU1605",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package downgrade: Xamarin.Forms from 4.8.0.1269 to 4.7.0.1080. Reference the package directly from the project to select a different version. \n RentACar.Android -> RentACar -> Xamarin.Forms (>= 4.8.0.1269) \n RentACar.Android -> Xamarin.Forms (>= 4.7.0.1080)",
+      "message": "Detected package downgrade: Xamarin.Forms from 4.8.0.1269 to 4.7.0.1080. Reference the package directly from the project to select a different version. \r\n RentACar.Android -> RentACar -> Xamarin.Forms (>= 4.8.0.1269) \r\n RentACar.Android -> Xamarin.Forms (>= 4.7.0.1080)",
       "libraryId": "Xamarin.Forms",
       "targetGraphs": [
         "MonoAndroid,Version=v9.0"

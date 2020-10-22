@@ -11,6 +11,7 @@ namespace RentACar.Models
         public int Id { get; set; }
         public DateTime KohaELeshimit { get; set; }
         public DateTime KohaEKthimit { get; set; }
+        public DateTime KohaAktualeEKthimit { get; set; }
         public int CarId { get; set; }
         public int ClientId { get; set; }
         public int RentId { get; set; }
@@ -28,6 +29,10 @@ namespace RentACar.Models
         public bool? KaPesuarAksident { get; set; }
         public bool? KaThyerNdonjeRregull { get; set; }
         public int KilometrazhiAktual { get; set; }
+        public int SezoniID { get; set; }
+
+        public PaymentTypes PaymentType { get; set; }
+        public enum PaymentTypes { CASH, POS };
 
     }
 }

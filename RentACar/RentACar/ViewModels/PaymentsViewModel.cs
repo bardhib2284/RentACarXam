@@ -38,9 +38,12 @@ namespace RentACar.ViewModels
         public ICommand GeneratePdfWithFilterCommand { get; set; }
         public ICommand GeneratePdfWeeklyCommand { get; set; }
         public ICommand GeneratePdfDailyCommand { get; set; }
+        public ICommand GeneratePdfMonthlyCommand { get; set; }
         public ICommand AddACmimCommand { get; set; }
         public ICommand GoToCreateCmimeCommand { get; set; }
         public ICommand GoToDailyRaportsCommand { get; set; }
+        public ICommand GeneratePdfSeasonCommand { get; set; }
+
         private DateTime _dailyRaports;
         public DateTime DailyRaports
         {
@@ -73,6 +76,18 @@ namespace RentACar.ViewModels
             set { SetProperty(ref hasSezone, value); }
         }
         public Client SelectedClient { get; set; }
+        private bool _isDaily;
+        public bool IsDaily
+        {
+            get { return _isDaily; }
+            set { SetProperty(ref _isDaily, value); }
+        }
+        private bool _isSeason;
+        public bool IsSeason
+        {
+            get { return _isSeason; }
+            set { SetProperty(ref _isSeason, value); }
+        }
 
         public PaymentsViewModel()
         {
@@ -88,7 +103,9 @@ namespace RentACar.ViewModels
             GeneratePdfWithFilterCommand = new Command(async () => await GeneratePdfWithFilterAsync());
             GeneratePdfWeeklyCommand = new Command(async () => await GeneratePdfWeekly());
             GeneratePdfDailyCommand = new Command(async () => await GeneratePdfDailyAsync());
-            GoToDailyRaportsCommand = new Command(async () => await GoToDailyRaportsAsync());
+            GeneratePdfMonthlyCommand = new Command(async () => await GeneratePdfMonthlyAsync());
+            GoToDailyRaportsCommand = new Command(async (c) => await GoToDailyRaportsAsync(c.ToString()));
+            GeneratePdfSeasonCommand = new Command(async () => await GeneratePdfSeasonAsync());
             SelectedSezoni = new Sezonet();
             SelectedCmimi = new Cmimet();
             Sezonet = new ObservableCollection<Sezonet>();
@@ -96,13 +113,56 @@ namespace RentACar.ViewModels
             DailyRaports = DateTime.Now;
         }
 
-        private async Task GoToDailyRaportsAsync()
+        private async Task GeneratePdfSeasonAsync()
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                DailyReportsPage DailyReportsPage = new DailyReportsPage();
-                DailyReportsPage.BindingContext = this;
-                await App.instance.PushAsyncNewPage(DailyReportsPage);
+                DateTime reuqestedDate = DateTime.Now;
+                var selectedSeason = Sezonet.FirstOrDefault(x => x.Emri == SelectedSezoni.Emri);
+                var json = JsonConvert.SerializeObject(selectedSeason);
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars/pdf/season", httpContent);
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+                }
+                else
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var pdfcontent = JsonConvert.DeserializeObject<byte[]>(responseString);
+                    using (MemoryStream ms = new MemoryStream(pdfcontent))
+                    {
+                        //await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", ms);
+
+                    }
+                    DependencyService.Get<IFileLauncher>().Open(pdfcontent, selectedSeason.Emri +"-"+ DateTime.Now.Date + "--.pdf");
+                }
+            }
+        }
+
+        private async Task GoToDailyRaportsAsync(string name)
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                if(name == "Daily")
+                {
+                    DailyReportsPage DailyReportsPage = new DailyReportsPage();
+                    DailyReportsPage.BindingContext = this;
+                    IsDaily = true;
+                    IsSeason = false;
+                    await App.instance.PushAsyncNewPage(DailyReportsPage);
+                }
+                else if(name == "Season")
+                {
+                    DailyReportsPage DailyReportsPage = new DailyReportsPage();
+                    DailyReportsPage.BindingContext = this;
+                    IsSeason = true;
+                    IsDaily = false;
+                    await GetSezonet();
+                    await App.instance.PushAsyncNewPage(DailyReportsPage);
+                }
+               
             }
         }
 
@@ -128,11 +188,38 @@ namespace RentACar.ViewModels
             HasCmime = Cmimet.Any();
             OnPropertyChanged("HasCmime");
         }
+        private async Task GeneratePdfMonthlyAsync()
+        {
+            using (UserDialogs.Instance.Loading("Loading"))
+            {
+                DateTime reuqestedDate = DateTime.Now;
+                var json = JsonConvert.SerializeObject(reuqestedDate);
+                App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars/pdf/monthly", httpContent);
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    UserDialogs.Instance.Alert("Probleme me server, Provoni Perseri", "Error", "Ok");
+                }
+                else
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var pdfcontent = JsonConvert.DeserializeObject<byte[]>(responseString);
+                    using (MemoryStream ms = new MemoryStream(pdfcontent))
+                    {
+                        //await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", ms);
+
+                    }
+                    DependencyService.Get<IFileLauncher>().Open(pdfcontent, $"Rent---.pdf");
+                }
+            }
+        }
         private async Task GeneratePdfDailyAsync()
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                var json = JsonConvert.SerializeObject(DailyRaports);
+                DateTime reuqestedDate = new DateTime(DailyRaports.Year, DailyRaports.Month, DailyRaports.Day, 0, 0, 0, DateTimeKind.Utc);
+                var json = JsonConvert.SerializeObject(reuqestedDate);
                 App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                 HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars/pdf/ditore", httpContent);

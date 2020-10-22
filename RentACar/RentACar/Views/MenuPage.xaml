@@ -74,8 +74,12 @@
         </Expander>
         
         <Button ImageSource="paymentsManagement.png" BackgroundColor="Transparent" 
-                Text=" PAGESAT" VerticalOptions="Fill" HeightRequest="60" Margin="-5,0"
+                Text=" PAGESAT" VerticalOptions="Fill" IsVisible="{Binding IsAdmin}" HeightRequest="60" Margin="-5,0"
                 HorizontalOptions="Start" Command="{Binding GoToPaymentsCommand}"/>
+
+        <Button ImageSource="paymentsManagement.png" BackgroundColor="Transparent" 
+                Text=" RAPORTET" VerticalOptions="Fill" IsVisible="{Binding IsAdmin}" HeightRequest="60" Margin="-5,0"
+                HorizontalOptions="Start" Command="{Binding GoToRaportetPageCommand}"/>
         
         <!--<Expander VerticalOptions="Fill" HorizontalOptions="StartAndExpand">
             <Expander.Header>

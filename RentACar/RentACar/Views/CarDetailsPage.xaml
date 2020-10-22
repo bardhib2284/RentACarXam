@@ -200,6 +200,13 @@
                     <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
                     <StackLayout Padding="0,10,0,0" Spacing="0">
                         <StackLayout Padding="20,0,20,10" Spacing="0">
+                            <Label Text="Menyra e pageses" Style="{StaticResource TitleLabel}" />
+                            <Picker x:Name="PaymentTypePicker" SelectedIndex="0" SelectedItem="" />
+                        </StackLayout>
+                        <BoxView Style="{StaticResource DisplayValueBox}" />
+                    </StackLayout>
+                    <StackLayout Padding="0,10,0,0" Spacing="0">
+                        <StackLayout Padding="20,0,20,10" Spacing="0">
                             <Label Text="Kilometrazhi Aktual" Style="{StaticResource TitleLabel}" />
                             <Entry Text="{Binding CurrentRentedCar.KilometrazhiAktual}" />
                         </StackLayout>

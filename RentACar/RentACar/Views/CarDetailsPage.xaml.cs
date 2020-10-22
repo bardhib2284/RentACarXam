@@ -21,7 +21,7 @@ namespace RentACar.Views
             rregullPicker.ItemsSource = new List<string> { "Jo", "Po" };
             aksidentPicker.SelectedIndex = 0;
             rregullPicker.SelectedIndex = 0;
-
+            PaymentTypePicker.ItemsSource = new List<string> { "CASH", "POS" };
             rregullPicker.SelectedIndexChanged += RregullPicker_SelectedIndexChanged;
             aksidentPicker.SelectedIndexChanged += AksidentPicker_SelectedIndexChanged;
         }

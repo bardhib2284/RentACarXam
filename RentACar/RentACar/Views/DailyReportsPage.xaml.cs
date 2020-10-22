@@ -1,5 +1,8 @@
-﻿using System;
+﻿using RentACar.ViewModels;
+using RentACarAPI.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +18,21 @@ namespace RentACar.Views
         public DailyReportsPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var bc = (PaymentsViewModel)BindingContext;
+            if(bc.IsSeason)
+            {
+                ObservableCollection<string> EmratESezoneve = new ObservableCollection<string>();
+                foreach(var sezoni in bc.Sezonet)
+                {
+                    EmratESezoneve.Add(sezoni.Emri);
+                }
+                seasonsPicker.ItemsSource = EmratESezoneve;
+            }
         }
     }
 }

@@ -82,6 +82,13 @@ namespace RentACar.ViewModels
         public ICommand GeneratePdfCommand { get; set; }
         public ICommand GoToDashboardCommand { get; set; }
 
+        private bool _isSuccess;
+        public bool IsSuccess
+        {
+            get { return _isSuccess; }
+            set { SetProperty(ref _isSuccess, value); }
+        }
+        public string PostPageInfo => "Vetura u leshua me sukses me qira";
         public RentACarViewModel(ObservableCollection<Client> Clients)
         {
             if (Clients == null)
@@ -184,7 +191,8 @@ namespace RentACar.ViewModels
                 RentedCar.ClientName = SelectedClient.Name;
                 RentedCar.CarName = SelectedCar.Name;
                 RentedCar.RentId = App.instance.DashboardViewModel.CurrentRent.Id;
-                RentedCar.CmimiID = RentedCar.Cmimi.ID;
+                if(RentedCar.Cmimi.ID > 0)
+                    RentedCar.CmimiID = RentedCar.Cmimi.ID;
                 var json = JsonConvert.SerializeObject(RentedCar);
                 var g = json.Remove(1, 7);
                 App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
@@ -192,11 +200,14 @@ namespace RentACar.ViewModels
                 var response = await App.client.PostAsync(App.API_URL_BASE + "rentedcars", httpContent);
                 if (response.IsSuccessStatusCode)
                 {
-                    UserDialogs.Instance.Alert("Vetura u leshua me sukses", "Sukses", "OK");
+                    //UserDialogs.Instance.Alert("Vetura u leshua me sukses", "Sukses", "OK");
+                    IsSuccess = true;
                 }
                 else
                 {
-                    UserDialogs.Instance.Alert("Vetura nuk u leshua me sukses", "Error", "OK");
+                    //UserDialogs.Instance.Alert("Vetura nuk u leshua me sukses", "Error", "OK");
+                    IsSuccess = false;
+                    return;
                 }
                 var responseString = await response.Content.ReadAsStringAsync();
                 RentedCar addedCar = JsonConvert.DeserializeObject<RentedCar>(responseString);
@@ -218,7 +229,8 @@ namespace RentACar.ViewModels
                 App.instance.DashboardViewModel.RentedCarsByRentId?.Add(addedCar);
                 App.instance.DashboardViewModel.PropertyChangedList();
                 App.instance.DashboardViewModel.LatestTransactionsOnGoing.Add(addedCar);
-                await Task.Delay(1000);
+                await Task.Delay(100);
+                IsSuccess = true;
                 App.instance.ChangeDetailPage(page);
             }
         }

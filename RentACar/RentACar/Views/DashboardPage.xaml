@@ -123,14 +123,16 @@
                     <Label HorizontalOptions="Center" IsVisible="{Binding HasLatestTransactionsLate,Converter={converters:InverseBoolConverter}}" Text="Nuk ka transaksione me vones" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
                 </StackLayout>
                 
-                <StackLayout IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}"  HorizontalOptions="Center">
+                <SearchBar Placeholder="Kerko Veturen" TextChanged="SearchBar_TextChanged" HorizontalOptions="FillAndExpand"/>
+                
+                <StackLayout  IsVisible="{Binding HasCars,Converter={converters:InverseBoolConverter}}"  HorizontalOptions="Center">
                     <Label Text="NUK KA VETURA NE RENT, JU LUTEM SHTONI VETURAT ME BUTONIN ME POSHT" LineBreakMode="WordWrap" FontAttributes="Bold"
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
                     <Button Text="Shto Veturen" Command="{Binding GoToCreateACarCommand}" HorizontalOptions="Center" WidthRequest="160"/>
                 </StackLayout >
-                <StackLayout>
+                <StackLayout x:Name="VeturatELira">
                     <Label Margin="15,20,0,0" Text="Vetuarat ne dispozicion" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
                     <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
                     <StackLayout x:Name="carview">
@@ -153,7 +155,7 @@
                     </StackLayout >
                 </StackLayout>
 
-                <StackLayout>
+                <StackLayout x:Name="VeturatEZena">
                     <Label Margin="15,20,0,0" Text="Vetuarat e leshuara me qira" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
                     <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
                     <StackLayout x:Name="carview2">
@@ -177,7 +179,7 @@
                     </StackLayout >
                 </StackLayout>
 
-                <StackLayout>
+                <StackLayout x:Name="VeturatEParegjistruara">
                     <Label Margin="15,20,0,0" Text="Vetuarat e pa regjistruara" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
                     <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
                     <StackLayout x:Name="carview3">
@@ -202,7 +204,7 @@
                     </StackLayout >
                 </StackLayout>
 
-                <StackLayout>
+                <StackLayout x:Name="VeturatNeServis">
                     <Label Margin="15,20,0,0" Text="Vetuarat ne servis" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
                     <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
                     <StackLayout x:Name="carview4">
@@ -220,6 +222,28 @@
 
                     <StackLayout IsVisible="{Binding HasOnServiceCars,Converter={converters:InverseBoolConverter}}">
                         <Label Text="Nuk ka vetura ne servis" LineBreakMode="WordWrap" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+               Style="{StaticResource LabelStyleDefault}" Margin="30"
+               VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                    </StackLayout >
+                </StackLayout>
+
+                <StackLayout x:Name="VeturatNeKerkim" IsVisible="False">
+                    <Label  Margin="15,20,0,0" Text="Vetuarat e kerkuara" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                    <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                    <StackLayout>
+                        <ListView x:Name="VeturatNeKerkimItemSource"
+                                              VerticalOptions="Fill"
+                                              HeightRequest="620"
+                                              WidthRequest="300"
+                                            RowHeight="300"
+                                              ItemTemplate="{StaticResource CarImageSliderStatus}"
+                                              HorizontalOptions="FillAndExpand">
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout x:Name="VeturatNeKerkimLabel" IsVisible="True">
+                        <Label Text="Nuk ka vetura te kerkuara" LineBreakMode="WordWrap" 
                VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
                Style="{StaticResource LabelStyleDefault}" Margin="30"
                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />

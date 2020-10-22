@@ -110,8 +110,10 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable\add.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
@@ -201,8 +203,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\rentlogo.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <AndroidResource Include="Resources\drawable\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\availableCars.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

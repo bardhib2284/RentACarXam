@@ -60,6 +60,8 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _OnServiseCars, value); }
         }
 
+        public ObservableCollection<Car> SearchedCars { get; set; }
+
         public List<Car> ServiceCloseCars => Cars.OrderBy(x => x.KmForService).ToList();
         public List<Car> RegistrationCloseCars => Cars.OrderBy(x => x.NextDateOfCheck).ToList();
 
@@ -151,6 +153,13 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _hasOnServiceCars, value); }
         }
 
+        private bool _hasSearchedCars;
+        public bool HasSearchedCars
+        {
+            get { return _hasSearchedCars; }
+            set { SetProperty(ref _hasSearchedCars, value); }
+        }
+
         private Rent _currentRent;
         public Rent CurrentRent
         {
@@ -176,6 +185,23 @@ namespace RentACar.ViewModels
 
         public byte[] ImgByte;
         public List<string> CarImageOptions => new List<string> { "Imazh", "URL" };
+
+        private bool _isSuccess;
+        public bool IsSuccess
+        {
+            get { return _isSuccess; }
+            set { SetProperty(ref _isSuccess, value); }
+        }
+        public string PostPageInfo => "Vetura u kthye me sukses";
+
+        private bool _isAdming;
+        public bool IsAdmin
+        {
+            get { return _isAdming; }
+            set { SetProperty(ref _isAdming, value); }
+        }
+        public AuthenticationData LoggedInUser;
+        #region Commands
         public ICommand CarDetailsCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand PickPhotoCommand { get; set; }
@@ -194,7 +220,9 @@ namespace RentACar.ViewModels
         public ICommand GoToCarsServicesTimeCommand { get; set; }
         public ICommand SendMessage { get; set; }
         public ICommand GoToClientsPageCommand { get; set; }
+        public ICommand GoToRaportetPageCommand { get; set; }
 
+        #endregion
 
         public DashboardViewModel()
         {
@@ -212,6 +240,8 @@ namespace RentACar.ViewModels
             GoToClientsCommand = new Command(async () => await GoToClientsPageAsync());
             GoToCarsCommand = new Command(async () => await GoToCarsCommandPageAsync());
             GoToPaymentsCommand = new Command(async () => await GoToPaymentsPageAsync());
+            GoToRaportetPageCommand = new Command(async () => await GoToRaportetPageAsync());
+
             GetPdfCommand = new Command(async () => await GetPdfAsync());
             GoToDashboardCommand = new Command(async () => await GoToDashboardAsync());
             KtheVeturenCommand = new Command(async () => await KtheVeturenAsync());
@@ -248,21 +278,53 @@ namespace RentACar.ViewModels
             LatestTransactionsFinished = new ObservableCollection<RentedCar>();
             Clients = new ObservableCollection<Client>();
             RentedCarsByRentId = new ObservableCollection<RentedCar>();
+            SearchedCars = new System.Collections.ObjectModel.ObservableCollection<Models.Car>();
+            HasSearchedCars = false;
             //Task.Run(LoadRents);
+            LoggedInUser = new AuthenticationData();
         }
 
-        protected void CheckForAlerts()
+        protected async Task CheckForAlerts()
         {
-            if(Cars.Any())
+            try
             {
-                foreach(var car in Cars)
+                if (Cars.Any())
                 {
-                    if((car.NextDateOfCheck - DateTime.Now).TotalDays <= 2)
+                    foreach (var car in Cars)
                     {
-                        UserDialogs.Instance.Alert("Vetura " + car.Name + " me targat :" + car.Targa + " duhet te regjistrohet","Koha per regjistrim", "Okay");
+                        if ((car.NextDateOfCheck - DateTime.Now).TotalDays <= 2)
+                        {
+                            var res = await UserDialogs.Instance.ConfirmAsync("Vetura " + car.Name + " me targat :" + car.Targa + " duhet te regjistrohet", "Koha per regjistrim", "Perfundo regjistrimin", "Me Vone");
+                            if (res)
+                            {
+                                using (UserDialogs.Instance.Loading())
+                                {
+                                    var json = JsonConvert.SerializeObject(car);
+                                    App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+                                    HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                                    var response = await App.client.PutAsync(App.API_URL_BASE + "rents/cars/register", httpContent);
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        UserDialogs.Instance.Alert("Vetura " + car.Name + " me targat :" + car.Targa + " u regjistrua per 6 muaj me sukses", "Sukses", "OK");
+                                    }
+                                    else
+                                    {
+                                        UserDialogs.Instance.Alert("Vetura " + car.Name + " me targat :" + car.Targa + " nuk u regjistrua me sukses", "Error", "OK");
+                                        continue;
+                                    }
+                                    var responseString = await response.Content.ReadAsStringAsync();
+                                    var RegisteredCar = JsonConvert.DeserializeObject<Car>(responseString);
+                                    car.NextDateOfCheck = RegisteredCar.NextDateOfCheck;
+                                }
+                            }
+                        }
                     }
                 }
+            }catch(Exception e)
+            {
+                var res = e.Message;
             }
+            
         }
 
         private async Task DisplayAlert(string v1, string v2,string v3 = "Okay")
@@ -332,24 +394,27 @@ namespace RentACar.ViewModels
         {
             using (UserDialogs.Instance.Loading("Loading"))
             {
-                
+                CurrentRentedCar.KohaAktualeEKthimit = DateTime.Now;
                 var json = JsonConvert.SerializeObject(CurrentRentedCar);
                 App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                 HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await App.client.PutAsync(App.API_URL_BASE + "rentedcars/update", httpContent);
                 if (response.IsSuccessStatusCode)
                 {
-                    UserDialogs.Instance.Alert("Vetura u kthye me sukses", "Sukses", "OK");
+                    //UserDialogs.Instance.Alert("Vetura u kthye me sukses", "Sukses", "OK");
                 }
                 else
                 {
-                    UserDialogs.Instance.Alert("Vetura nuk u kthye  me sukses", "Error", "OK");
+                    //UserDialogs.Instance.Alert("Vetura nuk u kthye  me sukses", "Error", "OK");
+                    IsSuccess = false;
+                    return;
                 }
                 var responseString = await response.Content.ReadAsStringAsync();
                 RentedCar addedCar = JsonConvert.DeserializeObject<RentedCar>(responseString);
                 IsSuccessfullRent = addedCar != null ? true : false;
                 var page = new PostRentedCarPage();
                 page.BindingContext = this;
+                IsSuccess = true;
                 var car = TakenCars.FirstOrDefault(x => x.Id == addedCar.CarId);
                 LatestTransactionsFinished.Add(addedCar);
                 LatestTransactionsOnGoing.Remove(addedCar);
@@ -451,13 +516,25 @@ namespace RentACar.ViewModels
         }
         private async Task GoToPaymentsPageAsync()
         {
-            using (UserDialogs.Instance.Loading("Loading"))
+            using (UserDialogs.Instance.Loading("Duke hapur pagesat"))
             {
                 PaymentOperationPage PaymentPage = new PaymentOperationPage();
                 App.instance.PaymentsViewModel = new PaymentsViewModel();
                 PaymentPage.BindingContext = App.instance.PaymentsViewModel;
                 (App.instance.MainPage as MainPage).IsPresented = false;
                 await App.instance.PushAsyncNewPage(PaymentPage);
+            }
+        }
+
+        private async Task GoToRaportetPageAsync()
+        {
+            using (UserDialogs.Instance.Loading("Duke hapur raportet"))
+            {
+                RaportsOperationPage RaportsOperationPage = new RaportsOperationPage();
+                App.instance.PaymentsViewModel = new PaymentsViewModel();
+                RaportsOperationPage.BindingContext = App.instance.PaymentsViewModel;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(RaportsOperationPage);
             }
         }
         private async Task GoToClientsPageAsync()
@@ -625,6 +702,8 @@ namespace RentACar.ViewModels
                         UserDialogs.Instance.Alert("Probleme me server", "Error", "OK");
                     }
                     AuthenticationData data = JsonConvert.DeserializeObject<AuthenticationData>(await response.Content.ReadAsStringAsync());
+                    LoggedInUser = data;
+                    IsAdmin = LoggedInUser.IsAdmin;
                     if (data != null)
                     {
                         DashboardPage dashboard = new DashboardPage();
@@ -634,7 +713,7 @@ namespace RentACar.ViewModels
                         App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
                         await GetClients();
                         App.instance.ChangeDetailPage(dashboard);
-                        CheckForAlerts();
+                        await CheckForAlerts();
                     }
                     else
                     {

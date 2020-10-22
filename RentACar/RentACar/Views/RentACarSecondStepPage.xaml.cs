@@ -19,5 +19,26 @@ namespace RentACar.Views
            
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var bc = (RentACarViewModel)BindingContext;
+            var itemSource = bc.Cmimet;
+            var Cmimi = new RentACarAPI.Models.Cmimet { Dega = "Zgjedh Cmim Individual" };
+            itemSource.Add(Cmimi);
+            var firstItem = itemSource.First();
+            if(firstItem == Cmimi)
+            {
+                cmimiPicker.ItemsSource = itemSource;
+                return;
+            }
+            else
+            {
+                itemSource[0] = Cmimi;
+                itemSource[itemSource.Count-1] = firstItem;
+                cmimiPicker.ItemsSource = itemSource;
+                return;
+            }
+        }
     }
 }

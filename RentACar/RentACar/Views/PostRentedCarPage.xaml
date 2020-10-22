@@ -5,22 +5,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:components="clr-namespace:RentACar.Components"
              mc:Ignorable="d"
+             xmlns:converters="clr-namespace:RentACar.Converters"
              x:Class="RentACar.Views.PostRentedCarPage">
     <NavigationPage.TitleView>
         <components:NavTitleView Title="Leshimi me qira" SubTitle="Sukses" SearchVisible="False" Margin="0,0,20,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Frame
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill"
-                            Padding="0"
-                            HasShadow="false"
-                            IsClippedToBounds="true"
-                            HeightRequest="180"
-                            MinimumHeightRequest="180"
-                            CornerRadius="15"
-                            BackgroundColor="Transparent">
+            <Frame      IsVisible="{Binding IsSuccess}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        Padding="0"
+                        HasShadow="false"
+                        IsClippedToBounds="true"
+                        HeightRequest="180"
+                        MinimumHeightRequest="180"
+                        CornerRadius="15"
+                        BackgroundColor="Transparent">
                 <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
                     <ff:CachedImage Opacity="0.85" Source="https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
                     <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
@@ -29,21 +30,21 @@
                     <StackLayout MinimumWidthRequest="220" WidthRequest="280" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15,00,15,0">
                         <ff:CachedImage BackgroundColor="Transparent" HeightRequest="190" Source="{Binding .CarImageSource}" Aspect="AspectFit"/>
                     </StackLayout>
-                    <Label Margin="10,100,70,0" Text="Vetura eshte leshuar me qira me sukses!" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
+                    <Label Margin="10,100,70,0" Text="{Binding PostPageInfo}" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
                     <Label Margin="0,20,70,0" Text="SUKSES" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
                 </Grid>
             </Frame>
-            
-            <!--<Frame
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill"
-                            Padding="0"
-                            HasShadow="false"
-                            IsClippedToBounds="true"
-                            HeightRequest="180"
-                            MinimumHeightRequest="180"
-                            CornerRadius="15"
-                            BackgroundColor="Transparent">
+
+            <Frame      IsVisible="{Binding IsSuccess,Converter={converters:InverseBoolConverter }}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill"
+                        Padding="0"
+                        HasShadow="false"
+                        IsClippedToBounds="true"
+                        HeightRequest="180"
+                        MinimumHeightRequest="180"
+                        CornerRadius="15"
+                        BackgroundColor="Transparent">
                 <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
                     <ff:CachedImage Opacity="0.85" Source="https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg" WidthRequest="100" HeightRequest="100" Aspect="AspectFill"/>
                     <StackLayout MinimumWidthRequest="59" WidthRequest="59" VerticalOptions="Start" HorizontalOptions="Start"  Margin="15,20,15,0">
@@ -55,9 +56,9 @@
                     <Label Margin="10,100,70,0" Text="Vetura nuk eshte leshuar me qira!" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
                     <Label Margin="0,20,70,0" Text="ERROR" Style="{StaticResource LabelStyleDefault}" TextColor="{StaticResource ModeColorPrimary}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start"/>
                 </Grid>
-            </Frame>-->
+            </Frame>
 
-            <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Gjenero PDF" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>
+            <!--<Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Gjenero PDF" TextColor="White" HeightRequest="60"  Command="{Binding GeneratePdfCommand}"/>-->
             <Button HorizontalOptions="FillAndExpand" BackgroundColor="Black" Text="Ballina" TextColor="White" HeightRequest="60" Command="{Binding GoToDashboardCommand}"/>
         </StackLayout>
     </ContentPage.Content>

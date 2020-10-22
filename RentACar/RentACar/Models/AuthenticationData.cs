@@ -13,5 +13,12 @@ namespace RentACar.Models
         public int RentID { get; set; }
         public Roles RoleOfUser { get; set; }
         public enum Roles { Administrator, Manager, Punetor };
+        public bool IsAdmin
+        {
+            get
+            {
+                return RoleOfUser == Roles.Administrator;
+            }
+        }
     }
 }

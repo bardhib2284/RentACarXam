@@ -7,12 +7,24 @@
              x:Class="RentACar.Views.DailyReportsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Margin="1,0,0,0"  Text="Data e raportit" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
-            <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
-            <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
-            <Label Text="Dita e raportit" VerticalOptions="Fill"/>
-            <DatePicker Date="{Binding DailyRaports}" MinimumDate="01/01/2020" VerticalOptions="Fill"/>
-            <Button Text="Gjenero Raportin" Command="{Binding GeneratePdfDailyCommand}" HeightRequest="50" />
+            <StackLayout IsVisible="{Binding IsDaily}">
+                <Label Margin="1,0,0,0"  Text="Data e raportit" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                <Label Text="Dita e raportit" VerticalOptions="Fill"/>
+                <DatePicker Date="{Binding DailyRaports}" MinimumDate="01/01/2020" VerticalOptions="Fill"/>
+                <Button Text="Gjenero Raportin" Command="{Binding GeneratePdfDailyCommand}" HeightRequest="50" />
+            </StackLayout>
+
+            <StackLayout IsVisible="{Binding IsSeason}">
+                <Label Margin="1,0,0,0"  Text="Raporti i sezonit" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}" TextColor="Black"/>
+                <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" WidthRequest="80" HorizontalOptions="Start"/>
+                <BoxView Margin="1,0,0,0" Grid.Row="1" HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand"/>
+                <Label Text="Zgjedh sezonin" VerticalOptions="Fill"/>
+                <Picker x:Name="seasonsPicker" SelectedItem="{Binding SelectedSezoni.Emri}" VerticalOptions="Fill"/>
+                <Button Text="Gjenero Raportin" Command="{Binding GeneratePdfSeasonCommand}" HeightRequest="50" />
+            </StackLayout>
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>
