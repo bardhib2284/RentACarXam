@@ -18,6 +18,7 @@ namespace RentACar.Views
         {
             InitializeComponent();
             klasaEVetures.ItemsSource = new List<string> { "Ekonomik", "Luksoz" };
+            marshiEVetures.ItemsSource = new List<string> { "Automatik", "Manual" };
         }
 
         private void dataefillimit_SelectedIndexChanged(object sender, EventArgs e)

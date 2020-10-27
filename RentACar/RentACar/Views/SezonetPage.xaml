@@ -9,7 +9,7 @@
         <components:NavTitleView Title="Sezonet" SubTitle="Lista e sezoneve" SearchVisible="True" Margin="0,0,-30,0"/>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="https://icons.iconarchive.com/icons/iconsmind/outline/512/Add-icon.png" Command="{Binding GoToCreateSeazonCommand}" />
+        <ToolbarItem IconImageSource="add.png" Command="{Binding GoToCreateSeazonCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -17,7 +17,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="Sezoni"/>
+                            <Label Text="{Binding Emri}"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

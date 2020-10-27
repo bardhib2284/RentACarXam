@@ -136,7 +136,7 @@ namespace RentACar.ViewModels
                         //await Xamarin.Forms.DependencyService.Get<ISave>().SaveAndView("Output.pdf", "application/pdf", ms);
 
                     }
-                    DependencyService.Get<IFileLauncher>().Open(pdfcontent, selectedSeason.Emri +"-"+ DateTime.Now.Date + "--.pdf");
+                    DependencyService.Get<IFileLauncher>().Open(pdfcontent, selectedSeason.Emri + "-" + selectedSeason.id  + "-.pdf");
                 }
             }
         }

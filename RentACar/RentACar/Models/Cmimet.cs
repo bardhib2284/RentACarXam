@@ -11,6 +11,7 @@ namespace RentACarAPI.Models
         public string Dega { get; set; }
         public int SeasonID { get; set; }
         public int VehicleClass { get; set; }
+        public int TransmissionType { get; set; }
         public decimal CmimiPerOre { get; set; }
         public decimal CmimiPerDite { get; set; }
         public decimal CmimiPerJave { get; set; }

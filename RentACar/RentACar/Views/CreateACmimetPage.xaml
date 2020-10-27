@@ -14,6 +14,8 @@
                 <Picker x:Name="dataefillimit" SelectedIndexChanged="dataefillimit_SelectedIndexChanged" SelectedIndex="{Binding SelectedSezoni.id}"/>
                 <Label  Text="Klasa e vetures" />
                 <Picker x:Name="klasaEVetures" SelectedIndex="{Binding SelectedCmimi.VehicleClass}" />
+                <Label  Text="Tipi i marshit" />
+                <Picker x:Name="marshiEVetures" SelectedIndex="{Binding SelectedCmimi.TransmissionType}" />
                 <Label  Text="Cmimi per ore" />
                 <Entry x:Name="minPeriodDite" Text="{Binding SelectedCmimi.CmimiPerOre,Mode=TwoWay}" Keyboard="Numeric"/>
                 <Label  Text="Cmimi per dite" />
