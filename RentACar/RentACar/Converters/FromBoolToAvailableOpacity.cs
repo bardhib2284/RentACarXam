@@ -11,12 +11,12 @@ namespace RentACar.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if ((bool)value)
+            if (!(bool)value)
             {
                 return 1;
             }
             else
-                return 0.5;
+                return 0.6;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

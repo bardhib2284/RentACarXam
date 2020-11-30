@@ -46,7 +46,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Bardh Bejtullahu (Z94P6C437N)</CodesignKey>
+    <CodesignKey>Apple Development: Bardh Bejtullahu (72H3AF48K6)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
@@ -200,5 +200,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\rentlogo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\messages.png" />
+  </ItemGroup>
 </Project>

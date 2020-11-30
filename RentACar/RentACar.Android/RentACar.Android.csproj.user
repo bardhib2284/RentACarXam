@@ -2,7 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SelectedDevice>Samsung SM-G930F</SelectedDevice>
-    <DefaultDevice>pixel_2_q_10_0_-_api_29</DefaultDevice>
+    <DefaultDevice>nexus_6_q_10_0_-_api_29</DefaultDevice>
     <AndroidDesignerPreferredTheme>Theme.AppCompat.Light.NoActionBar</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

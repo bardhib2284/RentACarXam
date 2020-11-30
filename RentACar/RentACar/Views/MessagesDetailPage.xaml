@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:components="clr-namespace:RentACar.Components"
+             xmlns:converters="clr-namespace:RentACar.Converters"
+             x:Class="RentACar.Views.MessagesDetailPage" >
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="{Binding SelectedMessage.Title}" SubTitle="Detajet e mesazhit" SearchVisible="False" Margin="0,0,0,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White" >
+            <Label Margin="15,20,0,0" Text="Informatat e mesazhit" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+            <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+                <StackLayout Margin="10,5" VerticalOptions="Start" HorizontalOptions="Start" Orientation="Horizontal">
+                    <Image Source="https://cdn3.iconfinder.com/data/icons/2px-stroke-simple-line/24/misc-clock-512.png" WidthRequest="30" HeightRequest="30"/>
+                    <Label Text="Data e pranimit: " VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding SelectedMessage.DateReceived, Converter={converters:DateConverterDay}}" Style="{StaticResource LabelStyleDefault}" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding SelectedMessage.DateReceived, Converter={converters:DateConverterMonth}}" Style="{StaticResource LabelStyleDefault}" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Margin="10,5" VerticalOptions="Start" HorizontalOptions="Start" Orientation="Horizontal">
+                    <Image Source="https://cdn.iconscout.com/icon/premium/png-256-thumb/sent-message-6-1178965.png" WidthRequest="30" HeightRequest="30"/>
+                    <Label Text="Derguar nga: " VerticalTextAlignment="Center"/>
+                    <Label Text="Sistemi" VerticalTextAlignment="Center" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+                </StackLayout>
+                <StackLayout Margin="10,5" VerticalOptions="Start" HorizontalOptions="Start" Orientation="Horizontal">
+                    <Image Source="https://cdn3.iconfinder.com/data/icons/2px-stroke-simple-line/24/misc-clock-512.png" WidthRequest="30" HeightRequest="30"/>
+                    <Label Text="Data e leximit: " VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding SelectedMessage.DateRead, Converter={converters:DateConverterDay}}" Style="{StaticResource LabelStyleDefault}" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding SelectedMessage.DateRead, Converter={converters:DateConverterMonth}}" Style="{StaticResource LabelStyleDefault}" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Margin="10,5" IsVisible="{Binding SelectedMessage.IsImportant}" VerticalOptions="Start" HorizontalOptions="Start" Orientation="Horizontal">
+                <Image Source="https://cdn3.iconfinder.com/data/icons/2px-stroke-simple-line/24/misc-clock-512.png" WidthRequest="30" HeightRequest="30"/>
+                <Label Text="Me rendesi : " VerticalTextAlignment="Center"/>
+                <Label Text="!" TextColor="Red" IsVisible="{Binding SelectedMessage.IsImportant}" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <Label Margin="15,20,0,0" Text="Detajet e mesazhit" FontSize="20" FontAttributes="Bold" Style="{StaticResource LabelStyleDefault}"/>
+            <BoxView Margin="15,0" HeightRequest="1" BackgroundColor="Black" WidthRequest="130" HorizontalOptions="Start"/>
+            <Label Text="{Binding SelectedMessage.Message}" Style="{StaticResource LabelStyleDefault}" Margin="15"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

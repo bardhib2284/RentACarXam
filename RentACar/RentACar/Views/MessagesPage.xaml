@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:components="clr-namespace:RentACar.Components"
+             x:Class="RentACar.Views.MessagesPage">
+    <NavigationPage.TitleView>
+        <components:NavTitleView Title="Notifications" SubTitle="Njoftimet e rentit te juaj" SearchVisible="False" Margin="0,0,0,0"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <StackLayout Margin="0,-5" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="Transparent">
+                <controls:CarouselViewControl Orientation="Horizontal" ShowIndicators="False" BackgroundColor="Transparent"
+                                              VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                              ShowArrows="True" Position="{Binding TabPosition}"
+                                              ItemsSource="{Binding ProjectionItems}"
+                                              HeightRequest="120" ArrowsTintColor="Black"
+                                              ArrowsBackgroundColor="Transparent"
+                                              ItemTemplate="{StaticResource ProjectionItemTemplate}">
+
+                </controls:CarouselViewControl>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="Transparent" IsVisible="{Binding TabPosition, Converter={converters:StringEqualConverter}, ConverterParameter='0'}" VerticalOptions="FillAndExpand">
+                <ListView BackgroundColor="Transparent" SeparatorVisibility="Default" SeparatorColor="LightBlue" VerticalOptions="Fill" SelectionMode="None" Margin="10" MinimumHeightRequest="75"
+                          RowHeight="60" ItemsSource="{Binding Notifications}"
+                          ItemTemplate="{StaticResource MessagesItemTemplate}">
+                </ListView>
+                <Label HorizontalOptions="Center" IsVisible="{Binding HasMessages,Converter={converters:InverseBoolConverter}}" Text="Nuk ka mesazhe" Style="{StaticResource LabelStyleDefault}" FontAttributes="Bold" FontSize="15"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

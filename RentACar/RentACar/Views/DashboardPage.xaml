@@ -9,7 +9,7 @@
              xmlns:components="clr-namespace:RentACar.Components" xmlns:converters="clr-namespace:RentACar.Converters" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Name="ThaPage">
     <NavigationPage.TitleView>
-        <components:NavTitleView Title="{Binding CurrentRent.Rent_Name}" SubTitle="{Binding CurrentRent.Location}" SearchVisible="True" Margin="0,0,-30,0"/>
+        <components:DashboardNavTitle Title="{Binding CurrentRent.Rent_Name}" SubTitle="{Binding CurrentRent.Location}" SearchVisible="True" Margin="0,0,-10,0"/>
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>

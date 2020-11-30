@@ -34,6 +34,7 @@
             </OnPlatform>
             <converters:FromBoolToAvailableOpacity x:Key="FromBoolToAvailableOpacity"/>
             <converters:FromBoolToAvailableText x:Key="FromBoolToAvailableText"/>
+            <converters:BoolToFontAttributeConverter x:Key="FromBoolToFontAttribute"/>
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="ModeColorPrimary">#ffffff</Color> 
@@ -92,6 +93,20 @@
             </Style>
             <Style TargetType="DatePicker">
                 <Setter Property="FontFamily" Value="{StaticResource PointDEMOSemiBold}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="MessageTitleStyleBold">
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOSemiBold}"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="MessageTitleStyleNormal">
+                <Setter Property="FontFamily" Value="{StaticResource PointDEMOLight}"/>
+                <Setter Property="TextColor" Value="LightGray"/>
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
             </Style>
             <!-- car view images data template for carousel-->
             <DataTemplate x:Key="CarImageSliderRegister">
@@ -322,7 +337,19 @@
           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="TailTruncation" />
                 </StackLayout>
             </DataTemplate>
-            
+
+            <DataTemplate x:Key="MessagesItemTemplate">
+                <ViewCell>
+                    <StackLayout Margin="0,5" VerticalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MessagesViewModel}}, Path=GoToMessagesDetailsCommand}"
+                                              CommandParameter="{Binding .}" />
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" Style="{Binding IsRead,Converter={StaticResource FromBoolToFontAttribute}}" />
+                        <Label Text="{Binding Message}" VerticalOptions="FillAndExpand" LineBreakMode="TailTruncation" TextColor="LightGray" FontSize="Subtitle" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
     

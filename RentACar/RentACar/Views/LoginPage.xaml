@@ -8,7 +8,6 @@
              xmlns:components="clr-namespace:RentACar.Components"
             BackgroundImageSource="https://i.pinimg.com/originals/f7/f6/8f/f7f68f4ef9e52fea71f91547c99e2431.jpg"
              >
-
     <NavigationPage.TitleView>
         <components:NavTitleView BackgroundColor="Transparent" Title="Kyçu" SubTitle="Rent Name" SearchVisible="False" />
     </NavigationPage.TitleView>

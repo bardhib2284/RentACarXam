@@ -72,8 +72,10 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\bin\Debug\n
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\bin\Debug\netstandard2.0\RentACar.dll
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\bin\Debug\netstandard2.0\ref\RentACar.dll
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\bin\Debug\netstandard2.0\RentACar.pdb
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\RentACar.csprojAssemblyReference.cache
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Components\CarView.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Components\DashboardNavTitle.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Components\ImageSliderView.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Components\NavTitleView.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\CarDetailsPage.xaml.g.cs
@@ -94,6 +96,7 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\n
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\MenuPage.xaml.g.cs
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\MessagesPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\NewItemPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\PaymentOperationPage.xaml.g.cs
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\PersonalizedReports.xaml.g.cs
@@ -112,4 +115,4 @@ C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\n
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\RentACar.dll
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\ref\RentACar.dll
 C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\RentACar.pdb
-C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\RentACar.csprojAssemblyReference.cache
+C:\Users\bardh.bejtullahu\source\repos\RentACarXam\RentACar\RentACar\obj\Debug\netstandard2.0\Views\MessagesDetailPage.xaml.g.cs

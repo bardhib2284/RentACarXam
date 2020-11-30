@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentACar.Components.DashboardNavTitle">
+    <ContentView.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Margin="0,0,20,0">
+            <StackLayout Margin="0,0,30,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="1" VerticalOptions="Center">
+                <Label x:Name="title" HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                <Label x:Name="subtitle" HorizontalTextAlignment="Center" FontSize="12" TextColor="Black"/>
+            </StackLayout>
+            <AbsoluteLayout HorizontalOptions="End">
+                <AbsoluteLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenNotificationsCommand}"/>
+                </AbsoluteLayout.GestureRecognizers>
+                <Image Source="https://assets.stickpng.com/images/584856bce0bb315b0f7675ad.png" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" WidthRequest="30" HeightRequest="30"/>
+                <AbsoluteLayout IsVisible="{Binding HasUndreadMessages}" AbsoluteLayout.LayoutBounds="0,0,1,1" Margin="-8,0" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="End">
+                    <Image Source="https://cdn3.iconfinder.com/data/icons/flatastic-10-2/256/trafficlight_red-512.png" WidthRequest="17" HeightRequest="17"/>
+                    <Label Text="{Binding UnreadMessagesCount}" FontSize="10" TextColor="White" Margin="4,4"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
+                </AbsoluteLayout>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

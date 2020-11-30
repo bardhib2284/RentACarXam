@@ -201,6 +201,20 @@ namespace RentACar.ViewModels
             set { SetProperty(ref _isAdming, value); }
         }
         public AuthenticationData LoggedInUser;
+
+        private bool _HasUndreadMessages;
+        public bool HasUndreadMessages
+        {
+            get { return _HasUndreadMessages; }
+            set { SetProperty(ref _HasUndreadMessages, value); }
+        }
+
+        private string _UnreadMessagesCount;
+        public string UnreadMessagesCount
+        {
+            get { return _UnreadMessagesCount; }
+            set { SetProperty(ref _UnreadMessagesCount, value); }
+        }
         #region Commands
         public ICommand CarDetailsCommand { get; set; }
         public ICommand LoginCommand { get; set; }
@@ -221,7 +235,7 @@ namespace RentACar.ViewModels
         public ICommand SendMessage { get; set; }
         public ICommand GoToClientsPageCommand { get; set; }
         public ICommand GoToRaportetPageCommand { get; set; }
-
+        public ICommand OpenNotificationsCommand { get; set; }
         #endregion
 
         public DashboardViewModel()
@@ -250,6 +264,7 @@ namespace RentACar.ViewModels
             GoToCarsServicesTimeCommand = new Command(async () => await GoToCarsServicesTimeAsync());
             GoToClientsPageCommand = new Command(async () => await GoToClientsPageAsync());
             SendMessage = new Command(async () => await SendMessageAsync());
+            OpenNotificationsCommand = new Command(async () => await OpenNotificationsAsync());
             var projectionItems = new List<MenuItem>() {
                     new MenuItem(){Name="transactions",TitleKey="Te gjitha", Parametar="all"},
                     new MenuItem(){Name="transactions",TitleKey="Perfunduara", Parametar="finished"},
@@ -282,6 +297,21 @@ namespace RentACar.ViewModels
             HasSearchedCars = false;
             //Task.Run(LoadRents);
             LoggedInUser = new AuthenticationData();
+            HasUndreadMessages = true;
+            UnreadMessagesCount = " 3";
+        }
+
+        private async Task OpenNotificationsAsync()
+        {
+            using (UserDialogs.Instance.Loading("Duke ngarkuar mesazhet"))
+            {
+                MessagesPage MessagesPage = new MessagesPage();
+                App.instance.MessagesViewModel = App.instance.MessagesViewModel != null ? App.instance.MessagesViewModel : new MessagesViewModel();
+                await App.instance.MessagesViewModel.GetMessages();
+                MessagesPage.BindingContext = App.instance.MessagesViewModel;
+                (App.instance.MainPage as MainPage).IsPresented = false;
+                await App.instance.PushAsyncNewPage(MessagesPage);
+            }
         }
 
         protected async Task CheckForAlerts()
@@ -297,8 +327,25 @@ namespace RentACar.ViewModels
                             var res = await UserDialogs.Instance.ConfirmAsync("Vetura " + car.Name + " me targat :" + car.Targa + " duhet te regjistrohet", "Koha per regjistrim", "Perfundo regjistrimin", "Me Vone");
                             if (res)
                             {
-                                using (UserDialogs.Instance.Loading())
+                                using (UserDialogs.Instance.Loading("Duke regjistruar veturen"))
                                 {
+                                    Notifications notifications = new Notifications
+                                    {
+                                        DateReceived = DateTime.Now,
+                                        HasInteraction = true,
+                                        IsImportant = true,
+                                        IsRead = true,
+                                        Message = "Vetura " + car.Name + " me targat :" + car.Targa + " duhet te regjistrohet",
+                                        Title = "Regjistrimi: " + car.Targa,
+                                        RentID = CurrentRent.Id
+                                    };
+                                    var serializedNotification = JsonConvert.SerializeObject(notifications);
+                                    HttpContent httpContentNotification = new StringContent(serializedNotification, Encoding.UTF8, "application/json");
+                                    var notificationAdded = await App.client.PostAsync(App.API_URL_BASE + "rents/notifications/add", httpContentNotification);
+                                    if(!notificationAdded.IsSuccessStatusCode)
+                                    {
+                                        UserDialogs.Instance.Alert("Mesazhi deshtoi te shtohet ne databaze", "Deshtim Mesazhi");
+                                    }
                                     var json = JsonConvert.SerializeObject(car);
                                     App.client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                                     HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
@@ -315,6 +362,26 @@ namespace RentACar.ViewModels
                                     var responseString = await response.Content.ReadAsStringAsync();
                                     var RegisteredCar = JsonConvert.DeserializeObject<Car>(responseString);
                                     car.NextDateOfCheck = RegisteredCar.NextDateOfCheck;
+                                }
+                            }
+                            else
+                            {
+                                Notifications notifications = new Notifications
+                                {
+                                    DateReceived = DateTime.Now,
+                                    HasInteraction = true,
+                                    IsImportant = true,
+                                    IsRead = false,
+                                    Message = "Vetura " + car.Name + " me targat :" + car.Targa + " duhet te regjistrohet",
+                                    Title = "Regjistrimi: " + car.Targa,
+                                    RentID = CurrentRent.Id
+                                };
+                                var serializedNotification = JsonConvert.SerializeObject(notifications);
+                                HttpContent httpContentNotification = new StringContent(serializedNotification, Encoding.UTF8, "application/json");
+                                var notificationAdded = await App.client.PostAsync(App.API_URL_BASE + "rents/notifications/add", httpContentNotification);
+                                if (!notificationAdded.IsSuccessStatusCode)
+                                {
+                                    UserDialogs.Instance.Alert("Mesazhi deshtoi te shtohet ne databaze", "Deshtim Mesazhi");
                                 }
                             }
                         }
@@ -708,10 +775,17 @@ namespace RentACar.ViewModels
                     {
                         DashboardPage dashboard = new DashboardPage();
                         dashboard.BindingContext = this;
+                        UserDialogs.Instance.ShowLoading("Duke ngarkuar rentin");
                         CurrentRent = await LoadRentById(data.RentID);
+                        UserDialogs.Instance.ShowLoading("Duke ngarkuar veturat");
                         if (CurrentRent != null) Cars = await LoadCarsFromRent(CurrentRent);
+                        var notifications = await App.client.GetAsync(App.API_URL_BASE + "rents/notifications/count/" + CurrentRent.Id);
+                        var result = await notifications.Content.ReadAsStringAsync();
+                        UnreadMessagesCount = " " + result;
                         App.instance.ClientsViewModel = App.instance.ClientsViewModel ?? new ClientsViewModel();
+                        UserDialogs.Instance.ShowLoading("Duke ngarkuar klientet");
                         await GetClients();
+                        UserDialogs.Instance.HideLoading();
                         App.instance.ChangeDetailPage(dashboard);
                         await CheckForAlerts();
                     }
